@@ -1,0 +1,32 @@
+{
+  "mainView": {
+	 "title": "KHO_CRM",
+	 "copyright": "Copyright &copy 2016 JarQo"
+  },
+  "mainPage": {
+	 "users": "Wszyscy użytkownicy systemu",
+	 "nameAndSurname" : "Imię i nazwisko",
+	 "phone" : "Telefon",
+	 "address" : "Adres",
+	 "rank" : "Stopień harcerski",
+	 "rankInst" : "Stopień Instrutorski",
+	 "email" : "Adres email",
+	 "actions" : "Akcje",
+	 "details" : "Szczegóły",
+	 "delete" : "Usuń"
+  },
+  "createScout" : {
+	"createScoutTitle" : "Utówrz nowego użytkownika",
+	"name" : "Imię",
+	"surname" : "Nazwisko",
+	"phone": "Telefon",
+	"email" : "Adres e-mail",
+	"address" : "Adres",
+	"school" : "Szkoła",
+	"rank" : "Stopień harcerski",
+	"rankInst" : "Stopień instruktorski",
+	"birthday" : "Data urodzenia",
+	"team" : "Nazwa drużyny",
+	"submit" : "Utwórz użytkownika"
+  }
+}

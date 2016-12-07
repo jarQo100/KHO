@@ -1,0 +1,117 @@
+{
+  "mainView": {
+    "title": "Suis-je bien couvert ?"
+  },
+  "mainPage": {
+    "lead": "Pour savoir si vous êtes bien couvert, renseignez vos informations de voyage et carte bancaire"
+  },
+  "travelPage": {
+    "title": "Informations de voyage",
+    "label": "Ajouter un voyage",
+    "destination": "Destination",
+    "selectYourDestination": "Sélectionnez votre destination",
+    "tripDates": "Dates du voyage",
+    "from": "Départ le",
+    "return": "Retour le",
+    "select": "Sélectioner"
+  },
+  "creditCardPage": {
+    "title": "Carte bancaire",
+    "label": "Ajouter une carte bancaire",
+    "bank": "Banque",
+    "cardType": "Type de carte",
+    "expirationDate": "Date d'expiration",
+    "example": "Exemple"
+  },
+  "diagnosis": {
+    "diagnostic": "Diagnostic",
+    "complete": "Diagnostic complet",
+    "checkRecommendation": "VOIR LES GARANTIES RECOMMANDÉES",
+    "essential": "Garanties essentielles",
+    "other": "Autres garanties",
+    "limit": "Plafond limité à",
+    "missingWarranty": "Garantie absente",
+    "advisable": "conseillé",
+    "seeComplete": "Voir le diagnostic complet",
+    "fullyCovered": "Vous êtes suffisament couvert pur les garanties suivantes",
+    "notCovered": "Vous êtes insuffisament couvert pur les garanties suivantes",
+    "countryNotValid": "Aucune garantie d'assurance ne peut être souscrite pour la destination sélectionnée.",
+    "cardNotValid": "Nos produits ne sont pas accessibles pour les cartes de retrait. Veuillez recommencer avec une carte de paiement.",
+    "durationNotValid": "Aucune garantie d'assurance ne peut être souscrite pour une durée de séjour supérieure à 90 jours."
+  },
+  "recommendationPage": {
+    "title": "Garanties recommandées",
+    "lead": "Améliorer votre niveau de couverture pour voyager en toute sécurité",
+    "titleExtension": "Extension plafond frais médicaux",
+    "titleOthers": "Autre(s) garantie(s) d'assurance",
+    "skiPackage": "Package Ski",
+    "travelers": "Compagnon de voyage",
+    "from": "À partir de",
+    "forOnly": "Pour seulement"
+  },
+  "productDetailsPage": {
+    "title": "Détail des garanties",
+    "learnMore": "Pour en savoir plus sur vos garanties et les limites d'intervention, consultez la <a href='pdf.pdf'>notice d'information</a> et les <a href='pdf.pdf'>conditions générales</a>",
+    "anyQuestions": "Une question ?",
+    "callCustomerService": "Appeler le service client",
+    "areYouSureToContact": "“Êtes-vous sûr de vouloir contacter le service client ?",
+    "call": "APPELER",
+    "cancel": "ANNULER",
+    "phone": "tel:+123-123-123"
+  },
+  "coverDetailsPage": {
+    "title": "Frais d'interruption d'activité"
+  },
+  "subscriptionPage": {
+    "title": "Informations de souscription",
+    "cardholder": "Titulaire de la carte",
+    "cardholderName": "Nom du titulaire",
+    "dateOfBirth": "Date de naissance",
+    "email": "Email",
+    "address": "Adresse",
+    "street": "Rue",
+    "postalCode": "Code postal",
+    "city": "Ville",
+    "country": "Pays",
+    "mandatoryFields": "Tous les champs sont obligatoires",
+    "dataProcessingInfo": "Les données recueillies font l'objet d'un traitement informatique permettant à AWP France de traiter votre demande et sont destinées aux gestionnaires des garanties. Vous disposez d'un droit d’accès et d'opposition à vos informations (Loi Informatique et Libertés du 6 janvier 1978) : applimobile@mondial-assistance.fr.",
+    "goToNextStep": "PASSER A L'ETAPE SUIVANTE"
+  },
+  "footer": {
+    "label": "VÉRIFIER MES GARANTIES",
+    "validate": "VALIDER",
+    "subscribe": "SOUSCRIRE"
+  },
+  "summaryPage": {
+    "title": "Récapitulatif",
+    "selectedOffers": "Offre choisie",
+    "destinationAndDates": "Destination et dates",
+    "dates": "Dates",
+    "recipients": "Bénéficiaire(s)",
+    "recipientsInfo": "Les bénéficiaires de ce produit sont ceux définis dans les conditions générales d'assurance de votre carte",
+    "termsAndConditions": "Je reconnais avoir pris note du conseil délivré et avoir pris connaissance et accepter la notice d'information et les conditions générales",
+    "goToNextStep": "PASSER A L'ETAPE SUIVANTE"
+  },
+  "paymentPage": {
+    "title": "Paiement",
+    "amountToPay": "Montant à payer",
+    "cardNumber": "Numéro de carte",
+    "cvvCode": "Cryptogramme",
+    "secureTransaction": "Transactions sécurisées par",
+    "mandatoryFields": "Tous les champs sont obligatoires",
+    "ccvHelp": "Il s'agit des 3 derniers chiffres au dos de votre carte bancaire",
+    "confirmPayment": "CONFIRMER LE PAIEMENT"
+  },
+  "confirmationPage": {
+    "title": "Confirmation",
+    "confirmed": "Votre commande est confirmée !",
+    "contractNumber": "N° de contrat",
+    "emailSent": "Un email vous a été envoyé à l'adresse",
+    "returnToHome": "RETOURNER A L'ACCUEIL"
+  },
+  "currency": "€",
+  "dateRange": {
+    "from": "du",
+    "to": "au"
+  }
+}

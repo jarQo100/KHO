@@ -1,0 +1,53 @@
+{
+  "mainView": {
+    "title": "Am I covered ?"
+  },
+  "mainPage": {
+    "lead": "To find out if you are covered, ask your map and travel information"
+  },
+  "travelPage": {
+    "title": "Travel information",
+    "label": "Add trip",
+    "destination": "Destination",
+    "selectYourDestination": "Select your destination",
+    "tripDates": "Choose your trip date",
+    "from": "Departure",
+    "return": "Return",
+    "select": "Select"
+  },
+  "creditCardPage": {
+    "title": "Bank card",
+    "label": "Add your bank card",
+    "bank": "Bank",
+    "cardType": "Type de carte",
+    "expirationDate": "Expiration date",
+    "example": "Example"
+  },
+  "diagnosis": {
+    "diagnostic": "Diagnostic",
+    "complete": "Complete diagnostic",
+    "checkRecommendation": "CHECK RECOMMENDATION",
+    "essential": "Essential warranty",
+    "other": "Other warranty",
+    "limit": "limit",
+    "missingWarranty": "Missing",
+    "advisable": "advisable",
+    "seeComplete": "see complete",
+    "fullyCovered": "Fully covered",
+    "notCovered": "Not sufficient covered"
+  },
+  "recommendationPage": {
+    "title": "Recommended covers"
+  },
+  "footer": {
+    "label": "CHECK INSURANCES",
+    "validate": "VALIDATE"
+  },
+  "currency": "£",
+  "dateRange": {
+    "from": "from",
+    "to": "to"
+  }
+}
+
+
