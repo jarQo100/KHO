@@ -7,28 +7,39 @@
     CreateScoutController.$inject = [
         '$scope',
         '$http',
-        'Todos'
+        'Todos',
+        '$location',
+        '$timeout'
     ];
 
-    function CreateScoutController($scope, $http, Todos) {
+    function CreateScoutController($scope, $http, Todos, $location, $timeout) {
 
-    		$scope.formData = {};
+    		$scope.createScout = function(formData){
 
+			$scope.invalidForm = false;
+			$scope.formData = formData;
 
-    		$scope.createScout = function(){
+			if( formData.$valid ){
 
+				Todos.create(formData)
+					.success(function(data) {
+						console.log("SUCCESS");
+						$scope.loading = false;
+						$scope.formData = {};
+						$scope.todos = data;
+						$location.path('/content/list')
+				}).error(function(){
+					console.log("ERROR CREATE");
+				});
 
-console.log($scope.formData);
+			}else{
+				$scope.invalidForm = true;
 
-		                Todos.create($scope.formData)
-		                    .success(function(data) {
-		                    	console.log("SUCCESS");
-		                        $scope.loading = false;
-		                        $scope.formData = {}; // clear the form so our user is ready to enter another
-		                        $scope.todos = data; // assign our new list of todos
-		                    }).error(function(){
-		                    	console.log("ERROR CREATE");
-		                    });
+				$timeout(function () {
+	                                		$scope.invalidForm = false;
+	                            	}, 5000);
+
+			}
 
     		};
 

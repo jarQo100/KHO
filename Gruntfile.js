@@ -1,4 +1,5 @@
 module.exports = function (grunt) {
+
     require("load-grunt-tasks")(grunt);
 
     var path = require('path');
@@ -120,7 +121,7 @@ module.exports = function (grunt) {
                             'livereload-js/dist/livereload.js',
                             'angular-route/angular-route.min.js',
                             'angular-ui-router/release/angular-ui-router.min.js',
-                            'ng-resource/lib/angular-resource.js'
+                            'ng-resource/lib/angular-resource.js',
                             'font-awesome/css/font-awesome.min.css'
                         ],
                         dest: 'app/dist/node_modules/'
@@ -163,6 +164,8 @@ module.exports = function (grunt) {
             watch: ['app/dist/**/*.html'],
             build: ['app/dist']
         }
+
+
     });
 //'configureProxies:server', 'connect:server',
 

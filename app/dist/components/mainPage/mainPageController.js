@@ -9,21 +9,19 @@
     MainPageController.$inject = [
         '$scope',
         '$http',
-        'Todos'
+        'Todos',
+        '$timeout'
     ];
 
-    function MainPageController($scope, $http, Todos) {
+    function MainPageController($scope, $http, Todos, $timeout) {
+
             $scope.formData = {};
-
-            console.log("Uzupełniłeś scope data" + $scope.formData);
-
-                  $scope.status = "pl";
 
             Todos.get().success(function(data) {
 
                 $scope.users = data;
                 $scope.loading = false;
-                $scope.status = "!";
+                $scope.alertDeleteUser = false;
 
             }).error(function(err){
 
@@ -36,18 +34,27 @@
 
             $scope.loading = true;
 
-            Todos.delete(id)
-                // if successful creation, call our get function to get all the new todos
-                .success(function(data) {
-                    $scope.loading = false;
-                   $scope.users = data;
-                });
+
+            var  confirmResult = confirm("Czy na pewno chcesz usunąć użytkownika z bazy danych?");
+
+                if(confirmResult == true){
+
+                        Todos.delete(id)
+                        .success(function(data) {
+                            $scope.loading = false;
+                           $scope.users = data;
+                        });
+
+                        $scope.alertDeleteUser = true;
+                            $timeout(function () {
+                                 $scope.alertDeleteUser = false;
+                            }, 5000);
+
+                }
+
+
 
         };
-
-
-
-
 
 
     }

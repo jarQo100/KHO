@@ -13,7 +13,9 @@
 	 "email" : "Adres email",
 	 "actions" : "Akcje",
 	 "details" : "Szczegóły",
-	 "delete" : "Usuń"
+	 "delete" : "Usuń",
+	 "deleteUser" : "Usunięto użytkownika!",
+	 "addingUser" : "Dodano nowego użytkownika"
   },
   "createScout" : {
 	"createScoutTitle" : "Utówrz nowego użytkownika",
@@ -27,6 +29,7 @@
 	"rankInst" : "Stopień instruktorski",
 	"birthday" : "Data urodzenia",
 	"team" : "Nazwa drużyny",
-	"submit" : "Utwórz użytkownika"
+	"submit" : "Utwórz użytkownika",
+	"invalidForm" : "Błędy w formularzu! Proszę poprawić."
   }
 }

@@ -58,7 +58,9 @@
 
                             {{ 'mainPage.users' | translate }}
 
-                            <a href="#" ui-sref="mainView.Create" class="label label-success pull-right" title="Dodaj nowego klienta"><i class="glyphicon glyphicon-plus"></i></a>
+                             <a href="#" ui-sref="mainView.Create" class="label label-success pull-right" title="Dodaj nowego klienta"><i class="glyphicon glyphicon-plus"></i></a>
+                            <span ng-show="alertDeleteUser" type="button" class="deleteUserButton label label-danger pull-right">{{ 'mainPage.deleteUser' | translate }}</span>
+
                         </h3>
                     </div>
                     <div class="flat-panel-body">
