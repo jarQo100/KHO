@@ -7,24 +7,42 @@
     ScoutsDetailsController.$inject = [
     	'$scope',
     	'$stateParams',
-    	'Todos'
+    	'Todos',
+                '$timeout'
     ];
 
-    function ScoutsDetailsController($scope, $stateParams, Todos) {
+    function ScoutsDetailsController($scope, $stateParams, Todos, $timeout) {
 
-			var scoutIdParam = $stateParams.scoutsId; 
+	       var scoutIdParam = $stateParams.scoutsId;
 
-				$scope.formData = {};
+	       $scope.formData = {};
 
-            Todos.findById(scoutIdParam).success(function(data) {
 
-                $scope.formData = data;
-console.log($scope.formData);
-            }).error(function(err){
 
-                console.log("GET ERROR: " + err);
+                Todos.findById(scoutIdParam).success(function(data) {
 
-            });
+                        $scope.formData = data;
+
+                }).error(function(err){
+                    console.log("GET ERROR: " + err);
+                });
+
+            $scope.updateScout = function(){
+
+                        Todos.update($scope.formData).success(function(data) {
+
+                            //$scope.formData = data;
+                            $scope.alertUpdateUser = true;
+
+                            $timeout(function(){
+                                    $scope.alertUpdateUser = false;
+                            }, 5000)
+
+                            }).error(function(err){
+                                        console.log("GET ERROR: " + err);
+                            });
+
+            }
 
     }
 

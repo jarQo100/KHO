@@ -46,12 +46,25 @@
           controller: 'CreateScoutController',
         }
 
-
         var scoutsDetailsList = {
           name: 'mainView.Details',
           url: '/details/:scoutsId',
           templateUrl: 'src/components/scoutsDetails/scoutsDetailsComponent.html',
           controller: 'ScoutsDetailsController',
+        }
+
+        var attemptList = {
+          name: 'mainView.attemptList',
+          url: '/attemptList',
+          templateUrl: 'src/components/attemptList/attemptListComponent.html',
+          controller: 'AttemptListController',
+        }
+
+        var attemptCrete = {
+          name: 'mainView.attemptCreate',
+          url: '/attemptCreate',
+          templateUrl: 'src/components/attemptCreate/attemptCreateComponent.html',
+          controller: 'AttemptCreateController',
         }
 
 
@@ -60,6 +73,8 @@
       $stateProvider.state(mainViewList);
       $stateProvider.state(scoutsDetailsList);
       $stateProvider.state(createScout);
+      $stateProvider.state(attemptList);
+      $stateProvider.state(attemptCrete);
       $urlRouterProvider.otherwise("/content/list");
 
 //$resourceProvider.defaults.stripTrailingSlashes = false;

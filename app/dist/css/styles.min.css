@@ -857,4 +857,7 @@ ul.timeline li .content .img-thumbnail {
 .newRow {
   background-color: rgba(25, 131, 30, 0.3);
 }
+.alignright {
+  float: right;
+}
 /*# sourceMappingURL=styles.min.css.map */

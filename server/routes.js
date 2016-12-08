@@ -24,7 +24,7 @@ module.exports = function (app) {
 
     // create todo and send back all todos after creation
     app.post('/api/todos', function (req, res) {
-
+console.log( "create");
         // create a todo, information comes from AJAX request from Angular
         Todo.create({
             name: req.body.name,
@@ -51,6 +51,7 @@ module.exports = function (app) {
 
     // delete a todo
     app.delete('/api/todos/:todo_id', function (req, res) {
+        console.log(    "delete");
         Todo.remove({
             _id: req.params.todo_id
         }, function (err, todo) {
@@ -62,7 +63,7 @@ module.exports = function (app) {
     });
 
     // delete a todo
-    app.get('/api/todos/update/:todo_id', function (req, res) {
+    app.get('/api/todos/findById/:todo_id', function (req, res) {
         console.log(req.params.todo_id);
         Todo.findById({
             _id: req.params.todo_id
@@ -72,10 +73,21 @@ module.exports = function (app) {
 
             res.json(todo);
         });
-
     });
 
-    
+
+         app.put('/api/todos/updateScout', function (req, res) {
+
+                    var query = {'_id': req.body._id};
+
+               Todo.findOneAndUpdate(query, req.body, {upsert:true}, function(err, doc){
+                        if (err) return res.send(500, { error: err });
+                                return res.send("succesfully saved");
+                        });
+                });
+
+
+
 
     //application -------------------------------------------------------------
     app.get('*', function (req, res) {

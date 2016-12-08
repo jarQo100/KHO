@@ -1,5 +1,8 @@
 var mongoose = require('mongoose');
 
+var Schema = mongoose.Schema;
+ObjectId = Schema.Types.ObjectId;
+
 module.exports = mongoose.model('Todo', {
     name: {
         type: String,
@@ -49,6 +52,41 @@ module.exports = mongoose.model('Todo', {
         type: String,
         default: ''
     },
+    attempt: [
+    	{
+    		 quide: {
+        			type: String,
+       			default: ''
+    		},
+    		dateBegin: {
+    			type: Date,
+    			default: ''
+    		},
+    		dateEnd: {
+    			type: Date,
+    			default: ''
+    		},
+    		tasks:
+    			{
+    				_id: {
+		    			type: String,
+		    			default: ''
+		    		},
+	    			category: {
+	    				type: String,
+	    				default : ''
+	    			},
+	    			description: {
+	    				type : String,
+	    				default: ''
+	    			},
+	    			dateEnd :{
+	    				type : Date,
+	    				default: ''
+    			}
+    		}
+    	}
+]
      // function: [
      // 	{
      // 		fun_name: {

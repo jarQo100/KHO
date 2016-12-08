@@ -12,7 +12,7 @@
 	 "rankInst" : "Stopień Instrutorski",
 	 "email" : "Adres email",
 	 "actions" : "Akcje",
-	 "details" : "Szczegóły",
+	 "details" : "Szczegóły | Edycja",
 	 "delete" : "Usuń",
 	 "deleteUser" : "Usunięto użytkownika!",
 	 "addingUser" : "Dodano nowego użytkownika"
@@ -33,6 +33,24 @@
 	"invalidForm" : "Błędy w formularzu! Proszę poprawić."
   },
 	"scoutsDetails" : {
-		"title" : "Szczegóły użytkownika"
+		"title" : "Szczegóły użytkownika",
+		"submit" : "Uaktualnij dane",
+		"updateScout" : "Uaktualniono użytkownika"
+},
+	"attemptList" : {
+		"title" : "Lista otwartych prób",
+		"dateBegin" : "Data otwarcia",
+		"dateEnd" : "Data zakończenia",
+		"quide" : "Opiekun",
+		"nameAndSurname" : "Imię i nazwisko"
+},
+	"attemptCreate" : {
+		"title" : "Dodaj nową próbę",
+		"nameAndSurname" : "Imię i nazwisko",
+		"dateBegin" : "Data rozpoczęcia",
+		"dateEnd" : "Data zakończenia",
+		"quide" : "Opiekun",
+		"submit" : "Utwórz próbę",
+		"selectPerson" : "Wybierz osobę"
 	}
 }

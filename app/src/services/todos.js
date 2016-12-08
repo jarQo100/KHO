@@ -18,7 +18,10 @@ angular.module('KHO_CRM').factory('Todos', dataTodos);
 				return $http.delete('/api/todos/' + id);
 			},
 			findById : function(id) {
-				return $http.get('/api/todos/update/' + id);
+				return $http.get('/api/todos/findById/' + id);
+			},
+			update : function(todoData){
+				return $http.put('/api/todos/updateScout/', todoData);
 			}
 		}
 
