@@ -46,10 +46,12 @@
           controller: 'CreateScoutController',
         }
 
+
         var scoutsDetailsList = {
           name: 'mainView.Details',
-          url: '/details',
-          templateUrl: 'src/components/scoutsDetails/scoutsDetailsComponent.html'
+          url: '/details/:scoutsId',
+          templateUrl: 'src/components/scoutsDetails/scoutsDetailsComponent.html',
+          controller: 'ScoutsDetailsController',
         }
 
 

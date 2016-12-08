@@ -18,12 +18,13 @@ module.exports = function (app) {
     // get all todos
     app.get('/api/todos', function (req, res) {
         // use mongoose to get all todos in the database
+        //console.log("RES      :" + req.body.name;
         getTodos(res);
     });
 
     // create todo and send back all todos after creation
     app.post('/api/todos', function (req, res) {
-console.log(req);
+
         // create a todo, information comes from AJAX request from Angular
         Todo.create({
             name: req.body.name,
@@ -59,6 +60,22 @@ console.log(req);
             getTodos(res);
         });
     });
+
+    // delete a todo
+    app.get('/api/todos/update/:todo_id', function (req, res) {
+        console.log(req.params.todo_id);
+        Todo.findById({
+            _id: req.params.todo_id
+        }, function (err, todo) {
+            if (err)
+                res.send(err);
+
+            res.json(todo);
+        });
+
+    });
+
+    
 
     //application -------------------------------------------------------------
     app.get('*', function (req, res) {
