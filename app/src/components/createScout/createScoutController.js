@@ -27,7 +27,7 @@
 						$scope.loading = false;
 						$scope.formData = {};
 						$scope.todos = data;
-						$location.path('/content/list')
+						$location.path('/content/list');
 				}).error(function(){
 					console.log("ERROR CREATE");
 				});

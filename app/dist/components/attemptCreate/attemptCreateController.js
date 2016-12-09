@@ -7,14 +7,20 @@ angular.module("KHO_CRM").controller('AttemptCreateController', AttemptCreateCon
 AttemptCreateController.$inject = [
 	'$scope',
 	'$http',
-	'Todos'
+	'Todos',
+	'$timeout',
 ];
 
-function AttemptCreateController($scope, $http, Todos){
+function AttemptCreateController($scope, $http, Todos, $timeout){
 
-	$scope.formData = {};
-	$scope.formData2  = {};
+
+	$scope.formData  = {};
 	$scope.userData = {};
+	$scope.tasks = [{}];
+
+	$scope.addButton = function(){
+		$scope.tasks.push({});
+	}
 
             Todos.get().success(function(data) {
                 $scope.formData = data;
@@ -24,11 +30,14 @@ function AttemptCreateController($scope, $http, Todos){
 
             $scope.createAttempt = function(attemptData){
 
+
 			$scope.formData2 = attemptData;
+			$scope.formData2.tasks = $scope.tasks;
+
+			console.log($scope.formData2);
+
 
 			if( attemptData.$valid ){
-
-
 
 				Todos.findById(attemptData.nameAndSurname).success(function(data) {
 
@@ -37,54 +46,24 @@ function AttemptCreateController($scope, $http, Todos){
 
 			              		Todos.update($scope.userData).success(function(data) {
 
-				                                    $scope.alertUpdateUser = false;
+				                                  $scope.alertUpdateUser = false;
+							$location.path('/content/attemptList');
 
-
-				                            }).error(function(err){
-				                                        console.log("GET ERROR: " + err);
-				                            });
-
+				                        }).error(function(err){
+				                                   console.log("GET ERROR: " + err);
+				                        });
 
 			              }).error(function(){
 			              	console.log("BŁĄD");
 			              });
 
-// _id: {
-//     			type: String,
-//     			default: ''
-//     		},
-//     		quide: {
-//         			type: String,
-//        			default: ''
-//     		},
-//     		dataBegin: {
-//     			type: Date,
-//     			default: ''
-//     		},
-//     		dataEnd: {
-//     			type: Date,
-//     			default: ''
-//     		},
-
-
-				// Todos.update($scope.formData).success(function(data) {
-
-			 //                            $scope.alertUpdateUser = true;
-
-			 //                            $timeout(function(){
-			 //                                    $scope.alertUpdateUser = false;
-			 //                            }, 5000)
-
-		  //                           }).error(function(err){
-		  //                                       console.log("GET ERROR: " + err);
-		  //                           });
 
 			}else{
 				$scope.invalidForm = true;
 
-				// $timeout(function () {
-	   //                              		$scope.invalidForm = false;
-	   //                          	}, 5000);
+				$timeout(function () {
+	                             		$scope.invalidForm = false;
+	                            	}, 5000);
 
 			}
 

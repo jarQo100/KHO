@@ -51,7 +51,6 @@ console.log( "create");
 
     // delete a todo
     app.delete('/api/todos/:todo_id', function (req, res) {
-        console.log(    "delete");
         Todo.remove({
             _id: req.params.todo_id
         }, function (err, todo) {
@@ -62,7 +61,34 @@ console.log( "create");
         });
     });
 
-    // delete a todo
+       // delete a todo
+    app.delete('/api/todos/deleteAttempt/:todo_id', function (req, res) {
+
+
+
+console.log(req.params.todo_id);
+        Todo.update({_id: "584b36e86c9c5612405cba7d"}, { $set: { attempt: [] }
+
+
+
+
+
+// _id : _id: req.params.todo_id,
+//                 $pull : {
+//                 attempt : {_id: req.params.todo_id}
+
+//         }
+
+
+        }, function (err, todo) {
+            if (err)
+                res.send(err);
+
+            //getTodos(res);
+        });
+    });
+
+
     app.get('/api/todos/findById/:todo_id', function (req, res) {
         console.log(req.params.todo_id);
         Todo.findById({

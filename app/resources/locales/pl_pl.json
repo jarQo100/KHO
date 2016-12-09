@@ -51,6 +51,11 @@
 		"dateEnd" : "Data zakończenia",
 		"quide" : "Opiekun",
 		"submit" : "Utwórz próbę",
-		"selectPerson" : "Wybierz osobę"
+		"selectPerson" : "Wybierz osobę",
+		"addTasks" : "Punkt próby numer",
+		"category" : "Kategoria",
+		"description" : "Opisz punkt próby",
+		"taskDateEnd" : "Data realizacji",
+		"descriptionPlaceholder" : "W tym miejscu opisz punkt swojej próby."
 	}
 }

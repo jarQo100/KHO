@@ -52,7 +52,7 @@ module.exports = mongoose.model('Todo', {
         type: String,
         default: ''
     },
-    attempt: [
+    attempt:[
     	{
     		 quide: {
         			type: String,
@@ -66,12 +66,9 @@ module.exports = mongoose.model('Todo', {
     			type: Date,
     			default: ''
     		},
-    		tasks:
+    		tasks :
+    		[
     			{
-    				_id: {
-		    			type: String,
-		    			default: ''
-		    		},
 	    			category: {
 	    				type: String,
 	    				default : ''
@@ -83,8 +80,9 @@ module.exports = mongoose.model('Todo', {
 	    			dateEnd :{
 	    				type : Date,
 	    				default: ''
+    				}
     			}
-    		}
+    		]
     	}
 ]
      // function: [

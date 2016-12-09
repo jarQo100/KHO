@@ -860,4 +860,12 @@ ul.timeline li .content .img-thumbnail {
 .alignright {
   float: right;
 }
+.aligncenter {
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+}
+.tasksDescription {
+  margin-bottom: 10px;
+}
 /*# sourceMappingURL=styles.min.css.map */

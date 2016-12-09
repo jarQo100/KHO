@@ -34,7 +34,6 @@
 
             $scope.loading = true;
 
-
             var  confirmResult = confirm("Czy na pewno chcesz usunąć użytkownika z bazy danych?");
 
                 if(confirmResult == true){
@@ -42,7 +41,7 @@
                         Todos.delete(id)
                         .success(function(data) {
                             $scope.loading = false;
-                           $scope.users = data;
+                            $scope.users = data;
                         });
 
                         $scope.alertDeleteUser = true;

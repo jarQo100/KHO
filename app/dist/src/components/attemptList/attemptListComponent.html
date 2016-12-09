@@ -96,12 +96,12 @@
                             <tbody class="no-border">
                                  <tr ng-repeat="user in users">
                                     <td class="text-center">{{ user.name }} {{ user.surname }}</td>
-                                    <td class="text-center">{{ user.phone }}</td>
-                                    <td class="text-center">{{ user.address }}</td>
-                                    <td class="text-center">{{ user.rank }}</td>
+                                    <td class="text-center">{{ user.attempt.dateBegin }}</td>
+                                    <td class="text-center">{{ user.attempt[0]._id }}</td>
+                                    <td class="text-center">{{ user.attempt[0].quide }} </td>
                                     <td class="text-center">
     				<a href="" ui-sref="mainView.Details({ scoutsId: user._id })" class="label label-primary">{{ 'mainPage.details' | translate }}</a>
-                                       	 <a href="#" class="label label-danger" ng-click="deleteUser( user._id )"> <i class="fa fa-trash-o"></i> </a>
+                                       	 <a href="#" class="label label-danger" ng-click="deleteAttempt( user.attempt[0]._id )"> <i class="fa fa-trash-o"></i> </a>
                                     </td>
                                 </tr>
                             </tbody>
