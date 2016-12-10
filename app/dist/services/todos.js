@@ -6,12 +6,9 @@ angular.module('KHO_CRM').factory('Todos', dataTodos);
 
 	return {
 			get : function() {
-				var tmp = $http.get('/api/todos');
-				console.log(tmp);
-				return tmp;
+				return $http.get('/api/todos');
 			},
 			create : function(todoData) {
-				console.log(todoData);
 				return $http.post('/api/todos', todoData);
 			},
 			delete : function(id) {
@@ -23,8 +20,11 @@ angular.module('KHO_CRM').factory('Todos', dataTodos);
 			update : function(todoData){
 				return $http.put('/api/todos/updateScout', todoData);
 			},
-			deleteAttempt : function(id){
-				return $http.delete('/api/todos/deleteAttempt/' + id);
+			addAttempt : function(user_id, todoData){
+				return $http.put('/api/todos/addAttempt/' + user_id, todoData);
+			},
+			deleteAttempt : function(user_id, attempt_id){
+				return $http.delete('/api/todos/deleteAttempt/' + user_id + '/' + attempt_id);
 			}
 		}
 

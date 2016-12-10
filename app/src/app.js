@@ -67,6 +67,13 @@
           controller: 'AttemptCreateController',
         }
 
+        var detailsAttempt = {
+          name: 'mainView.detailsAttempt',
+          url: '/detailsAttempt/:userId/:attemptId',
+          templateUrl: 'src/components/detailsAttempt/detailsAttemptComponent.html',
+          controller: 'DetailsAttemptController',
+        }
+
 
       $stateProvider.state(loginState);
       $stateProvider.state(mainView);
@@ -75,6 +82,7 @@
       $stateProvider.state(createScout);
       $stateProvider.state(attemptList);
       $stateProvider.state(attemptCrete);
+      $stateProvider.state(detailsAttempt);
       $urlRouterProvider.otherwise("/content/list");
 
 //$resourceProvider.defaults.stripTrailingSlashes = false;

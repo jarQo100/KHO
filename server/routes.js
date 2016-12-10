@@ -24,7 +24,7 @@ module.exports = function (app) {
 
     // create todo and send back all todos after creation
     app.post('/api/todos', function (req, res) {
-console.log( "create");
+
         // create a todo, information comes from AJAX request from Angular
         Todo.create({
             name: req.body.name,
@@ -61,36 +61,22 @@ console.log( "create");
         });
     });
 
-       // delete a todo
-    app.delete('/api/todos/deleteAttempt/:todo_id', function (req, res) {
 
+    app.delete('/api/todos/deleteAttempt/:user_id/:attempt_id', function (req, res) {
 
-
-console.log(req.params.todo_id);
-        Todo.update({_id: "584b36e86c9c5612405cba7d"}, { $set: { attempt: [] }
-
-
-
-
-
-// _id : _id: req.params.todo_id,
-//                 $pull : {
-//                 attempt : {_id: req.params.todo_id}
-
-//         }
-
-
+        Todo.update(
+            {_id: req.params.user_id},
+              {$pull : { attempt: {_id : req.params.attempt_id} }
         }, function (err, todo) {
             if (err)
                 res.send(err);
-
-            //getTodos(res);
         });
     });
 
 
     app.get('/api/todos/findById/:todo_id', function (req, res) {
         console.log(req.params.todo_id);
+
         Todo.findById({
             _id: req.params.todo_id
         }, function (err, todo) {
@@ -104,13 +90,27 @@ console.log(req.params.todo_id);
 
          app.put('/api/todos/updateScout', function (req, res) {
 
-                    var query = {'_id': req.body._id};
+                var query = {'_id': req.body._id};
 
                Todo.findOneAndUpdate(query, req.body, {upsert:true}, function(err, doc){
                         if (err) return res.send(500, { error: err });
                                 return res.send("succesfully saved");
                         });
-                });
+            });
+
+
+//WSTAWIANIE NOWEJ PRÓBY DLA UŻYTKOWNIKA
+app.put('/api/todos/addAttempt/:user_id', function (req, res) {
+    console.log(req.params.user_id);
+    console.log(req.body.dateBegin);
+        Todo.update(
+               { _id: req.params.user_id},
+               { $push : { attempt: req.body },
+        }, function (err, todo) {
+            if (err)
+                res.send(err);
+        });
+    });
 
 
 

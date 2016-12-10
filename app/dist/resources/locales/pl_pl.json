@@ -38,7 +38,7 @@
 		"updateScout" : "Uaktualniono użytkownika"
 },
 	"attemptList" : {
-		"title" : "Lista otwartych prób",
+		"title" : "Lista prób na stopień",
 		"dateBegin" : "Data otwarcia",
 		"dateEnd" : "Data zakończenia",
 		"quide" : "Opiekun",
@@ -57,5 +57,16 @@
 		"description" : "Opisz punkt próby",
 		"taskDateEnd" : "Data realizacji",
 		"descriptionPlaceholder" : "W tym miejscu opisz punkt swojej próby."
+	},
+	"detailsAttempt" : {
+		"title" : "Karta próby na stopień Harcerz Orli",
+		"rank" : "Stopień",
+		"quide" : "Opiekun próby",
+		"dateBegin" : "Data otwarcia",
+		"goal" : "Cel",
+		"task" : "Zadanie",
+		"term": "Termin realizacji",
+		"actions": "Akcje",
+		"attemptEnd": "Próbę końcową wyznaczono na: "
 	}
 }

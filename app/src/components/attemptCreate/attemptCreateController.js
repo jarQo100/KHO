@@ -9,9 +9,10 @@ AttemptCreateController.$inject = [
 	'$http',
 	'Todos',
 	'$timeout',
+	'$location'
 ];
 
-function AttemptCreateController($scope, $http, Todos, $timeout){
+function AttemptCreateController($scope, $http, Todos, $timeout, $location){
 
 
 	$scope.formData  = {};
@@ -44,14 +45,16 @@ function AttemptCreateController($scope, $http, Todos, $timeout){
 			                        $scope.userData = data;
 			                        $scope.userData.attempt = attemptData;
 
-			              		Todos.update($scope.userData).success(function(data) {
+			              		Todos.addAttempt($scope.userData._id, $scope.userData.attempt).success(function(data) {
 
 				                                  $scope.alertUpdateUser = false;
-							$location.path('/content/attemptList');
+
 
 				                        }).error(function(err){
 				                                   console.log("GET ERROR: " + err);
 				                        });
+
+					$location.path('/content/attemptList');
 
 			              }).error(function(){
 			              	console.log("BŁĄD");

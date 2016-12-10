@@ -868,4 +868,37 @@ ul.timeline li .content .img-thumbnail {
 .tasksDescription {
   margin-bottom: 10px;
 }
+.css-form input.ng-invalid.ng-touched {
+  border-color: #a94442;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+.css-form input.ng-valid.ng-touched {
+  border-color: #3c763d;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+.DetailsAttemptHead {
+  list-style: none;
+  padding-left: 5px;
+}
+.DetailsAttemptHead li {
+  padding: 5px 0;
+  font-size: 14px;
+}
+.tableAttempt {
+  width: 100%;
+  border: 2px solid #CCC;
+}
+.tableAttempt th {
+  text-align: center;
+  font-weight: bold;
+  font-size: 14px;
+}
+.tableAttempt th,
+.tableAttempt td {
+  border: 1px solid #ccc !important;
+  padding: 5px;
+  font-size: 13px;
+}
 /*# sourceMappingURL=styles.min.css.map */

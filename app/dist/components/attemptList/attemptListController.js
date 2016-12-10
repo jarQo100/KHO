@@ -8,38 +8,35 @@ AttemptListController.$inject= [
 	'$scope',
 	'$http',
 	'Todos',
-	'$timeout'
+	'$timeout',
+	'$location'
 ];
 
-function AttemptListController($scope, $http, Todos, $timeout){
+function AttemptListController($scope, $http, Todos, $timeout, $location){
 
 	$scope.formData = {};
 
             Todos.get().success(function(data) {
-
                $scope.users = data;
-                $scope.alertDeleteUser = false;
-		console.log( $scope.users);
             }).error(function(err){
-
                 console.log("GET ERROR: " + err);
-
             });
 
-            $scope.deleteAttempt = function(id){
+            $scope.deleteAttempt = function(userID, attemptID){
             	 $scope.loading = true;
 
 	            var  confirmResult = confirm("Czy na pewno chcesz usunąć próbę użytkownika?");
-alert(id);
+
 	                if(confirmResult == true){
 
-	                        Todos.deleteAttempt(id)
+	                        Todos.deleteAttempt(userID, attemptID)
 	                        .success(function(data) {
-	                            $scope.loading = false;
-	                            $scope.users = data;
+	                        	alert("fdsfsda");
 	                        }).error(function(){
-	                        	console.log("ERROR");
+	                        	console.log("ERROR2222");
 	                        });
+
+			$location.path('/content/attemptList');
 
 	                        $scope.alertDeleteUser = true;
 	                            $timeout(function () {
@@ -47,7 +44,7 @@ alert(id);
 	                            }, 5000);
 
 	                }
-	            }
+	         }
 
 }
 
