@@ -25,6 +25,13 @@ angular.module('KHO_CRM').factory('Todos', dataTodos);
 			},
 			deleteAttempt : function(user_id, attempt_id){
 				return $http.delete('/api/todos/deleteAttempt/' + user_id + '/' + attempt_id);
+			},
+			findByIdTask : function(taskId){
+				return $http.get('/api/todos/findTask/' + taskId);
+			},
+			addComment: function(taskId, commData){
+				console.log(commData.category);
+				return $http.post('/api/todos/createComment/' + taskId, commData);
 			}
 		}
 

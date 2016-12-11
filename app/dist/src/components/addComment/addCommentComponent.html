@@ -1,0 +1,80 @@
+ <div class="row">
+            <div class="col-xs-12">
+                <div class="flat-panel">
+                    <div class="flat-panel-header">
+                        <h3 class="flat-panel-heading text-center">
+
+                            {{  'addComment.title' | translate }}
+
+                          </h3>
+                    </div>
+                    <br />
+
+	                    <div class="flat-panel-body">
+				<div ng-repeat="attempt in formData.attempt">
+					<div ng-repeat="tasks in attempt.tasks" ng-if="tasks._id == TaskIdParam">
+						<div class="TaskInComment"><strong>{{ 'addComment.category' | translate }}</strong> {{ tasks.category }}</div>
+						<div class="TaskInComment"><strong>{{ 'addComment.description' | translate }}</strong> {{ tasks.description }}</div>
+						<div class="TaskInComment"><strong>{{ 'addComment.dateEnd' | translate }}</strong> {{ tasks.dateEnd | date:"dd MMMM yyyy"  }}</div>
+					</div>
+				</div>
+
+
+				<div class="row" style="margin-top: 30px;">
+
+					<div class="col-xs-12 col-md-6">
+		                                    <div class="form-group">
+						<form novalidate class="css-form" name="commData">
+		                                       	 <label for="filter-company-name" class="col-sm-3 col-xs-12 control-label">{{  'attemptCreate.category' | translate }} </label>
+		                                        	<div class="col-sm-9 col-xs-12">
+			                                        	<select name="rank" id="rank" class="form-control" ng-model="commData.category" style="margin-bottom: 20px;">
+				                                        	<option value="Opinia">{{ 'addComment.opinion' | translate }}</option>
+				                                        	<option value="Uwaga">{{ 'addComment.attention' | translate }}</option>
+				                                        	<option value="Raport">{{ 'addComment.report' | translate }}</option>
+				                                        	<option value="Sukces">{{ 'addComment.success' | translate }}</option>
+				                                        	<option value="Zagrożenie">{{ 'addComment.danger' | translate }}</option>
+				                                        	<option value="Niepowodzenie">{{ 'addComment.failed' | translate }}</option>
+				                                       </select>
+						</div>
+
+		                                    </div>
+		                                </div>
+
+		                                <div class="col-xs-12 col-md-6">
+		                                    <div class="form-group">
+		                                      <div class="col-md-12 col-xs-12">
+		                                        	<textarea  ng-model="commData.description" class="tasksDescription form-control" rows="6" placeholder="{{  'attemptCreate.descriptionPlaceholder' | translate }}"></textarea>
+		                                        </div>
+		                                    </div>
+		                                </div>
+
+					 <div class="col-xs-12 col-md-12 ">
+		                                        <input
+		                                        	ng-click="createTask(commData)"
+		                                        	type="submit"
+		                                        	value="{{ 'attemptCreate.submit' | translate }}"
+		                                        	class="btn btn-success alignright"
+		                                        	style="margin-top: 30px;" />
+		                                    </div>
+
+		                                </form>
+
+				</div>
+
+				<h5>{{ 'addComment.addComments' | translate }}</h5>
+
+
+				<div ng-repeat="attempt in formData.attempt">
+					<div ng-repeat="tasks in attempt.tasks" ng-if="tasks._id == TaskIdParam">
+						<div ng-repeat="comments in tasks.comments" class="alert alert-info">
+							<div class="TaskInComment"><strong>{{ 'addComment.category' | translate }}</strong> {{ comments.category }}</div>
+							<div class="TaskInComment"><strong>{{ 'addComment.description' | translate }}</strong> {{ comments.description }}</div>
+						</div>
+					</div>
+				</div>
+
+	                    </div>
+
+	              </div>
+	 </div>
+</div>

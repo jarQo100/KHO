@@ -65,12 +65,14 @@ module.exports = function (app) {
     app.delete('/api/todos/deleteAttempt/:user_id/:attempt_id', function (req, res) {
 
         Todo.update(
-            {_id: req.params.user_id},
+               {_id: req.params.user_id},
               {$pull : { attempt: {_id : req.params.attempt_id} }
         }, function (err, todo) {
+
             if (err)
                 res.send(err);
         });
+
     });
 
 
@@ -98,6 +100,21 @@ module.exports = function (app) {
                         });
             });
 
+app.get('/api/todos/findTask/:task_id', function (req, res) {
+
+        Todo.findOne(
+            {
+                'attempt.tasks._id' : req.params.task_id
+            },
+            function (err, todo) {
+            if (err)
+                res.send(err);
+
+            res.json(todo);
+        });
+
+});
+
 
 //WSTAWIANIE NOWEJ PRÓBY DLA UŻYTKOWNIKA
 app.put('/api/todos/addAttempt/:user_id', function (req, res) {
@@ -112,6 +129,26 @@ app.put('/api/todos/addAttempt/:user_id', function (req, res) {
         });
     });
 
+
+
+app.post('/api/todos/createComment/:task_id', function (req, res) {
+    console.log(req.params.task_id);
+    console.log(req.body.category);
+
+
+        Todo.update(
+                { 'attempt.tasks': { $elemMatch: { _id: req.params.task_id} } },
+              // { 'attempt.tasks._id' : req.params.task_id },
+               { $push : { 'attempt.tasks.$.comments' : req.body } },
+
+            {safe: true, upsert: true, new : true
+
+        }, function (err, todo) {
+            if (err)
+                res.send(err);
+
+        });
+    });
 
 
 

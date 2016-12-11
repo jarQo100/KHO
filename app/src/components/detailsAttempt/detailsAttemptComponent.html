@@ -32,7 +32,11 @@
 							<td class="text-center" width="10%">{{ task.category }}</td>
 							<td>{{ task.description }}</td>
 							<td class="text-center" width="15%">{{ task.dateEnd | date:"dd MMMM yyyy" }}</td>
-							<td class="text-center" width="15%">fdsfsda</td>
+							<td class="text-center" width="15%">
+
+								<a href="" ui-sref="mainView.addComment({ taskId: task._id})" class="btn btn-info">{{ 'detailsAttempt.addComment' | translate }}</a>
+
+							</td>
 						</tr>
 					</tbody>
 				</table>

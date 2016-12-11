@@ -1,80 +1,90 @@
 {
-    "_id" : ObjectId("584c0a52696abd16e8574716"),
-    "attempt" : [ 
+    "_id" : ObjectId("584c14e302cf3911880be79b"),
+    "attempt" : [
         {
-            "quide" : "Andrzej Ma�kowski",
+            "quide" : "Robert Baden-Powell",
             "dateBegin" : ISODate("2015-12-11T23:00:00.000Z"),
             "dateEnd" : ISODate("2015-12-11T23:00:00.000Z"),
-            "tasks" : [ 
+            "tasks" : [
+                {
+                    "category" : "222222",
+                    "description" : "2015-12-12",
+                    "dateEnd" : ISODate("2015-12-11T23:00:00.000Z"),
+                    "_id" : ObjectId("584c14f102cf3911880be79d")
+                }
+            ],
+            "_id" : ObjectId("584c14f102cf3911880be79c")
+        },
+        {
+            "quide" : "Robert Baden-Powell",
+            "dateBegin" : ISODate("2015-12-11T23:00:00.000Z"),
+            "dateEnd" : ISODate("2015-12-11T23:00:00.000Z"),
+            "tasks" : [
+                {
+                    "category" : "111111",
+                    "description" : "2015-12-12",
+                    "dateEnd" : ISODate("2015-12-11T23:00:00.000Z"),
+                    "_id" : ObjectId("584c1688e6654a052cbafce8")
+                }
+            ],
+            "_id" : ObjectId("584c1688e6654a052cbafce7")
+        },
+        {
+            "quide" : "Andrzej Małkowski",
+            "dateBegin" : ISODate("2015-12-11T23:00:00.000Z"),
+            "dateEnd" : ISODate("2015-12-11T23:00:00.000Z"),
+            "tasks" : [
                 {
                     "category" : "WYCZYN",
-                    "description" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec commodo ante in diam ultrices, a volutpat lectus maximus. Aliquam sit amet lectus sollicitudin, rutrum risus ut, vestibulum libero. Aliquam porttitor ex et ante tristique aliquet. Fusce ornare dapibus libero, at dapibus augue rutrum a. Nunc dignissim aliquam nulla, eget vestibulum mi consectetur a. Donec tempor odio at massa aliquam vulputate eu non turpis. Nulla egestas dui id tellus lacinia feugiat. Sed auctor sapien a leo consectetur semper. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed ac molestie odio. Nullam eleifend urna lorem, eget porta enim fringilla ac. Quisque tempus, est gravida congue viverra, enim arcu mattis metus, eu dignissim eros erat id orci. Ut porttitor rhoncus massa. In et ligula elit. Maecenas mollis, massa sed scelerisque porttitor, eros enim vulputate orci, id tincidunt mi nisi vitae magna. Nullam faucibus sollicitudin congue.",
+                    "description" : "Przez 4 miesiące będę uczęszczał 2 razy w tygodniu na basen i zdobędę sprawność „Pływak Doskonały ***”,  następnie w celu utrzymania kondycji będę pływał 1 raz w tygodniu",
                     "dateEnd" : ISODate("2015-12-11T23:00:00.000Z"),
-                    "_id" : ObjectId("584c0a9f696abd16e857471a")
-                }, 
+                    "_id" : ObjectId("584c318767e68d0420932e81")
+                },
                 {
-                    "category" : "HARC",
-                    "description" : "Aliquam in velit eros. In mattis odio in ipsum egestas, non semper enim accumsan. Maecenas pellentesque vitae nibh eget pulvinar. Mauris malesuada pellentesque lacus id consequat. Integer a lacus turpis. Nam ultricies arcu in ornare iaculis. Fusce eget nibh turpis. Pellentesque et placerat augue, id semper dui. Duis placerat venenatis neque, sit amet hendrerit tortor lacinia quis. Aliquam eleifend rhoncus maximus. Sed eu augue a purus condimentum vehicula. Nullam fermentum, ipsum eget elementum fermentum, ante turpis gravida massa, sed pulvinar ex libero vel odio. Cras ut eros dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris lacinia nunc et leo fringilla hendrerit.",
-                    "dateEnd" : ISODate("2015-12-11T23:00:00.000Z"),
-                    "_id" : ObjectId("584c0a9f696abd16e8574719")
+                    "category" : "Rozwój kulturalny, ćwiczenie systematyczności",
+                    "description" : "Wezmę udział w kursie grania na gitarze, będę regularnie ćwiczył grę i zdobędę sprawność „Gitarzysta doskonały ***”  i dyplom „Animatora muzycznego Ruchu Apostolstwa Młodzieży ”",
+                    "dateEnd" : ISODate("2014-10-09T22:00:00.000Z"),
+                    "_id" : ObjectId("584c318767e68d0420932e80")
+                },
+                {
+                    "category" : "Służba Bogu i rozwój religijny",
+                    "description" : "Angażując się w ruch KSM będę:\n- prowadził spotkania 2 razy w miesiącu\n- samodzielnie pisał konspekty spotkań\nBędę pełnił białą służbę podczas SMAP-u",
+                    "dateEnd" : ISODate("2014-10-09T22:00:00.000Z"),
+                    "_id" : ObjectId("584c318767e68d0420932e7f")
+                },
+                {
+                    "category" : "Podnoszenie kwalifikacji i pogłębianie wiedzy  w dziedzinie zainteresowań",
+                    "description" : "Zorganizuję dla wędrowników całodniowy rajd po fortach Twierdzy Przemyśl.  Sporządzę kosztorys, plan wycieczki,  podczas zwiedzania opowiem druhom o historii fortów.  Relację z wypadu umieszczę na stronie hufca jako zachętę do uprawiania tego typu turystyki.\n\nW ramach rajdu rozpoczniemy zdobywanie odznak turystyczno-krajoznawczych PTTK (zdobędę Odznakę Turystyki Pieszej w stopniu mały brązowy)",
+                    "dateEnd" : ISODate("2014-10-09T22:00:00.000Z"),
+                    "_id" : ObjectId("584c318767e68d0420932e7e")
+                },
+                {
+                    "category" : "Służba na rzecz innych harcerzy",
+                    "description" : "Przeprowadzę w mojej miejscowości nabór, który odbędzie się w formie gry terenowej.  Następnie przeprowadzę cykl zbiórek z technik harcerskich tj.:\npionierka, rozpalanie ognisk, strzelectwo, budowa szałasów, kamuflaż, tropienie.",
+                    "dateEnd" : ISODate("2014-10-09T22:00:00.000Z"),
+                    "_id" : ObjectId("584c318767e68d0420932e7d")
+                },
+                {
+                    "category" : "Rozwój patriotyczny",
+                    "description" : "Wezmę czynnie udział w Biegu „Tropem Wilczym” w Przeworsku:\n- bieg na dystansie 1963 m\n- będę odpowiedzialny z część programu patriotycznego na ognisku harcerskim kończącym Bieg",
+                    "dateEnd" : ISODate("2014-10-09T22:00:00.000Z"),
+                    "_id" : ObjectId("584c318767e68d0420932e7c")
                 }
             ],
-            "_id" : ObjectId("584c0a9f696abd16e8574718")
-        }, 
-        {
-            "quide" : "Andrzej Ma�kowski",
-            "dateBegin" : ISODate("2014-10-14T22:00:00.000Z"),
-            "dateEnd" : ISODate("2014-10-14T22:00:00.000Z"),
-            "tasks" : [ 
-                {
-                    "category" : "ROZW�J",
-                    "description" : "Aliquam in velit eros. In mattis odio in ipsum egestas, non semper enim accumsan. Maecenas pellentesque vitae nibh eget pulvinar. Mauris malesuada pellentesque lacus id consequat. Integer a lacus turpis. Nam ultricies arcu in ornare iaculis. Fusce eget nibh turpis. Pellentesque et placerat augue, id semper dui. Duis placerat venenatis neque, sit amet hendrerit tortor lacinia quis. Aliquam eleifend rhoncus maximus. Sed eu augue a purus condimentum vehicula. Nullam fermentum, ipsum eget elementum fermentum, ante turpis gravida massa, sed pulvinar ex libero vel odio. Cras ut eros dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris lacinia nunc et leo fringilla hendrerit.",
-                    "dateEnd" : ISODate("2014-10-14T22:00:00.000Z"),
-                    "_id" : ObjectId("584c0b58696abd16e8574720")
-                }
-            ],
-            "_id" : ObjectId("584c0b58696abd16e857471f")
-        }, 
-        {
-            "quide" : "Andrzej Ma�kowski",
-            "dateBegin" : ISODate("2014-10-14T22:00:00.000Z"),
-            "dateEnd" : ISODate("2014-10-14T22:00:00.000Z"),
-            "tasks" : [ 
-                {
-                    "category" : "ROZW�J",
-                    "description" : "Aliquam in velit eros. In mattis odio in ipsum egestas, non semper enim accumsan. Maecenas pellentesque vitae nibh eget pulvinar. Mauris malesuada pellentesque lacus id consequat. Integer a lacus turpis. Nam ultricies arcu in ornare iaculis. Fusce eget nibh turpis. Pellentesque et placerat augue, id semper dui. Duis placerat venenatis neque, sit amet hendrerit tortor lacinia quis. Aliquam eleifend rhoncus maximus. Sed eu augue a purus condimentum vehicula. Nullam fermentum, ipsum eget elementum fermentum, ante turpis gravida massa, sed pulvinar ex libero vel odio. Cras ut eros dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris lacinia nunc et leo fringilla hendrerit.",
-                    "dateEnd" : ISODate("2014-10-14T22:00:00.000Z"),
-                    "_id" : ObjectId("584c0bd0696abd16e8574724")
-                }
-            ],
-            "_id" : ObjectId("584c0bd0696abd16e8574723")
-        }, 
-        {
-            "quide" : "Andrzej Ma�kowski",
-            "dateBegin" : ISODate("2014-10-14T22:00:00.000Z"),
-            "dateEnd" : ISODate("2014-10-14T22:00:00.000Z"),
-            "tasks" : [ 
-                {
-                    "category" : "ROZW�J",
-                    "description" : "Aliquam in velit eros. In mattis odio in ipsum egestas, non semper enim accumsan. Maecenas pellentesque vitae nibh eget pulvinar. Mauris malesuada pellentesque lacus id consequat. Integer a lacus turpis. Nam ultricies arcu in ornare iaculis. Fusce eget nibh turpis. Pellentesque et placerat augue, id semper dui. Duis placerat venenatis neque, sit amet hendrerit tortor lacinia quis. Aliquam eleifend rhoncus maximus. Sed eu augue a purus condimentum vehicula. Nullam fermentum, ipsum eget elementum fermentum, ante turpis gravida massa, sed pulvinar ex libero vel odio. Cras ut eros dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris lacinia nunc et leo fringilla hendrerit.",
-                    "dateEnd" : ISODate("2014-10-14T22:00:00.000Z"),
-                    "_id" : ObjectId("584c0bd9c3020e174077aca0")
-                }
-            ],
-            "_id" : ObjectId("584c0bd9c3020e174077ac9f")
+            "_id" : ObjectId("584c318767e68d0420932e7b")
         }
     ],
     "photo" : "",
     "team" : "SZPONA",
     "date_add" : null,
     "birthday" : "12.12.1994",
-    "rankInst" : "Przewodnik",
-    "rank" : "Harcerz Orli",
+    "rankInst" : "Podharcmistrz",
+    "rank" : "Ćwik",
     "school" : "UKSW",
-    "address" : "Lwowska 12",
+    "address" : "gfdsgd",
     "email" : "jarko_krupa@o2.pl",
-    "phone" : "132465798",
+    "phone" : "568125625",
     "surname" : "Krupa",
-    "name" : "Jaros�aw",
+    "name" : "Jarosław",
     "__v" : 0
 }

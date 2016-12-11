@@ -80,7 +80,23 @@ module.exports = mongoose.model('Todo', {
 	    			dateEnd :{
 	    				type : Date,
 	    				default: ''
-    				}
+    				},
+    				comments: [
+	    				{
+	    					category: {
+	    						type : String,
+	    						default: ''
+	    					},
+	    					date : {
+	    						type: Date,
+	    						default: Date.now
+	    					},
+	    					description:{
+	    						type : String,
+	    						default: ''
+	    					}
+	    				}
+    				],
     			}
     		]
     	}

@@ -901,4 +901,11 @@ ul.timeline li .content .img-thumbnail {
   padding: 5px;
   font-size: 13px;
 }
+.tableAttempt a.btn.btn-info {
+  font-size: 12px;
+}
+.TaskInComment {
+  font-size: 14px;
+  padding: 7px 0;
+}
 /*# sourceMappingURL=styles.min.css.map */

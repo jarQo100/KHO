@@ -67,6 +67,20 @@
 		"task" : "Zadanie",
 		"term": "Termin realizacji",
 		"actions": "Akcje",
-		"attemptEnd": "Próbę końcową wyznaczono na: "
+		"attemptEnd": "Próbę końcową wyznaczono na: ",
+		"addComment" : "Dodaj komentarz"
+	},
+	"addComment" : {
+		"title" : "Dodaj komentarz do zadania",
+		"category" : "Kateroria: ",
+		"description" : "Opis próby: ",
+		"dateEnd" : "Planowany czas zakończenia",
+		"opinion": "Opinia",
+		"report" : "Raport",
+		"success" : "Sukces",
+		"danger" : "Zagrożenie",
+		"failed" : "Niepowodzenie",
+		"attention" : "Uwaga",
+		"addComments" : "Dodane komentarze"
 	}
 }
