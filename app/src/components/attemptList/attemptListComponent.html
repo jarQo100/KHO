@@ -1,119 +1,105 @@
 <!-- content -->
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="flat-panel">
-                    <div class="flat-panel-header">
-                        <h4 class="fjlat-panel-heading"> </h4>
-                    </div>
-
-                    <div class="flat-panel-body">
-                        <div class="form-horizontal">
-                            <div class="row">
-                                <div class="col-xs-12 col-md-4">
-                                    <div class="form-group">
-                                        <label for="filter-company-name" class="col-sm-3 col-xs-12 control-label">Wyszukaj</label>
-
-                                        <div class="col-sm-9 col-xs-12">
-                                            <input id="filter-company-name" type="text" class="form-control" placeholder="Podaj nazwę firmy">
-                                        </div>
-                                    </div>
+<!-- <div class="row">
+    <div class="col-xs-12">
+        <div class="flat-panel">
+            <div class="flat-panel-header">
+                <h4 class="fjlat-panel-heading"> </h4>
+            </div>
+            <div class="flat-panel-body">
+                <div class="form-horizontal">
+                    <div class="row">
+                        <div class="col-xs-12 col-md-4">
+                            <div class="form-group">
+                                <label for="filter-company-name" class="col-sm-3 col-xs-12 control-label">Wyszukaj</label>
+                                <div class="col-sm-9 col-xs-12">
+                                    <input id="filter-company-name" type="text" class="form-control" placeholder="Podaj nazwę firmy">
                                 </div>
-
-                                <div class="col-xs-12 col-md-4">
-                                    <div class="form-group">
-                                        <label for="filter-sector" class="col-sm-3 col-xs-12 control-label required">Branża</label>
-
-                                        <div class="col-sm-9 col-xs-12">
-                                            <select id="filter-sector" class="form-control" >
-                                                <option value=""></option>
-                                            </select>
-                                        </div>
-                                    </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-md-4">
+                            <div class="form-group">
+                                <label for="filter-sector" class="col-sm-3 col-xs-12 control-label required">Branża</label>
+                                <div class="col-sm-9 col-xs-12">
+                                    <select id="filter-sector" class="form-control">
+                                        <option value=""></option>
+                                    </select>
                                 </div>
-
-                                <div class="col-xs-12 col-md-4">
-                                    <div class="form-group">
-                                        <label for="filter-manager" class="col-sm-3 col-xs-12 control-label required">Opiekun klienta</label>
-
-                                        <div class="col-sm-9 col-xs-12">
-                                            <select id="filter-manager" class="form-control">
-                                                <option value=""></option>
-                                            </select>
-                                        </div>
-                                    </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-md-4">
+                            <div class="form-group">
+                                <label for="filter-manager" class="col-sm-3 col-xs-12 control-label required">Opiekun klienta</label>
+                                <div class="col-sm-9 col-xs-12">
+                                    <select id="filter-manager" class="form-control">
+                                        <option value=""></option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
-
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="flat-panel">
-                    <div class="flat-panel-header">
-                        <h3 class="flat-panel-heading">
-
-                            {{ 'attemptList.title' | translate }}
-
-                             <a href="#" ui-sref="mainView.attemptCreate" class="label label-success pull-right" title="Dodaj nowego klienta"><i class="glyphicon glyphicon-plus"></i></a>
-                            <span ng-show="alertDeleteUser" type="button" class="deleteUserButton label label-danger pull-right">{{ 'mainPage.deleteUser' | translate }}</span>
-
-                        </h3>
-                    </div>
-                    <div class="flat-panel-body">
-                        <table class="no-border table table-striped table-hover">
-                            <thead>
-                                <tr>
-                                    <th class="text-center">
-                                        <span class="sort-btn">
-                                            {{ 'attemptList.nameAndSurname' | translate }}
-                                            <i class="fa fa-sort"></i>
-                                        </span>
-                                    </th>
-                                    <th class="text-center">
-                                        <span class="sort-btn">
-                                             {{ 'attemptList.dateBegin' | translate }}
-                                            <i class="fa fa-sort"></i>
-                                        </span>
-                                    </th>
-                                    <th class="text-center">
-                                        <span class="sort-btn">
-                                             {{ 'attemptList.dateEnd' | translate }}
-                                        </span>
-                                    </th>
-                                    <th class="text-center">
-                                        <span class="sort-btn">
-                                             {{ 'attemptList.quide' | translate }}
-                                            <i class="fa fa-sort"></i>
-                                        </span>
-                                    </th>
-                                    <th class="text-center" style="width: 150px;">{{ 'mainPage.actions' | translate }}</th>
-                                </tr>
-                            </thead>
-
-                            <tbody ng-repeat="user in users" class="no-border">
-
-                               <tr ng-repeat="attempt in user.attempt" ng-if="attempt.dateBegin">
-                                    <td  class="text-center">{{user.name}} {{user.surname}}</td>
-                                    <td class="text-center">{{ attempt.dateBegin | date:"dd MMMM yyyy" }}</td>
-                                    <td class="text-center">{{ attempt.dateEnd | date:"dd MMMM yyyy" }}</td>
-                                    <td class="text-center">{{ attempt.quide}} </td>
-                                    <td class="text-center">
-    				<a href="" ui-sref="mainView.detailsAttempt({ userId: user._id,  attemptId: attempt._id})" class="label label-primary">{{ 'mainPage.details' | translate }}</a>
-                                       	 <a href="#" class="label label-danger" ng-click="deleteAttempt( user._id, attempt._id)"> <i class="fa fa-trash-o"></i> </a>
-                                    </td>
-                                    </tr>
-
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- /content -->
     </div>
+</div> -->
+<div class="row">
+    <div class="col-xs-12">
+        <div class="flat-panel">
+            <div class="flat-panel-header">
+                <h3 class="flat-panel-heading">
+                    {{ 'attemptList.title' | translate }}
+                    <a href="#" ui-sref="mainView.attemptCreate" class="label label-success pull-right" title="Dodaj nowego klienta"><i class="glyphicon glyphicon-plus"></i> <span class="sub-title">{{ 'attemptList.addNew' | translate }}</span></a>
+                    <span ng-show="alertDeleteUser" type="button" class="deleteUserButton label label-danger pull-right">{{ 'mainPage.deleteUser' | translate }}</span>
+                </h3>
+            </div>
+            <div class="flat-panel-body">
+                <table class="no-border table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th class="text-center">
+                                <span class="sort-btn">
+                                    {{ 'attemptList.nameAndSurname' | translate }}
+                                    <i class="fa fa-sort"></i>
+                                </span>
+                            </th>
+                            <th class="text-center">
+                                <span class="sort-btn">
+                                    {{ 'attemptList.dateBegin' | translate }}
+                                    <i class="fa fa-sort"></i>
+                                </span>
+                            </th>
+                            <th class="text-center">
+                                <span class="sort-btn">
+                                    {{ 'attemptList.dateEnd' | translate }}
+                                </span>
+                            </th>
+                            <th class="text-center">
+                                <span class="sort-btn">
+                                    {{ 'attemptList.quide' | translate }}
+                                    <i class="fa fa-sort"></i>
+                                </span>
+                            </th>
+                            <th class="text-center" style="width: 150px;">{{ 'mainPage.actions' | translate }}</th>
+                        </tr>
+                    </thead>
+                    <tbody ng-repeat="user in users" class="no-border">
+                        <tr ng-repeat="attempt in user.attempt" ng-if="attempt.dateBegin">
+                            <td class="text-center">{{user.name}} {{user.surname}}</td>
+                            <td class="text-center">{{ attempt.dateBegin | date:"dd MMMM yyyy" }}</td>
+                            <td class="text-center">{{ attempt.dateEnd | date:"dd MMMM yyyy" }}</td>
+                            <td class="text-center">{{ attempt.quide}} </td>
+                            <td class="text-center">
+                                <a href="" ui-sref="mainView.detailsAttempt({ userId: user._id,  attemptId: attempt._id})" class="label label-primary">{{ 'mainPage.details' | translate }}</a>
+                                <a href="#" class="label label-danger" ng-click="deleteAttempt( user._id, attempt._id)">
+                                    <i class="fa fa-trash-o"></i> </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /content -->
+</div>
 </div>

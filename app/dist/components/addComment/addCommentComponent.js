@@ -3,5 +3,5 @@
 		templateUrl: 'src/components/addComment/addCommentComponent.html',
 		controller: 'AddCommentController',
 		controllerAs: 'addCommentVM'
-	}
+	
 })();

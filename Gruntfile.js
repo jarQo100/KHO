@@ -163,7 +163,22 @@ module.exports = function (grunt) {
         clean: {
             watch: ['app/dist/**/*.html'],
             build: ['app/dist']
-        }
+        },
+        prettify: {
+           options: {
+                "indent": 4,
+                  "condense": true,
+                  "indent_inner_html": true,
+                unformatted: ['a', 'sub', 'sup', 'b', 'i', 'u']
+              },
+            all: {
+                expand: true,
+                cwd: 'app/src/',
+                ext: '.html',
+                src: '**/*.html',
+                dest: 'app/src/'
+            }
+          }
 
 
     });
@@ -171,6 +186,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask('default', ['clean', 'build',  'watch']);
     grunt.registerTask('build', ['less', 'copy']);
+    grunt.registerTask('clearHtml', ['prettify']);
 
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-connect-proxy');

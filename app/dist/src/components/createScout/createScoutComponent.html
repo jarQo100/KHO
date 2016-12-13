@@ -1,171 +1,121 @@
-<style type="text/css">
-  .css-form input.ng-invalid.ng-touched {
-    	border-color: #a94442;
-	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-	box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-  }
-
-  .css-form input.ng-valid.ng-touched {
-    	border-color: #3c763d;
-	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-	box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-  }
-</style>
-
 <!-- content -->
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="flat-panel">
-                    <div class="flat-panel-header">
-                        <h4 class="fjlat-panel-heading"> </h4>
-                    </div>
-
-
-                </div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="flat-panel">
+            <div class="flat-panel-header">
+                <h3 class="flat-panel-heading">
+                    {{ 'createScout.createScoutTitle' | translate }}
+                    <span ng-show="invalidForm" type="button" class="deleteUserButton label label-danger pull-right">{{ 'createScout.invalidForm' | translate }}</span>
+                </h3>
             </div>
-        </div>
-
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="flat-panel">
-                    <div class="flat-panel-header">
-                        <h3 class="flat-panel-heading">
-                            {{ 'createScout.createScoutTitle' | translate }}
-
-                            <a href="#" class="label label-success pull-right" title="Dodaj nowego klienta" ><i class="glyphicon glyphicon-plus"></i></a>
-                            <span ng-show="invalidForm" type="button" class="deleteUserButton label label-danger pull-right">{{ 'createScout.invalidForm' | translate }}</span>
-                        </h3>
-                    </div>
-                    <br />
-
-	                    <div class="flat-panel-body">
-	                        <div class="form-horizontal">
-
-	                        <form novalidate class="css-form" name="formData">
-	                            <div class="row">
-	                                <div class="col-xs-12 col-md-6">
-	                                    <div class="form-group">
-	                                        <label for="filter-company-name" class="col-sm-3 col-xs-12 control-label">{{ 'createScout.name' | translate }} </label>
-	                                        <div class="col-sm-9 col-xs-12">
-	                                            <input id="name" type="text" ng-model="formData.name" class="form-control" placeholder="Podaj imię" required>
-	                                        </div>
-	                                    </div>
-	                                </div>
-
-	                                <div class="col-xs-12 col-md-6">
-	                                    <div class="form-group">
-	                                        <label for="filter-company-name" class="col-sm-3 col-xs-12 control-label">{{ 'createScout.surname' | translate }} </label>
-	                                        <div class="col-sm-9 col-xs-12">
-	                                            <input id="surname" type="text" ng-model="formData.surname" class="form-control" placeholder="Podaj nazwisko" required>
-	                                        </div>
-	                                    </div>
-	                                </div>
-
-	                                <div class="col-xs-12 col-md-6">
-	                                    <div class="form-group">
-	                                        <label for="filter-company-name" class="col-sm-3 col-xs-12 control-label">{{ 'createScout.phone' | translate }} </label>
-	                                        <div class="col-sm-9 col-xs-12">
-	                                            <input id="phone" type="phone" ng-model="formData.phone"  class="form-control" placeholder="Wpisz numer telefonu" required >
-	                                        </div>
-	                                    </div>
-	                                </div>
-
-	                                <div class="col-xs-12 col-md-6">
-	                                    <div class="form-group">
-	                                        <label for="filter-company-name" class="col-sm-3 col-xs-12 control-label">{{ 'createScout.email' | translate }} </label>
-	                                        <div class="col-sm-9 col-xs-12">
-	                                            <input id="email" type="email" ng-model="formData.email" class="form-control" placeholder="Wpisz e-mail" required>
-	                                        </div>
-	                                    </div>
-	                                </div>
-
-	                                <div class="col-xs-12 col-md-6">
-	                                    <div class="form-group">
-	                                        <label for="filter-company-address" class="col-sm-3 col-xs-12 control-label">{{ 'createScout.address' | translate }} </label>
-	                                        <div class="col-sm-9 col-xs-12">
-	                                            <input id="address" type="text" ng-model="formData.address" class="form-control" placeholder="Podaj adress" required >
-	                                        </div>
-	                                    </div>
-	                                </div>
-
-	                                <div class="col-xs-12 col-md-6">
-	                                    <div class="form-group">
-	                                        <label for="filter-company-school" class="col-sm-3 col-xs-12 control-label">{{ 'createScout.school' | translate }} </label>
-	                                        <div class="col-sm-9 col-xs-12">
-	                                            <input id="school" type="text" ng-model="formData.school" class="form-control" value="" placeholder="Nazwa szkoły" required >
-	                                        </div>
-	                                    </div>
-	                                </div>
-
-	                                <div class="col-xs-12 col-md-6">
-	                                    <div class="form-group">
-	                                        <label for="filter-company-rank" class="col-sm-3 col-xs-12 control-label">{{ 'createScout.rank' | translate }} </label>
-	                                        <div class="col-sm-9 col-xs-12">
-	                                        <select name="rank" id="rank" class="form-control" ng-model="formData.rank">
-	                                        	<option value="Brak">brak</option>
-	                                        	<option value="Młodzik">Młodzik</option>
-	                                        	<option value="Wywiadowca">Wywiadowca</option>
-	                                        	<option value="Ćwik">Ćwik</option>
-	                                        	<option value="Harcerz Orli">Harcerz Orli</option>
-	                                        	<option value="Harcerz Rzeczypospolitej">Harcerz Rzeczypospolitej</option>
-	                                        </select>
-	                                        </div>
-	                                    </div>
-	                                </div>
-
-	                                <div class="col-xs-12 col-md-6">
-	                                    <div class="form-group">
-	                                        <label for="filter-company-rank" class="col-sm-3 col-xs-12 control-label">{{ 'createScout.rankInst' | translate }} </label>
-	                                        <div class="col-sm-9 col-xs-12">
-	                                        <select name="rank" id="rank" class="form-control" ng-model="formData.rankInst">
-	                                        	<option value="Przewodnik">Przewodnik</option>
-	                                        	<option value="Podharcmistrz">Podharcmistrz</option>
-	                                        	<option value="Harcmistrz">Harcmistrz</option>
-	                                        </select>
-	                                        </div>
-	                                    </div>
-	                                </div>
-
-	                                <div class="col-xs-12 col-md-6">
-	                                    <div class="form-group">
-	                                        <label for="filter-company-school" class="col-sm-3 col-xs-12 control-label">{{ 'createScout.birthday' | translate }} </label>
-	                                        <div class="col-sm-9 col-xs-12">
-	                                            <input id="birthday" type="text" ng-model="formData.birthday" class="form-control" placeholder="Data urodzenia" required >
-	                                        </div>
-	                                    </div>
-	                                </div>
-
-	                                <div class="col-xs-12 col-md-6">
-	                                    <div class="form-group">
-	                                        <label for="filter-company-team" class="col-sm-3 col-xs-12 control-label">{{ 'createScout.team' | translate }} </label>
-	                                        <div class="col-sm-9 col-xs-12">
-	                                            <input id="team" type="text" class="form-control" ng-model="formData.team" placeholder="Nazwa drużyny" required >
-	                                        </div>
-	                                    </div>
-	                                </div>
-
-	                                <div class="col-xs-12 col-md-offset-9 col-md-3">
-	                                    <div class="form-group">
-	                                        <input
-	                                        	ng-click="createScout(formData)"
-	                                        	type="submit"
-	                                        	value="{{ 'createScout.submit' | translate }}"
-	                                        	class="btn btn-success" />
-	                                    </div>
-                                	</div>
-				</form>
-
-
-
-
+            <br />
+            <div class="flat-panel-body">
+                <div class="form-horizontal">
+                    <form novalidate class="css-form" name="formData">
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6">
+                                <div class="form-group">
+                                    <label for="filter-company-name" class="col-sm-3 col-xs-12 control-label">{{ 'createScout.name' | translate }} </label>
+                                    <div class="col-sm-9 col-xs-12">
+                                        <input id="name" type="text" ng-model="formData.name" class="form-control" placeholder="Podaj imię" required>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                            <div class="col-xs-12 col-md-6">
+                                <div class="form-group">
+                                    <label for="filter-company-name" class="col-sm-3 col-xs-12 control-label">{{ 'createScout.surname' | translate }} </label>
+                                    <div class="col-sm-9 col-xs-12">
+                                        <input id="surname" type="text" ng-model="formData.surname" class="form-control" placeholder="Podaj nazwisko" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-md-6">
+                                <div class="form-group">
+                                    <label for="filter-company-name" class="col-sm-3 col-xs-12 control-label">{{ 'createScout.phone' | translate }} </label>
+                                    <div class="col-sm-9 col-xs-12">
+                                        <input id="phone" type="phone" ng-model="formData.phone" class="form-control" placeholder="Wpisz numer telefonu" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-md-6">
+                                <div class="form-group">
+                                    <label for="filter-company-name" class="col-sm-3 col-xs-12 control-label">{{ 'createScout.email' | translate }} </label>
+                                    <div class="col-sm-9 col-xs-12">
+                                        <input id="email" type="email" ng-model="formData.email" class="form-control" placeholder="Wpisz e-mail" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-md-6">
+                                <div class="form-group">
+                                    <label for="filter-company-address" class="col-sm-3 col-xs-12 control-label">{{ 'createScout.address' | translate }} </label>
+                                    <div class="col-sm-9 col-xs-12">
+                                        <input id="address" type="text" ng-model="formData.address" class="form-control" placeholder="Podaj adress" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-md-6">
+                                <div class="form-group">
+                                    <label for="filter-company-school" class="col-sm-3 col-xs-12 control-label">{{ 'createScout.school' | translate }} </label>
+                                    <div class="col-sm-9 col-xs-12">
+                                        <input id="school" type="text" ng-model="formData.school" class="form-control" value="" placeholder="Nazwa szkoły" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-md-6">
+                                <div class="form-group">
+                                    <label for="filter-company-rank" class="col-sm-3 col-xs-12 control-label">{{ 'createScout.rank' | translate }} </label>
+                                    <div class="col-sm-9 col-xs-12">
+                                        <select name="rank" id="rank" class="form-control" ng-model="formData.rank">
+                                            <option value="Brak">brak</option>
+                                            <option value="Młodzik">Młodzik</option>
+                                            <option value="Wywiadowca">Wywiadowca</option>
+                                            <option value="Ćwik">Ćwik</option>
+                                            <option value="Harcerz Orli">Harcerz Orli</option>
+                                            <option value="Harcerz Rzeczypospolitej">Harcerz Rzeczypospolitej</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-md-6">
+                                <div class="form-group">
+                                    <label for="filter-company-rank" class="col-sm-3 col-xs-12 control-label">{{ 'createScout.rankInst' | translate }} </label>
+                                    <div class="col-sm-9 col-xs-12">
+                                        <select name="rank" id="rank" class="form-control" ng-model="formData.rankInst">
+                                            <option value="Przewodnik">Przewodnik</option>
+                                            <option value="Podharcmistrz">Podharcmistrz</option>
+                                            <option value="Harcmistrz">Harcmistrz</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-md-6">
+                                <div class="form-group">
+                                    <label for="filter-company-school" class="col-sm-3 col-xs-12 control-label">{{ 'createScout.birthday' | translate }} </label>
+                                    <div class="col-sm-9 col-xs-12">
+                                        <input id="birthday" type="text" ng-model="formData.birthday" class="form-control" placeholder="Data urodzenia" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-md-6">
+                                <div class="form-group">
+                                    <label for="filter-company-team" class="col-sm-3 col-xs-12 control-label">{{ 'createScout.team' | translate }} </label>
+                                    <div class="col-sm-9 col-xs-12">
+                                        <input id="team" type="text" class="form-control" ng-model="formData.team" placeholder="Nazwa drużyny" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-md-12">
+                                
+                                    <input ng-click="createScout(formData)" type="submit" value="{{ 'createScout.submit' | translate }}" class="btn btn-success alignright" />
+                                
+                            </div>
+                    </form>
                     </div>
                 </div>
             </div>
         </div>
-
-        <!-- /content -->
     </div>
 </div>
-
+<!-- /content -->
+</div>
+</div>

@@ -4,7 +4,7 @@
             <div class="btn-rwd-menu">
                 <i class="fa fa-bars"></i>
             </div>
-            <div class="sidebar-logo2">
+            <div class="sidebar-logo2 text-center">
                 <h3>{{ 'mainView.title' | translate }}</h3>
             </div>
             <nav class="sidebar-navigation">
@@ -12,25 +12,13 @@
                     <li class="active">
                         <a href="" ui-sref="mainView.List">
                             <i class="fa fa-users"></i>
-                            <span>Lista</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="" ui-sref="mainView.Details">
-                            <i class="fa fa-database"></i>
-                            <span>Details</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="" ui-sref="mainView.Create">
-                            <i class="fa fa-cogs"></i>
-                            <span>Użytkownicy systemu</span>
+                            <span>{{ 'mainView.users' | translate }}</span>
                         </a>
                     </li>
                     <li>
                         <a href="" ui-sref="mainView.attemptList">
                             <i class="fa fa-cogs"></i>
-                            <span>Próby</span>
+                            <span>{{ 'mainView.attempts' | translate }}</span>
                         </a>
                     </li>
                 </ul>
@@ -40,15 +28,8 @@
             </div>
         </div>
     </div>
-
-
-	<div class="pages navbar-through toolbar-through">
-
-
-                 <ui-view></ui-view>
-
-               <!-- <main-page data-page="index" class="page"></main-page> -->
-
-	</div>
-
+    <div class="pages navbar-through toolbar-through">
+        <ui-view></ui-view>
+        <!-- <main-page data-page="index" class="page"></main-page> -->
+    </div>
 </div>

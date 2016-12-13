@@ -76,7 +76,7 @@
 
         var addComment = {
           name: 'mainView.addComment',
-          url: '/addComment/:taskId',
+          url: '/addComment/:attemptId',
           templateUrl: 'src/components/addComment/addCommentComponent.html',
           controller: 'AddCommentController',
         }

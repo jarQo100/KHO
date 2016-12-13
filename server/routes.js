@@ -104,7 +104,7 @@ app.get('/api/todos/findTask/:task_id', function (req, res) {
 
         Todo.findOne(
             {
-                'attempt.tasks._id' : req.params.task_id
+                'attempt._id' : req.params.task_id
             },
             function (err, todo) {
             if (err)
@@ -137,9 +137,9 @@ app.post('/api/todos/createComment/:task_id', function (req, res) {
 
 
         Todo.update(
-                { 'attempt.tasks': { $elemMatch: { _id: req.params.task_id} } },
-              // { 'attempt.tasks._id' : req.params.task_id },
-               { $push : { 'attempt.tasks.$.comments' : req.body } },
+
+               { 'attempt.tasks._id' : req.params.task_id },
+               { $push : { 'attempt.$.comments' : req.body } },
 
             {safe: true, upsert: true, new : true
 

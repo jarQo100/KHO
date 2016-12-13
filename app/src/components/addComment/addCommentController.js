@@ -13,12 +13,15 @@ AddCommentController.$inject = [
 
 function AddCommentController($scope, $stateParams, $http, Todos){
 
-		$scope.TaskIdParam = $stateParams.taskId;
+		$scope.attemptIdParam = $stateParams.attemptId;
+
+		console.log("attemptIdParam: " + $scope.attemptIdParam);
 
 		$scope.formData = {};
 
-		$scope.formData = Todos.findByIdTask($scope.TaskIdParam).success(function(data) {
+		$scope.formData = Todos.findByIdTask($scope.attemptIdParam).success(function(data) {
 			$scope.formData = data;
+			console.log($scope.formData);
 		});
 
 		$scope.createTask = function(commData){
