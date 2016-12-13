@@ -66,10 +66,10 @@
 
 				<div ng-repeat="attempt in formData.attempt">
 					<div ng-repeat="tasks in attempt.tasks" ng-if="tasks._id == TaskIdParam">
-						<div ng-repeat="comments in tasks.comments" class="alert alert-info">
-							<div class="TaskInComment"><strong>{{ 'addComment.category' | translate }}</strong> {{ comments.category }}</div>
-							<div class="TaskInComment"><strong>{{ 'addComment.description' | translate }}</strong> {{ comments.description }}</div>
-						</div>
+						
+							<div class="TaskInComment"><strong>{{ 'addComment.category' | translate }}</strong> {{ tasks.category }}</div>
+							<div class="TaskInComment"><strong>{{ 'addComment.description' | translate }}</strong> {{ tasks.description }}</div>
+						
 					</div>
 				</div>
 

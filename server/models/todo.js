@@ -52,7 +52,8 @@ module.exports = mongoose.model('Todo', {
         type: String,
         default: ''
     },
-    attempt:[
+    attempt:
+    [
     	{
     		 quide: {
         			type: String,
@@ -66,6 +67,27 @@ module.exports = mongoose.model('Todo', {
     			type: Date,
     			default: ''
     		},
+            comments: 
+            [
+                {
+                    category: {
+                        type : String,
+                        default: ''
+                    },
+                    date : {
+                        type: Date,
+                        default: Date.now
+                    },
+                    description:{
+                        type : String,
+                        default: ''
+                    },
+                    taskName: {
+                        type : String,
+                        default : 'general'
+                    }
+                }
+            ],
     		tasks :
     		[
     			{
@@ -81,41 +103,10 @@ module.exports = mongoose.model('Todo', {
 	    				type : Date,
 	    				default: ''
     				},
-    				comments: [
-	    				{
-	    					category: {
-	    						type : String,
-	    						default: ''
-	    					},
-	    					date : {
-	    						type: Date,
-	    						default: Date.now
-	    					},
-	    					description:{
-	    						type : String,
-	    						default: ''
-	    					}
-	    				}
-    				],
     			}
     		]
     	}
-]
-     // function: [
-     // 	{
-     // 		fun_name: {
-     //   			type: String,
-     //    		default: ''
-    	// 	},
-    	// 	date_begin: {
-     //   			type: Date,
-     //    		default: ''
-    	// 	},
-    	// 	date_end: {
-     //   			type: String,
-     //    		default: ''
-    	// 	}
-    	// }
-     // ],
+    ]
+
 
 });
