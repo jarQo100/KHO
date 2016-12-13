@@ -1,37 +1,20 @@
-<div class="row">
     <div class="col-xs-12">
         <div class="flat-panel">
             <div class="flat-panel-header">
-                <h3 class="flat-panel-heading text-center">
+                <h3 class="flat-panel-heading">
                     {{ 'addComment.title' | translate }}
+                    <span ng-click="showForm()" class="label label-success pull-right" title="Dodaj nowego klienta"><i class="glyphicon glyphicon-plus"></i>
+                        <span class="sub-title">{{ 'addComment.addComm' | translate }}</span>
+                    </span>
                 </h3>
             </div>
             <br />
             <div class="flat-panel-body">
-                <!-- <div ng-repeat="attempt in formData.attempt">
-                    <div ng-repeat="tasks in attempt.tasks" ng-if="tasks._id == TaskIdParam">
-                        <div class="TaskInComment">
-                            <strong>{{ 'addComment.category' | translate }}</strong> {{tasks.category}}</div>
-                        <div class="TaskInComment">
-                            <strong>{{ 'addComment.description' | translate }}</strong> {{ tasks.description }}</div>
-                        <div class="TaskInComment">
-                            <strong>{{ 'addComment.dateEnd' | translate }}
-                            </strong> {{ tasks.dateEnd | date:"dd MMMM yyyy" }}</div>
-                    </div>
-                </div> -->
-                <div class="row" style="margin-top: 30px;">
-                    <div class="col-xs-12 col-md-6">
-                        <form novalidate class="css-form" name="commData">
+                <div ng-show="showFormComm" class="row" style="margin-top: 30px;">
+                    <form novalidate class="css-form" name="commData">
+                        <div class="col-xs-12 col-md-6">
                             <div class="form-group">
-                                <label for="filter-company-name" class="col-sm-3 col-xs-12 control-label">{{ 'attemptCreate.category' | translate }} </label>
-                                <div class="col-sm-9 col-xs-12">
-                                    <select name="rank" id="rank" class="form-control" ng-model="commData.category" style="margin-bottom: 20px;">
-                                        <option ng-repeat="attempt in formData.attempt.1.tasks" value="Opinia">{{ attempt.category }}</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="filter-company-name" class="col-sm-3 col-xs-12 control-label">{{ 'attemptCreate.category' | translate }} </label>
+                                <label for="filter-company-name" class="col-sm-3 col-xs-12 control-label text-center">{{ 'addComment.category' | translate }} </label>
                                 <div class="col-sm-9 col-xs-12">
                                     <select name="rank" id="rank" class="form-control" ng-model="commData.category" style="margin-bottom: 20px;">
                                         <option value="Opinia">{{ 'addComment.opinion' | translate }}</option>
@@ -43,29 +26,28 @@
                                     </select>
                                 </div>
                             </div>
-                    </div>
-                    <div class="col-xs-12 col-md-6">
-                        <div class="form-group">
-                            <div class="col-md-12 col-xs-12">
-                                <textarea ng-model="commData.description" class="tasksDescription form-control" rows="6" placeholder="{{  'attemptCreate.descriptionPlaceholder' | translate }}"></textarea>
-                            </div>
                         </div>
-                    </div>
-                    <div class="col-xs-12 col-md-12 ">
-                        <input ng-click="createTask(commData)" type="submit" value="{{ 'attemptCreate.submit' | translate }}" class="btn btn-success alignright" style="margin-top: 30px;" />
-                    </div>
+                        <div class="col-xs-12 col-md-6">
+                            <textarea ng-model="commData.description" class="tasksDescription form-control" rows="6" placeholder="{{  'attemptCreate.descriptionPlaceholder' | translate }}"></textarea>
+                        </div>
+                        <div class="col-xs-12 col-md-12 ">
+                            <input ng-click="createTask(commData)" type="submit" value="{{ 'addComment.submit' | translate }}" class="btn btn-success alignright" style="margin-top: 30px;" />
+                        </div>
                     </form>
                 </div>
                 <h5>{{ 'addComment.addComments' | translate }}</h5>
                 <div ng-repeat="attempt in formData.attempt" ng-if="attempt._id == attemptIdParam">
-                    <div ng-repeat="comm in attempt.comments">
-                        <div class="TaskInComment">
-                            <strong>{{ 'addComment.category' | translate }}</strong> {{ comm.category }}</div>
-                        <div class="TaskInComment">
-                            <strong>{{ 'addComment.description' | translate }}</strong> {{ comm.description }}</div>
+                    <div ng-repeat="comm in attempt.comments | orderBy:'-date'">
+                        <div data-ng-class="getClass(comm.category)" class="alert">
+                            <div class="TaskInComment">
+                                <strong>{{ 'addComment.commCategory' | translate }}</strong> {{ comm.category }}
+                                <i class="alignright commDate">{{ comm.date |  date:"dd MMMM yyyy" }}</i>
+                            </div>
+                            <div class="TaskInComment">
+                                <strong>{{ 'addComment.commDescription' | translate }}</strong> {{ comm.description }}</div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>

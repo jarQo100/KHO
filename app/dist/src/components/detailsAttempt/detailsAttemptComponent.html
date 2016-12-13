@@ -1,6 +1,5 @@
 <br />
 <br />
-<div class="row">
     <div class="col-xs-offset-2 col-xs-8">
         <div class="flat-panel">
             <div class="flat-panel-header">
@@ -20,6 +19,7 @@
                     </li>
                     <li>{{ 'detailsAttempt.quide' | translate }}
                         <strong>{{ formData.attempt[0].quide }}</strong>
+                        <a href="" ui-sref="mainView.addComment({ attemptId: attemptIdParam})" class="btn btn-default alignright">{{ 'detailsAttempt.addComment' | translate }}</a>
                     </li>
                     <li>{{ 'detailsAttempt.dateBegin' | translate }}
                         <strong>{{ formData.attempt[0].dateBegin | date:"dd MMMM yyyy" }}
@@ -31,21 +31,15 @@
                         <th>{{ 'detailsAttempt.goal' | translate }}</th>
                         <th>{{ 'detailsAttempt.task' | translate }}</th>
                         <th>{{ 'detailsAttempt.term' | translate }}</th>
-                        <th>{{ 'detailsAttempt.actions' | translate }}</th>
                     </thead>
                     <tbody ng-repeat="attempt in formData.attempt" ng-if="attempt._id == attemptIdParam">
                         <tr ng-repeat="task in attempt.tasks">
                             <td class="text-center" width="10%">{{ task.category }}</td>
                             <td>{{ task.description }}</td>
                             <td class="text-center" width="15%">{{ task.dateEnd | date:"dd MMMM yyyy" }}</td>
-                            <td class="text-center" width="15%">
-                                <a href="" ui-sref="mainView.addComment({ attemptId: attemptIdParam})" class="btn btn-info">{{ 'detailsAttempt.addComment' | translate }}</a>
-                            </td>
                         </tr>
                     </tbody>
                 </table>
-                <h5>{{ 'detailsAttempt.attemptEnd' | translate }}</h5>
             </div>
         </div>
     </div>
-</div>

@@ -138,7 +138,7 @@ app.post('/api/todos/createComment/:task_id', function (req, res) {
 
         Todo.update(
 
-               { 'attempt.tasks._id' : req.params.task_id },
+               { 'attempt._id' : req.params.task_id },
                { $push : { 'attempt.$.comments' : req.body } },
 
             {safe: true, upsert: true, new : true

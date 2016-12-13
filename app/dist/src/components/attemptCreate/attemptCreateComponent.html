@@ -1,14 +1,4 @@
 <!-- content -->
-<div class="row">
-    <div class="col-xs-12">
-        <div class="flat-panel">
-            <div class="flat-panel-header">
-                <h4 class="fjlat-panel-heading"> </h4>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="row">
     <div class="col-xs-12">
         <div class="flat-panel">
             <div class="flat-panel-header">
@@ -59,15 +49,30 @@
                                 <div class="form-group">
                                     <label for="filter-company-name" class="col-sm-3 col-xs-12 control-label">{{ 'attemptCreate.dateEnd' | translate }} </label>
                                     <div class="col-sm-9 col-xs-12">
-                                        <input id="dataEnd" type="date" ng-model="attemptData.dateEnd" class="form-control" placeholder="Format: RRRR-MM-DD" required>
+                                        <input id="dataEnd" type="date" ng-model="attemptData.dateEnd" class="form-control" placeholder="Format: RRRR-MM-DD">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-md-6">
+                                <div class="form-group">
+                                    <label for="filter-company-name" class="col-sm-3 col-xs-12 control-label">{{ 'attemptCreate.dateEnd' | translate }} </label>
+                                    <div class="col-sm-9 col-xs-12">
+                                        <select class="form-control" id="result" ng-model="attemptData.result">
+                                            <option value="" disabled selected>{{ 'attemptCreate.result' | translate }} </option>
+                                            <option value="Otwarto">Otwarto</option>
+                                            <option value="Zamknięto pozytywnie">Zamknięto pozytywnie</option>
+                                            <option value="Zamknięto negatywnie">Zamknięto negatywnie</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
                             <div ng-repeat="task in tasks" class="tasksForm">
-                                <div class="col-xs-12 col-md-12">
-                                    <br />
-                                    <h5 class="text-center">{{ 'attemptCreate.addTasks' | translate }} {{$index + 1}}</h5>
-                                    <br />
+                                <div class="row">
+                                    <div class="col-xs-12 col-md-12">
+                                        <br />
+                                        <h5 class="text-center">{{ 'attemptCreate.addTasks' | translate }} {{$index + 1}}</h5>
+                                        <br />
+                                    </div>
                                 </div>
                                 <div class="col-xs-12 col-md-6">
                                     <div class="form-group">
@@ -105,7 +110,7 @@
             </div>
         </div>
     </div>
-</div>
+
 <!-- /content -->
 </div>
 </div>

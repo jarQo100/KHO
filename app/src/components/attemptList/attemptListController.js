@@ -9,10 +9,11 @@ AttemptListController.$inject= [
 	'$http',
 	'Todos',
 	'$timeout',
-	'$location'
+	'$location',
+	'SetAlertClass'
 ];
 
-function AttemptListController($scope, $http, Todos, $timeout, $location){
+function AttemptListController($scope, $http, Todos, $timeout, $location, SetAlertClass){
 
 	$scope.formData = {};
 
@@ -45,6 +46,16 @@ function AttemptListController($scope, $http, Todos, $timeout, $location){
 
 	                }
 	         }
+
+	         $scope.propertyName = 'age';
+		  $scope.reverse = true;
+
+
+		  $scope.getClass = function(status) {
+		  	return SetAlertClass.setClassStatus(status);
+		  };
+
+
 
 }
 
