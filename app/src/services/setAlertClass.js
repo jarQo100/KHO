@@ -34,10 +34,10 @@ function setClass() {
 				case "W trakcie realizacji" :
 					return "label-info";
 					break;
-				case "Zakmnięto powytywnie" :
+				case "Zamknięto pozytywnie" :
 					return "label-success";
 					break;
-				case "Zakmnięto negatywnie" :
+				case "Zamknięto negatywnie" :
 					return "label-danger";
 					break;
 			}

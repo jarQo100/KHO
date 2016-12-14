@@ -122,7 +122,9 @@ module.exports = function (grunt) {
                             'angular-route/angular-route.min.js',
                             'angular-ui-router/release/angular-ui-router.min.js',
                             'ng-resource/lib/angular-resource.js',
-                            'font-awesome/css/font-awesome.min.css'
+                            'font-awesome/css/font-awesome.min.css',
+                            'bootstrap/js/tooltip.js',
+                             'bootstrap/dist/js/bootstrap.min.js'
                         ],
                         dest: 'app/dist/node_modules/'
                     }

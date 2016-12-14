@@ -49,7 +49,9 @@
 		"addNew" : "Dodaj nową próbę",
 		"openAttemps" : "Lista prób otwartych",
 		"closeAttemps" : "Lista prób zamkniętych",
-		"result" : "Status"
+		"result" : "Status",
+		"card" : "Karta",
+		"update" : "Edytuj"
 },
 	"attemptCreate" : {
 		"title" : "Dodaj nową próbę",
@@ -63,7 +65,11 @@
 		"category" : "Kategoria",
 		"description" : "Opisz punkt próby",
 		"taskDateEnd" : "Data realizacji",
-		"descriptionPlaceholder" : "W tym miejscu opisz punkt swojej próby."
+		"descriptionPlaceholder" : "W tym miejscu opisz punkt swojej próby.",
+		"result" : "Wybierz status próby",
+		"commandBegin" : "Rozkaz otwarcia",
+		"commandEnd" : "Rozkaz zamknięcia",
+		"status" : "Status próby"
 	},
 	"detailsAttempt" : {
 		"title" : "Karta próby na stopień Harcerz Orli",

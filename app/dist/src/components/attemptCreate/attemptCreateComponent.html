@@ -11,96 +11,10 @@
             <div class="flat-panel-body">
                 <div class="form-horizontal">
                     <form novalidate class="css-form" name="attemptData">
-                        <div class="row">
-                            <div class="col-xs-12 col-md-6">
-                                <div class="form-group">
-                                    <label for="filter-company-name" class="col-sm-3 col-xs-12 control-label">{{ 'attemptCreate.nameAndSurname' | translate }} </label>
-                                    <div class="col-sm-9 col-xs-12">
-                                        <select class="form-control" id="nameAndSurname" ng-model="attemptData.nameAndSurname">
-                                            <option value="" disabled selected>{{ 'attemptCreate.selectPerson' | translate }}
-                                            </option>
-                                            <option ng-repeat="user in formData" value="{{ user._id }}">{{ user.name }} {{ user.surname }} - {{ user.team }}</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-md-6">
-                                <div class="form-group">
-                                    <label for="filter-company-name" class="col-sm-3 col-xs-12 control-label">{{ 'attemptCreate.quide' | translate }} </label>
-                                    <div class="col-sm-9 col-xs-12">
-                                        <select class="form-control" id="quide" ng-model="attemptData.quide">
-                                            <option value="" disabled selected>{{ 'attemptCreate.selectPerson' | translate }}
-                                            </option>
-                                            <option ng-repeat="user in formData" value="{{ user.name }} {{ user.surname }}">{{ user.name }} {{ user.surname }}
-                                            </option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-md-6">
-                                <div class="form-group">
-                                    <label for="filter-company-name" class="col-sm-3 col-xs-12 control-label">{{ 'attemptCreate.dateBegin' | translate }} </label>
-                                    <div class="col-sm-9 col-xs-12">
-                                        <input id="dataBegin" type="date" ng-model="attemptData.dateBegin" class="form-control" placeholder="Format: RRRR-MM-DD" required>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-md-6">
-                                <div class="form-group">
-                                    <label for="filter-company-name" class="col-sm-3 col-xs-12 control-label">{{ 'attemptCreate.dateEnd' | translate }} </label>
-                                    <div class="col-sm-9 col-xs-12">
-                                        <input id="dataEnd" type="date" ng-model="attemptData.dateEnd" class="form-control" placeholder="Format: RRRR-MM-DD">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-md-6">
-                                <div class="form-group">
-                                    <label for="filter-company-name" class="col-sm-3 col-xs-12 control-label">{{ 'attemptCreate.dateEnd' | translate }} </label>
-                                    <div class="col-sm-9 col-xs-12">
-                                        <select class="form-control" id="result" ng-model="attemptData.result">
-                                            <option value="" disabled selected>{{ 'attemptCreate.result' | translate }} </option>
-                                            <option value="Otwarto">Otwarto</option>
-                                            <option value="Zamknięto pozytywnie">Zamknięto pozytywnie</option>
-                                            <option value="Zamknięto negatywnie">Zamknięto negatywnie</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div ng-repeat="task in tasks" class="tasksForm">
-                                <div class="row">
-                                    <div class="col-xs-12 col-md-12">
-                                        <br />
-                                        <h5 class="text-center">{{ 'attemptCreate.addTasks' | translate }} {{$index + 1}}</h5>
-                                        <br />
-                                    </div>
-                                </div>
-                                <div class="col-xs-12 col-md-6">
-                                    <div class="form-group">
-                                        <label for="filter-company-name" class="col-sm-3 col-xs-12 control-label">{{ 'attemptCreate.category' | translate }} </label>
-                                        <div class="col-sm-9 col-xs-12">
-                                            <input type="text" ng-model="tasks[$index].category" class="form-control" placeholder="{{  'attemptCreate.category' | translate }}" required>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xs-12 col-md-6">
-                                    <div class="form-group">
-                                        <label for="filter-company-name" class="col-sm-3 col-xs-12 control-label">{{ 'attemptCreate.taskDateEnd' | translate }}</label>
-                                        <div class="col-sm-9 col-xs-12">
-                                            <input type="date" ng-model="tasks[$index].dateEnd" class="form-control" placeholder="Format: RRRR-MM-DD" required>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xs-12 col-md-12">
-                                    <div class="form-group">
-                                        <div class="col-md-12 col-xs-12">
-                                            <textarea ng-model="tasks[$index].description" class="tasksDescription form-control" rows="3" placeholder="{{  'attemptCreate.descriptionPlaceholder' | translate }}"></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                                <br />
-                                <br />
-                            </div>
-                            <button class="btn btn-danger aligncenter" type="submit" ng-click="addButton();"><i class="fa fa-plus"></i> Dodaj kolejny punkt próby</button>
+
+		<!-- directives attemptForm -->
+		<attempt-form></attempt-form>
+
                             <div class="col-xs-12 col-md-12 ">
                                 <input ng-click="createAttempt(attemptData)" type="submit" value="{{ 'attemptCreate.submit' | translate }}" class="btn btn-success alignright" style="margin-top: 30px;" />
                             </div>

@@ -24,19 +24,21 @@
                             <th class="text-center">
                                 {{ 'attemptList.quide' | translate }}
                             </th>
-                            <th class="text-center" style="width: 150px;">{{ 'mainPage.actions' | translate }}</th>
+                            <th class="text-center" style="">{{ 'mainPage.actions' | translate }}</th>
                         </tr>
                     </thead>
                     <tbody ng-repeat="user in users">
-                        <tr ng-repeat="attempt in user.attempt " ng-if="!attempt.dateEnd">
+                        <tr ng-repeat="attempt in user.attempt " ng-if="attempt.results == 'W trakcie realizacji' ">
                             <td class="text-center">{{user.name}} {{user.surname}}</td>
                             <td class="text-center">{{ attempt.dateBegin | date:"dd MMMM yyyy" }}</td>
                             <td class="text-center">
                                 <span class="label label-info">{{ attempt.results }}</span>
                             </td>
                             <td class="text-center">{{ attempt.quide}} </td>
-                            <td class="text-center">
-                                <a href="" ui-sref="mainView.detailsAttempt({ userId: user._id,  attemptId: attempt._id})" class="label label-primary">{{ 'mainPage.details' | translate }}</a>
+                            <td class="text-center action-label">
+                               <a href="" ui-sref="mainView.detailsAttempt({ userId: user._id,  attemptId: attempt._id})" class="label label-primary" data-toggle="tooltip" data-placement="top" title="Tooltip on top"><i class="fa fa-file"></i></a>
+                                <a href="" ui-sref="mainView.addComment({ attemptId: attempt._id})" class="label label-info"><i class="fa fa-comments"></i></a>
+                                <a href="" ui-sref="mainView.updateAttempt({ attemptId: attempt._id})" class="label label-default"><i class="fa fa-pencil"></i></a>
                                 <a href="#" class="label label-danger" ng-click="deleteAttempt( user._id, attempt._id)">
                                     <i class="fa fa-trash-o"></i> </a>
                             </td>
@@ -62,11 +64,11 @@
                             <th class="text-center">
                                 {{ 'attemptList.quide' | translate }}
                             </th>
-                            <th class="text-center" style="width: 150px;">{{ 'mainPage.actions' | translate }}</th>
+                            <th class="text-center" style="">{{ 'mainPage.actions' | translate }}</th>
                         </tr>
                     </thead>
                     <tbody ng-repeat="user in users">
-                        <tr ng-repeat="attempt in user.attempt " ng-if="attempt.dateEnd">
+                        <tr ng-repeat="attempt in user.attempt " ng-if="attempt.results != 'W trakcie realizacji'">
                             <td class="text-center">{{user.name}} {{user.surname}}</td>
                             <td class="text-center">{{ attempt.dateBegin | date:"dd MMMM yyyy" }}</td>
                             <td class="text-center">{{ attempt.dateEnd | date:"dd MMMM yyyy" }}</td>
@@ -74,8 +76,10 @@
                                 <span data-ng-class="getClass(attempt.results)" class="label">{{ attempt.results }}</span>
                             </td>
                             <td class="text-center">{{ attempt.quide}} </td>
-                            <td class="text-center">
-                                <a href="" ui-sref="mainView.detailsAttempt({ userId: user._id,  attemptId: attempt._id})" class="label label-primary">{{ 'mainPage.details' | translate }}</a>
+                            <td class="text-center action-label">
+                                 <a href="" ui-sref="mainView.detailsAttempt({ userId: user._id,  attemptId: attempt._id})" class="label label-primary" data-toggle="tooltip" data-placement="top" title="Tooltip on top"><i class="fa fa-file"></i></a>
+                                <a href="" ui-sref="mainView.addComment({ attemptId: attempt._id})" class="label label-info"><i class="fa fa-comments"></i></a>
+                                <a href="" ui-sref="mainView.updateAttempt({ attemptId: attempt._id})" class="label label-default"><i class="fa fa-pencil"></i></a>
                                 <a href="#" class="label label-danger" ng-click="deleteAttempt( user._id, attempt._id)">
                                     <i class="fa fa-trash-o"></i> </a>
                             </td>
@@ -88,3 +92,11 @@
 <!-- /content -->
 </div>
 </div>
+
+
+<script>
+$('document').ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+})(jQuery);
+
+</script>

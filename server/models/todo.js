@@ -65,7 +65,15 @@ module.exports = mongoose.model('Todo', {
     		},
     		dateEnd: {
     			type: Date,
-    			default: null
+    			default: ''
+    		},
+    		commandBegin: {
+    			type: String,
+    			default: ''
+    		},
+    		commandEnd: {
+    			type: String,
+    			default: ''
     		},
     		results : {
     			type: String,

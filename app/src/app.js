@@ -81,6 +81,13 @@
           controller: 'AddCommentController',
         }
 
+        var updateAttempt = {
+          name: 'mainView.updateAttempt',
+          url: '/updateAttempt/:attemptId',
+          templateUrl: 'src/components/updateAttempt/updateAttemptComponent.html',
+          controller: 'UpdateAttemptController',
+        }
+
 
       $stateProvider.state(loginState);
       $stateProvider.state(mainView);
@@ -91,6 +98,7 @@
       $stateProvider.state(attemptCrete);
       $stateProvider.state(detailsAttempt);
       $stateProvider.state(addComment);
+      $stateProvider.state(updateAttempt);
       $urlRouterProvider.otherwise("/content/list");
 
 //$resourceProvider.defaults.stripTrailingSlashes = false;

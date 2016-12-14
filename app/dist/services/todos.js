@@ -17,8 +17,14 @@ angular.module('KHO_CRM').factory('Todos', dataTodos);
 			findById : function(id) {
 				return $http.get('/api/todos/findById/' + id);
 			},
+			findByIdAttempt : function(id) {
+				return $http.get('/api/todos/findByIdAttempt/' + id);
+			},
 			update : function(todoData){
 				return $http.put('/api/todos/updateScout', todoData);
+			},
+			updateAttempt : function(todoData){
+				return $http.put('/api/todos/updateAttempt', todoData);
 			},
 			addAttempt : function(user_id, todoData){
 				return $http.put('/api/todos/addAttempt/' + user_id, todoData);

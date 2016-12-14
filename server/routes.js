@@ -89,12 +89,37 @@ module.exports = function (app) {
         });
     });
 
+app.get('/api/todos/findByIdAttempt/:todo_id', function (req, res) {
+        console.log(req.params.todo_id);
+
+        Todo.find({
+            'attempt._id': req.params.todo_id
+        }, function (err, todo) {
+            if (err)
+                res.send(err);
+
+            res.json(todo);
+        });
+    });
+
 
          app.put('/api/todos/updateScout', function (req, res) {
 
                 var query = {'_id': req.body._id};
 
                Todo.findOneAndUpdate(query, req.body, {upsert:true}, function(err, doc){
+                        if (err) return res.send(500, { error: err });
+                                return res.send("succesfully saved");
+                        });
+            });
+
+app.put('/api/todos/updateAttempt', function (req, res) {
+
+                var query = {'attempt._id': req.body._id};
+console.log(req.body);
+               Todo.findOneAndUpdate(query,
+                {$set : { 'attempt.$' : req.body }},
+                {upsert:true}, function(err, doc){
                         if (err) return res.send(500, { error: err });
                                 return res.send("succesfully saved");
                         });

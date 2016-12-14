@@ -18,6 +18,7 @@ function AttemptCreateController($scope, $http, Todos, $timeout, $location){
 	$scope.formData  = {};
 	$scope.userData = {};
 	$scope.tasks = [{}];
+	$scope.nameSurname = true;
 
 	$scope.addButton = function(){
 		$scope.tasks.push({});
