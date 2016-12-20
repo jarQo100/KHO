@@ -1,9 +1,10 @@
 {
   "mainView": {
 	 "title": "KHO CRM",
-	 "copyright": "Copyright &copy 2016 JarQo",
+	 "copyright": "Copyright © 2016 JarQo",
 	 "users" : "Użytkownicy systemu",
-	 "attempts" : "Próby na stopień"
+	 "attempts" : "Próby na stopień",
+	 "logout" : "Wyloguj się"
   },
   "mainPage": {
 	 "users": "Wszyscy użytkownicy systemu",
@@ -33,7 +34,9 @@
 	"birthday" : "Data urodzenia",
 	"team" : "Nazwa drużyny",
 	"submit" : "Utwórz użytkownika",
-	"invalidForm" : "Błędy w formularzu! Proszę poprawić."
+	"invalidForm" : "Błędy w formularzu! Proszę poprawić.",
+	"password" : "Hasło",
+	"role" : "Uprawnienia"
   },
 	"scoutsDetails" : {
 		"title" : "Szczegóły użytkownika",

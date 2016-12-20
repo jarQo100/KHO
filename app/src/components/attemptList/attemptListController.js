@@ -16,9 +16,24 @@ AttemptListController.$inject= [
 function AttemptListController($scope, $http, Todos, $timeout, $location, SetAlertClass){
 
 	$scope.formData = {};
+	$scope.users = [];
 
             Todos.get().success(function(data) {
-               $scope.users = data;
+
+               		angular.forEach(data, function(user) {
+
+               			angular.forEach(user.attempt, function(attempt) {
+               				attempt.userID = user._id;
+               				attempt.name = user.name;
+               				attempt.surname = user.surname;
+					$scope.users.push(attempt);
+
+               			});
+
+			});
+
+               		console.log($scope.users);
+
             }).error(function(err){
                 console.log("GET ERROR: " + err);
             });

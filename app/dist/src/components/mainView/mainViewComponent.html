@@ -21,6 +21,18 @@
                             <span>{{ 'mainView.attempts' | translate }}</span>
                         </a>
                     </li>
+                    <!-- <li>
+                        <a href="" ui-sref="loginPage">
+                            <i class="fa fa-cogs"></i>
+                            <span>{{ 'mainView.attempts' | translate }}</span>
+                        </a>
+                    </li> -->
+                    <li>
+                        <a href="#" ng-click="logout()" title="">
+                            <i class="fa fa-sign-out"></i>
+                            <span>{{ 'mainView.logout' | translate }}</span>
+                        </a>
+                    </li>
                 </ul>
             </nav>
             <div class="sidebar-copyrights">
@@ -29,6 +41,7 @@
         </div>
     </div>
     <div class="pages navbar-through toolbar-through">
+
         <ui-view></ui-view>
         <!-- <main-page data-page="index" class="page"></main-page> -->
     </div>

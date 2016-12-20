@@ -6,7 +6,7 @@
                 <select class="form-control" id="nameAndSurname" ng-model="attemptData.nameAndSurname">
                     <option value="" disabled selected>{{ 'attemptCreate.selectPerson' | translate }}
                     </option>
-                    <option ng-repeat="user in formData" value="{{ user.name }} {{ user.surname }}">{{ user.name }} {{ user.surname }} - {{ user.team }}</option>
+                    <option ng-repeat="user in formData" value="{{ user._id }} ">{{ user.name }} {{ user.surname }} - {{ user.team }}</option>
                 </select>
             </div>
         </div>
@@ -16,7 +16,7 @@
             <label for="filter-company-name" class="col-sm-3 col-xs-12 control-label">{{ 'attemptCreate.quide' | translate }} </label>
             <div class="col-sm-9 col-xs-12">
                 <select class="form-control" id="quide" ng-model="attemptData.quide">
-                    <option value="" disabled selected>{{ 'attemptCreate.selectPerson' | translate }}
+                    <option value="{{ attemptData.quide }}" disabled selected>{{ attemptData.quide }}
                     </option>
                     <option ng-repeat="user in formData" value="{{ user.name }} {{ user.surname }}">{{ user.name }} {{ user.surname }}
                     </option>

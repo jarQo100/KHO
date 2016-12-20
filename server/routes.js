@@ -1,4 +1,6 @@
 var Todo = require('./models/todo');
+var mongoose = require('mongoose');
+mongoose.Promise = Promise;
 
 function getTodos(res) {
     Todo.find(function (err, todos) {
@@ -37,6 +39,8 @@ module.exports = function (app) {
             rankInst: req.body.rankInst,
             birthday: req.body.birthday,
             team: req.body.team,
+            password: req.body.password,
+            role: req.body.role,
             done: false
         }, function (err, todo) {
             if (err)
@@ -115,15 +119,43 @@ app.get('/api/todos/findByIdAttempt/:todo_id', function (req, res) {
 
 app.put('/api/todos/updateAttempt', function (req, res) {
 
-                var query = {'attempt._id': req.body._id};
-console.log(req.body);
-               Todo.findOneAndUpdate(query,
-                {$set : { 'attempt.$' : req.body }},
-                {upsert:true}, function(err, doc){
-                        if (err) return res.send(500, { error: err });
-                                return res.send("succesfully saved");
-                        });
-            });
+console.log(req.body._id);
+var query = {_id : '5855b2c29209a808e4799ab5', 'attempt._id': req.body._id};
+
+Todo.findById(query, function (err, todo) {
+    // Handle any possible database errors
+
+    for(i=0; i < todo.attempt.length; i++){
+
+        if(todo.attempt[i]._id == req.body._id){
+
+            Todo.findOneAndUpdate(
+               query,
+              { 'attempt.$' : req.body },
+                function (err, todo) {
+
+                    if (err)
+                        res.send(err);
+                });
+
+            console.log("wlazło");
+            todo.attempt[i] = null;
+        }
+
+    };
+
+    if (err) {
+        res.status(500).send(err);
+    } else {
+
+     }
+
+
+
+
+});
+
+});
 
 app.get('/api/todos/findTask/:task_id', function (req, res) {
 
@@ -143,17 +175,74 @@ app.get('/api/todos/findTask/:task_id', function (req, res) {
 
 //WSTAWIANIE NOWEJ PRÓBY DLA UŻYTKOWNIKA
 app.put('/api/todos/addAttempt/:user_id', function (req, res) {
-    console.log(req.params.user_id);
-    console.log(req.body.dateBegin);
+
+     console.log(req.params.user_id);
+     console.log(req.body);
+
+    var query = {_id : req.params.user_id};
+    var update = { $pull : { attempt : req.body } };
+    var options = {new: true};
+
+Todo.findById(query, function (err, todo) {
+    // Handle any possible database errors
+    console.log(todo);
+
+    if (err) {
+        res.status(500).send(err);
+    } else {
+        // Update each attribute with any possible attribute that may have been submitted in the body of the request
+        // If that attribute isn't in the request body, default back to whatever it was before.
+        todo.attempt.push(req.body);
+
+        console.log("+++++++++++++++++++++++++++++++");
+        console.log(todo);
+
+
         Todo.update(
-               { _id: req.params.user_id},
-               { $push : { attempt: req.body },
-        }, function (err, todo) {
+               {_id: req.params.user_id},
+              todo,
+        function (err, todo) {
+
             if (err)
                 res.send(err);
         });
-    });
 
+
+        // Save the updated document back to the database
+        // todo.save()
+        //     .then(todo => responseOk.call(res, todo))
+        //     .catch(err => responseFailedValidation.call(res, err.toString()));
+
+    }
+});
+
+
+    // Todo.update(query, update, options, function(err, superhero){
+
+    //     console.log(superhero)
+
+    //   });
+
+
+
+
+
+
+
+       //Todo.update(query);
+
+
+// var query = Todo.findOne({ _id : req.params.user_id});
+// console.log(query);
+
+// query.then(function(user){
+
+//     user.attempt.push({attempt : req.body});
+//     user.save();
+
+// });
+
+});
 
 
 app.post('/api/todos/createComment/:task_id', function (req, res) {
@@ -174,6 +263,33 @@ app.post('/api/todos/createComment/:task_id', function (req, res) {
 
         });
     });
+
+app.post('/api/authenticate', function (req, res) {
+    console.log(req.body.username);
+
+
+
+         Todo.find({
+            'email': req.body.username,
+            'password' : req.body.password
+        }, function (err, todo) {
+            if (err)
+                res.send(err);
+
+
+            if(todo.length != 0){
+                res.json({success: true});
+            }else{
+                res.json({success: false});
+            }
+
+
+        });
+
+
+
+    });
+
 
 
 

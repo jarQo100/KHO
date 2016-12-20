@@ -103,6 +103,26 @@
                                     </div>
                                 </div>
                             </div>
+                             <div class="col-xs-12 col-md-6">
+                                <div class="form-group">
+                                    <label for="filter-company-team" class="col-sm-3 col-xs-12 control-label">{{ 'createScout.role' | translate }} </label>
+                                    <div class="col-sm-9 col-xs-12">
+                                        <select name="role" id="role" class="form-control" ng-model="formData.role">
+                                            <option value="Administrator">Administrator</option>
+                                            <option value="Członek kapituły">Członek kapituły</option>
+                                            <option value="Petent">Petent</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-md-6">
+                                <div class="form-group">
+                                    <label for="filter-company-team" class="col-sm-3 col-xs-12 control-label">{{ 'createScout.password' | translate }} </label>
+                                    <div class="col-sm-9 col-xs-12">
+                                        <input id="password" type="password" class="form-control" ng-model="formData.password" placeholder="{{ 'createScout.password' | translate }}" required>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="col-xs-12 col-md-12">
                                 <input ng-click="createScout(formData)" type="submit" value="{{ 'createScout.submit' | translate }}" class="btn btn-success alignright" />
                             </div>

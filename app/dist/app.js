@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('KHO_CRM', ['pascalprecht.translate', 'ngSanitize', 'ui.router', 'ngResource'])
+        .module('KHO_CRM', ['pascalprecht.translate', 'ngSanitize', 'ui.router', 'ngResource', 'ngCookies', 'angular-md5'])
         .constant('KHO_CRM_CONFIG', {
             defaultLang: 'pl_pl'
         })
@@ -16,14 +16,17 @@
          '$stateProvider',
           '$urlRouterProvider',
 
+
     ];
 
     function configureFluoModule(KHO_CRM_CONFIG, $translateProvider, $locationProvider, $stateProvider, $urlRouterProvider) {
 
       var loginState = {
         name: 'loginPage',
-        url: '/',
-        templateUrl: 'pages/login/index.html'
+        url: '/login',
+        templateUrl: 'pages/login/index.html',
+        controller: 'LoginController',
+        controllerAs: 'vm'
       }
 
       var mainView = {
@@ -121,13 +124,32 @@
 
     }
 
-    runApp.$inject = ['$translate', '$location'];
+    runApp.$inject = ['$translate', '$location', '$rootScope', '$cookies', '$http'];
 
-    function runApp($translate, $location) {
+    function runApp($translate, $location, $rootScope, $cookies, $http) {
         var locationSearch = $location.search();
         if (locationSearch.hasOwnProperty('lang')) {
             $translate.use(locationSearch['lang'].toLowerCase());
         }
+
+
+// keep user logged in after page refresh
+        $rootScope.globals = $cookies.getObject('globals') || {};
+        if ($rootScope.globals.currentUser) {
+            $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata;
+        }
+
+        $rootScope.$on('$locationChangeStart', function (event, next, current) {
+            // redirect to login page if not logged in and trying to access a restricted page
+            var restrictedPage = $.inArray($location.path(), ['/login', '/register']) === -1;
+            var loggedIn = $rootScope.globals.currentUser;
+            if (restrictedPage && !loggedIn) {
+                $location.path('/login');
+            }
+        });
+
+
+
     }
 
 

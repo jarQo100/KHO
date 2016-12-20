@@ -6,11 +6,19 @@
 
     MainViewController.$inject = [
         '$scope',
+        'AuthenticationService',
+        '$location'
     ];
 
-    function MainViewController($scope) {
+    function MainViewController($scope, AuthenticationService, $location) {
 
     		$scope.test = "TEST";
+
+    		$scope.logout = function(){
+    			console.log("logout");
+    			AuthenticationService.ClearCredentials();
+    			 $location.path('/login');
+    		};
 
     }
 

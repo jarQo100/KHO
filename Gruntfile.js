@@ -124,7 +124,9 @@ module.exports = function (grunt) {
                             'ng-resource/lib/angular-resource.js',
                             'font-awesome/css/font-awesome.min.css',
                             'bootstrap/js/tooltip.js',
-                             'bootstrap/dist/js/bootstrap.min.js'
+                             'bootstrap/dist/js/bootstrap.min.js',
+                             'angular-cookies/angular-cookies.min.js',
+                             'angular-md5/angular-md5.min.js'
                         ],
                         dest: 'app/dist/node_modules/'
                     }

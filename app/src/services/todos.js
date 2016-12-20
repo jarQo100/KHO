@@ -27,6 +27,7 @@ angular.module('KHO_CRM').factory('Todos', dataTodos);
 				return $http.put('/api/todos/updateAttempt', todoData);
 			},
 			addAttempt : function(user_id, todoData){
+				console.log("HERE");
 				return $http.put('/api/todos/addAttempt/' + user_id, todoData);
 			},
 			deleteAttempt : function(user_id, attempt_id){
@@ -38,7 +39,31 @@ angular.module('KHO_CRM').factory('Todos', dataTodos);
 			addComment: function(taskId, commData){
 				console.log(commData.category);
 				return $http.post('/api/todos/createComment/' + taskId, commData);
-			}
+			},
+
+			getAll : function(){
+			            return $http.get('/api/users').then(handleSuccess, handleError('Error getting all users'));
+			        },
+
+			getById : function(id){
+			   return $http.get('/api/users/' + id).then(handleSuccess, handleError('Error getting user by id'));
+			},
+
+			getByUsername: function(username){
+			   return $http.get('/api/users/' + username).then(handleSuccess, handleError('Error getting user by username'));
+			},
+
+			// create : function(user){
+			//    return $http.post('/api/users', user).then(handleSuccess, handleError('Error creating user'));
+			// },
+
+			// update : function(user){
+			//    return $http.put('/api/users/' + user.id, user).then(handleSuccess, handleError('Error updating user'));
+			// },
+
+			// delete : function(id){
+			//    return $http.delete('/api/users/' + id).then(handleSuccess, handleError('Error deleting user'));
+			// },
 		}
 
     }

@@ -9,16 +9,18 @@
         '$http',
         'Todos',
         '$location',
-        '$timeout'
+        '$timeout',
+        'md5'
     ];
 
-    function CreateScoutController($scope, $http, Todos, $location, $timeout) {
+    function CreateScoutController($scope, $http, Todos, $location, $timeout, md5) {
 
     		$scope.createScout = function(formData){
 
 			$scope.invalidForm = false;
 			$scope.formData = formData;
-
+			formData.password = md5.createHash(formData.password);
+			console.log(formData.password);
 			if( formData.$valid ){
 
 				Todos.create(formData)

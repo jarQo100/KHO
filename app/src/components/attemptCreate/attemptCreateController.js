@@ -32,12 +32,11 @@ function AttemptCreateController($scope, $http, Todos, $timeout, $location){
 
             $scope.createAttempt = function(attemptData){
 
-
 			$scope.formData2 = attemptData;
 			$scope.formData2.tasks = $scope.tasks;
 
 			console.log($scope.formData2);
-
+console.log(attemptData.nameAndSurname);
 
 			if( attemptData.$valid ){
 
@@ -49,7 +48,6 @@ function AttemptCreateController($scope, $http, Todos, $timeout, $location){
 			              		Todos.addAttempt($scope.userData._id, $scope.userData.attempt).success(function(data) {
 
 				                                  $scope.alertUpdateUser = false;
-
 
 				                        }).error(function(err){
 				                                   console.log("GET ERROR: " + err);
