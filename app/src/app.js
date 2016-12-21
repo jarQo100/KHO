@@ -35,6 +35,13 @@
           templateUrl: 'pages/content/index.html',
         }
 
+        var dashboardView = {
+          name: 'mainView.dashboard',
+          url: '/dashboard',
+          templateUrl: 'src/components/dashboardView/dashboardViewComponent.html',
+          controller: 'DashboardViewController'
+        }
+
         var mainViewList = {
           name: 'mainView.List',
           url: '/list',
@@ -91,6 +98,20 @@
           controller: 'UpdateAttemptController',
         }
 
+        var updateAttempt = {
+          name: 'mainView.updateAttempt',
+          url: '/updateAttempt/:attemptId',
+          templateUrl: 'src/components/updateAttempt/updateAttemptComponent.html',
+          controller: 'UpdateAttemptController',
+        }
+
+        var meetingDate = {
+          name: 'mainView.meetingDate',
+          url: '/meetingDate',
+          templateUrl: 'src/components/meetingDate/meetingDateComponent.html',
+          controller: 'MeetingDateController',
+        }
+
 
       $stateProvider.state(loginState);
       $stateProvider.state(mainView);
@@ -102,6 +123,8 @@
       $stateProvider.state(detailsAttempt);
       $stateProvider.state(addComment);
       $stateProvider.state(updateAttempt);
+      $stateProvider.state(dashboardView);
+      $stateProvider.state(meetingDate);
       $urlRouterProvider.otherwise("/content/list");
 
 //$resourceProvider.defaults.stripTrailingSlashes = false;
