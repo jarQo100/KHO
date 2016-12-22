@@ -16,7 +16,8 @@ function UpdateAttemptController($scope, Todos, $location, $stateParams, $timeou
 
 		//var scoutIdParam = $stateParams.userId;
 		var attemptIdParam = $stateParams.attemptId;
-		console.log(attemptIdParam);
+
+		var userID;
 
 	       	$scope.formData = {};
 	       	$scope.tasks =  {};
@@ -27,7 +28,8 @@ function UpdateAttemptController($scope, Todos, $location, $stateParams, $timeou
 
 	       	Todos.get().success(function(data) {
 	                $scope.formData = data;
-	                console.log(data);
+							userID = data._id;
+	                console.log("DATA", data);
 	            });
 
 
@@ -52,16 +54,18 @@ function UpdateAttemptController($scope, Todos, $location, $stateParams, $timeou
 
 			$scope.formData2 = attemptData;
 			$scope.formData2.tasks = $scope.tasks;
+			$scope.formData2.userId = userID;
 
-			console.log($scope.formData2);
+			console.log("DORMDATA2", $scope.formData2);
 
 
 
 
 				Todos.updateAttempt(attemptData).success(function(data) {
 
-			                        $scope.userData = data;
+			                        $scope.userData = data;			                        
 			                        $scope.userData.attempt = attemptData;
+
 
 
 

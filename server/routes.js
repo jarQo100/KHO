@@ -119,10 +119,10 @@ app.get('/api/todos/findByIdAttempt/:todo_id', function (req, res) {
 
 app.put('/api/todos/updateAttempt', function (req, res) {
 
-console.log(req.body._id);
-var query = {_id : '5855b2c29209a808e4799ab5', 'attempt._id': req.body._id};
+console.log(req.body);
+var query = {'attempt._id': req.body._id};
 
-Todo.findById(query, function (err, todo) {
+Todo.findOne(query, function (err, todo) {
     // Handle any possible database errors
 
     for(i=0; i < todo.attempt.length; i++){
