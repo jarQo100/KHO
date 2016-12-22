@@ -1,9 +1,23 @@
 var Todo = require('./models/todo');
+var Meetings = require('./models/meetings');
+
 var mongoose = require('mongoose');
 mongoose.Promise = Promise;
 
 function getTodos(res) {
     Todo.find(function (err, todos) {
+        // if there is an error retrieving, send the error. nothing after res.send(err) will execute
+        if (err) {
+            res.send(err);
+        }
+
+        //console.log(todos);
+        res.json(todos); // return all todos in JSON format
+    });
+};
+
+function getMeetings(res) {
+    Meetings.find(function (err, todos) {
         // if there is an error retrieving, send the error. nothing after res.send(err) will execute
         if (err) {
             res.send(err);
@@ -291,7 +305,23 @@ app.post('/api/authenticate', function (req, res) {
     });
 
 
+app.post('/api/todos/createMeeting/', function(req, res){
+    Meetings.create({
+            date: req.body.date,
+            place: req.body.place,
+            description: req.body.description,
+            done: false
+        }, function (err, todo) {
+            if (err)
+                res.send(err);
+        });
+});
 
+    app.get('/api/todos/getMeetings', function (req, res) {
+        // use mongoose to get all todos in the database
+        //console.log("RES      :" + req.body.name;
+        getMeetings(res);
+    });
 
     //application -------------------------------------------------------------
     app.get('*', function (req, res) {

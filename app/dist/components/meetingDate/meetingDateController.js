@@ -10,22 +10,41 @@
         '$scope',
         '$http',
         'Todos',
-        '$timeout'
+        '$timeout',
+        '$location'
     ];
 
-    function MeetingDateController($scope, $http, Todos, $timeout) {
+    function MeetingDateController($scope, $http, Todos, $timeout, $location) {
 
-        Todos.get().success(function(data) {
-console.log(data);
-                $scope.users = data.length;
-                $scope.attempt = data[0].attempt.length;
-                $scope.alertDeleteUser = false;
+    $scope.formData = {};
+getMeetingsDate();
+        $scope.createMeeting = function(formData){
+             Todos.addMeeting(formData).success(function(){
 
-            }).error(function(err){
+             });
+              console.log("true");
+                $scope.formData = {};
+                getMeetingsDate();
+        }
 
-                console.log("GET ERROR: " + err);
+function getMeetingsDate(){
+        Todos.getMeeting().success(function(data){
+            console.log(data);
+            $scope.meetingData = data;
+        });
+    }
 
-            });
+//         Todos.get().success(function(data) {
+// console.log(data);
+//                 $scope.users = data.length;
+//                 $scope.attempt = data[0].attempt.length;
+//                 $scope.alertDeleteUser = false;
+
+//             }).error(function(err){
+
+//                 console.log("GET ERROR: " + err);
+
+//             });
 
 
 

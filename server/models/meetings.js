@@ -47,4 +47,4 @@ var Meetings = new Schema({
 });
 
 
-module.exports = mongoose.model('Mettings', Mettings);
+module.exports = mongoose.model('Meetings', Meetings);

@@ -40,7 +40,12 @@ angular.module('KHO_CRM').factory('Todos', dataTodos);
 				console.log(commData.category);
 				return $http.post('/api/todos/createComment/' + taskId, commData);
 			},
-
+			addMeeting: function(formData){
+				return $http.post('/api/todos/createMeeting/', formData);
+			},
+			getMeeting: function(){
+				return $http.get('/api/todos/getMeetings/');
+			},
 			getAll : function(){
 			            return $http.get('/api/users').then(handleSuccess, handleError('Error getting all users'));
 			        },
