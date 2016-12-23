@@ -18,6 +18,10 @@ var candidatesSchema = new Schema({
     	type : String,
     	default: ''
     },
+    description: {
+        type : String,
+        default: ''
+    }
 
 
 });

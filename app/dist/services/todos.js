@@ -46,9 +46,13 @@ angular.module('KHO_CRM').factory('Todos', dataTodos);
 			getMeeting: function(){
 				return $http.get('/api/todos/getMeetings/');
 			},
+			addPersonToMeeting: function(todoData){
+				console.log(todoData);
+				return $http.put('/api/meeting/adduser', todoData);
+			},
 			getAll : function(){
-			            return $http.get('/api/users').then(handleSuccess, handleError('Error getting all users'));
-			        },
+            return $http.get('/api/users').then(handleSuccess, handleError('Error getting all users'));
+        },
 
 			getById : function(id){
 			   return $http.get('/api/users/' + id).then(handleSuccess, handleError('Error getting user by id'));
@@ -57,6 +61,8 @@ angular.module('KHO_CRM').factory('Todos', dataTodos);
 			getByUsername: function(username){
 			   return $http.get('/api/users/' + username).then(handleSuccess, handleError('Error getting user by username'));
 			},
+
+
 
 			// create : function(user){
 			//    return $http.post('/api/users', user).then(handleSuccess, handleError('Error creating user'));

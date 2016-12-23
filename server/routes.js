@@ -323,6 +323,43 @@ app.post('/api/todos/createMeeting/', function(req, res){
         getMeetings(res);
     });
 
+    
+    app.put('/api/meeting/adduser', function (req, res) {
+        // use mongoose to get all todos in the database
+        console.log(req.body.meetingId);
+
+         var query = { _id : req.body.meetingId};
+         var update = { $pull : { 'candidates.$' : req.body } };
+         var options = {new: true};
+
+         Meetings.findOne(query, function(err, todo) {
+            
+            todo.candidates.push(req.body);
+            console.log("todo", todo);
+
+
+            Meetings.findOneAndUpdate(
+               query,
+               todo,
+                function (err, todo) {
+
+                    if (err)
+                        res.send(err);
+                });
+
+
+            if (err)
+                res.send(err);
+        });
+
+
+
+    });
+
+
+
+
+
     //application -------------------------------------------------------------
     app.get('*', function (req, res) {
         res.sendFile(__dirname + '/app/dist/index.html'); // load the single view file (angular will handle the page changes on the front-end)

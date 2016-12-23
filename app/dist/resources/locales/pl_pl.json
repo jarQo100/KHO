@@ -110,6 +110,12 @@
 		"description" : "Uwagi do spotkania",
 		"candidates" : "Kandydaci",
 		 "goal" : "Cel",
-		 "submit" : "Dodaj spotkanie"
+		 "submit" : "Dodaj spotkanie",
+		 "reportSubmit" : "Zgłoś się",
+		 "descriptionReport" : "Uwagi/pytania",
+		 "starAttempt" : "Rozpoczęnie",
+		 "halfAttempt" : "Połówka",
+		 "endAttempt" : "Zakończenie",
+		 "chooseDate" : "Wybierz datę spotkania"
 	}
 }

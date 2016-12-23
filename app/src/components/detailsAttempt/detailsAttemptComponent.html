@@ -1,45 +1,45 @@
 <br />
 <br />
-    <div class="col-xs-offset-2 col-xs-8">
-        <div class="flat-panel">
-            <div class="flat-panel-header">
-                <h3 class="flat-panel-heading text-center">
-                    {{ 'detailsAttempt.title' | translate }}
-                    <span ng-show="invalidForm" type="button" class="deleteUserButton label label-danger pull-right">{{ 'createScout.invalidForm' | translate }}</span>
-                </h3>
-            </div>
-            <br />
-            <div class="flat-panel-body">
-                <ul class="DetailsAttemptHead">
-                    <li>{{ 'attemptCreate.nameAndSurname' | translate }}:
-                        <strong>{{ formData.name }} {{ formData.surname }} </strong>
-                    </li>
-                    <li>{{ 'detailsAttempt.rank' | translate }}
-                        <strong>{{ formData.rank }}</strong>
-                    </li>
-                    <li>{{ 'detailsAttempt.quide' | translate }}
-                        <strong>{{ formData.attempt[0].quide }}</strong>
-                        <a href="" ui-sref="mainView.addComment({ attemptId: attemptIdParam})" class="btn btn-default alignright">{{ 'detailsAttempt.addComment' | translate }}</a>
-                    </li>
-                    <li>{{ 'detailsAttempt.dateBegin' | translate }}
-                        <strong>{{ formData.attempt[0].dateBegin | date:"dd MMMM yyyy" }}
-                        </strong>
-                    </li>
-                </ul>
-                <table class="tableAttempt">
-                    <thead>
-                        <th>{{ 'detailsAttempt.goal' | translate }}</th>
-                        <th>{{ 'detailsAttempt.task' | translate }}</th>
-                        <th>{{ 'detailsAttempt.term' | translate }}</th>
-                    </thead>
-                    <tbody ng-repeat="attempt in formData.attempt" ng-if="attempt._id == attemptIdParam">
-                        <tr ng-repeat="task in attempt.tasks">
-                            <td class="text-center" width="10%">{{ task.category }}</td>
-                            <td>{{ task.description }}</td>
-                            <td class="text-center" width="15%">{{ task.dateEnd | date:"dd MMMM yyyy" }}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+<div class="col-xs-offset-2 col-xs-8">
+    <div class="flat-panel">
+        <div class="flat-panel-header">
+            <h3 class="flat-panel-heading text-center">
+                {{ 'detailsAttempt.title' | translate }}
+                <span ng-show="invalidForm" type="button" class="deleteUserButton label label-danger pull-right">{{ 'createScout.invalidForm' | translate }}</span>
+            </h3>
+        </div>
+        <br />
+        <div class="flat-panel-body">
+            <ul class="DetailsAttemptHead">
+                <li>{{ 'attemptCreate.nameAndSurname' | translate }}:
+                    <strong>{{ formData.name }} {{ formData.surname }} </strong>
+                </li>
+                <li>{{ 'detailsAttempt.rank' | translate }}
+                    <strong>{{ formData.rank }}</strong>
+                </li>
+                <li>{{ 'detailsAttempt.quide' | translate }}
+                    <strong>{{ formData.attempt[0].quide }}</strong>
+                    <a href="" ui-sref="mainView.addComment({ attemptId: attemptIdParam})" class="btn btn-default alignright">{{ 'detailsAttempt.addComment' | translate }}</a>
+                </li>
+                <li>{{ 'detailsAttempt.dateBegin' | translate }}
+                    <strong>{{ formData.attempt[0].dateBegin | date:"dd MMMM yyyy" }}
+                    </strong>
+                </li>
+            </ul>
+            <table class="tableAttempt">
+                <thead>
+                    <th>{{ 'detailsAttempt.goal' | translate }}</th>
+                    <th>{{ 'detailsAttempt.task' | translate }}</th>
+                    <th>{{ 'detailsAttempt.term' | translate }}</th>
+                </thead>
+                <tbody ng-repeat="attempt in formData.attempt" ng-if="attempt._id == attemptIdParam">
+                    <tr ng-repeat="task in attempt.tasks">
+                        <td class="text-center" width="10%">{{ task.category }}</td>
+                        <td>{{ task.description }}</td>
+                        <td class="text-center" width="15%">{{ task.dateEnd | date:"dd MMMM yyyy" }}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
+</div>
