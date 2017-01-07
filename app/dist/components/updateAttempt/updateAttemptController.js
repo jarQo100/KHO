@@ -63,19 +63,15 @@ function UpdateAttemptController($scope, Todos, $location, $stateParams, $timeou
 
 				Todos.updateAttempt(attemptData).success(function(data) {
 
-			                        $scope.userData = data;			                        
+			                        $scope.userData = data;
 			                        $scope.userData.attempt = attemptData;
-
-
-
-
 
 
 			              }).error(function(){
 			              	console.log("BŁĄD");
 			              });
 
-$location.path('/content/attemptList');
+$location.path('/content/dashboard');
 
 
     		};

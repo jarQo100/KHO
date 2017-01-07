@@ -9,28 +9,40 @@
             </div>
             <nav class="sidebar-navigation">
                 <ul>
-                    <li class="active">
+                    <li ng-class="getActiveClass('/content/dashboard');">
+                        <a href="" ui-sref="mainView.dashboard">
+                            <i class="fa fa-tachometer"></i>
+                            <span>{{ 'mainView.dashboard' | translate }}</span>
+                        </a>
+                    </li>
+                    <li ng-class="getActiveClass('/content/list');" ng-show="role != 'Petent'">
                         <a href="" ui-sref="mainView.List">
                             <i class="fa fa-users"></i>
                             <span>{{ 'mainView.users' | translate }}</span>
                         </a>
                     </li>
-                    <li>
+                    <li ng-class="getActiveClass('/content/attemptList');" ng-show="role != 'Petent'">
                         <a href="" ui-sref="mainView.attemptList">
-                            <i class="fa fa-cogs"></i>
+                            <i class="fa fa-bar-chart"></i>
                             <span>{{ 'mainView.attempts' | translate }}</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="" ui-sref="mainView.dashboard">
-                            <i class="fa fa-cogs"></i>
-                            <span>Dashboard</span>
+                    <li ng-class="getActiveClass('/content/meetingDate');">
+                        <a href="" ui-sref="mainView.meetingDate">
+                            <i class="fa fa-calendar"></i>
+                            <span>{{ 'mainView.meeting' | translate }}</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="" ui-sref="mainView.meetingDate">
+                    <li ng-class="getActiveClass('/content/details');">
+                        <a href="" ui-sref="mainView.Details({ scoutsId: scout_id })">
                             <i class="fa fa-cogs"></i>
-                            <span>Spotkania kapituły</span>
+                            <span>{{ 'mainView.settings' | translate }}</span>
+                        </a>
+                    </li>
+                    <li  ng-show="role == 'Administrator'">
+                        <a href="" ui-sref="mainView.genereteTextToWebsite" >
+                            <i class="fa fa-cogs"></i>
+                            <span>genereteTextToWebsite</span>
                         </a>
                     </li>
                     <li>

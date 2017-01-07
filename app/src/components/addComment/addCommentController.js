@@ -10,31 +10,42 @@ AddCommentController.$inject = [
 	'$http',
 	'Todos',
 	'SetAlertClass',
+	'$rootScope'
 ];
 
-function AddCommentController($scope, $stateParams, $http, Todos, SetAlertClass){
+function AddCommentController($scope, $stateParams, $http, Todos, SetAlertClass, $rootScope){
 
 		$scope.attemptIdParam = $stateParams.attemptId;
-
+		$scope.nameAndSurname;
 		$scope.formData = {};
+		getComments();
 
-		var getComments = Todos.findByIdTask($scope.attemptIdParam).success(function(data) {
-			$scope.formData = data;
-		});
 
 		$scope.createTask = function(commData){
+			var username = $rootScope.globals.currentUser['username'];
+			Todos.findByEmail(username).success(function(data){
 
-			Todos.addComment($scope.attemptIdParam, commData).success(function(data) {
-				console.log("SUCCESS");
-		            }).error(function(err){
-		                       console.log("GET ERROR: " + err);
-		            });
-		            window.location.reload();
+			         commData.author = data.name + " " + data.surname;
 
+				         	Todos.addComment($scope.attemptIdParam, commData).success(function(data) {
+						console.log("SUCCESS");
+				            }).error(function(err){
+				                       console.log("GET ERROR: " + err);
+				            });
+
+				getComments();
+				$scope.showFormComm = false;
+			  });
+		}
+
+		function getComments(){
+			Todos.findByIdTask($scope.attemptIdParam).success(function(data) {
+				$scope.formData = data;
+			});
 		}
 
 		$scope.getClass = function(category){
-			return SetAlertClass.set(category);
+			return "alert-" + SetAlertClass.set(category);
 		}
 
 		$scope.showForm = function(){

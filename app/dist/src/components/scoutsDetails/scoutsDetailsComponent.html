@@ -100,7 +100,9 @@
                             <div class="form-group">
                                 <label for="filter-company-team" class="col-sm-3 col-xs-12 control-label">{{ 'createScout.team' | translate }} </label>
                                 <div class="col-sm-9 col-xs-12">
-                                    <input id="team" type="text" class="form-control" ng-model="formData.team" placeholder="Nazwa drużyny" required>
+                                    <select name="role" id="role" class="form-control" ng-model="formData.team">
+                                        <option ng-repeat="team in teams" value="{{ team.name }}">{{ team.name }}</option>
+                                        </select>
                                 </div>
                             </div>
                         </div>
@@ -116,14 +118,14 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- <div class="col-xs-12 col-md-6">
-                                <div class="form-group">
-                                    <label for="filter-company-team" class="col-sm-3 col-xs-12 control-label">{{ 'createScout.password' | translate }} </label>
-                                    <div class="col-sm-9 col-xs-12">
-                                        <input id="password" type="password" class="form-control" ng-model="formData.password" placeholder="{{ 'createScout.password' | translate }}" required>
-                                    </div>
+                        <div class="col-xs-12 col-md-6">
+                            <div class="form-group">
+                                <label for="filter-company-team" class="col-sm-3 col-xs-12 control-label">{{ 'createScout.password' | translate }} </label>
+                                <div class="col-sm-9 col-xs-12">
+                                    <input id="password" type="password" class="form-control" ng-model="formData.password2" placeholder="{{ 'createScout.password' | translate }}" required>
                                 </div>
-                            </div> -->
+                            </div>
+                        </div>
                         <div class="col-xs-12 col-md-12">
                             <input ng-click="updateScout(formData)" type="submit" value="{{ 'scoutsDetails.submit' | translate }}" class="btn btn-success alignright" />
                         </div>

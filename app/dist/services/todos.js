@@ -17,6 +17,9 @@ angular.module('KHO_CRM').factory('Todos', dataTodos);
 			findById : function(id) {
 				return $http.get('/api/todos/findById/' + id);
 			},
+			findByEmail : function(email){
+				return $http.get('/api/todos/findByEmail/' + email)
+			},
 			findByIdAttempt : function(id) {
 				return $http.get('/api/todos/findByIdAttempt/' + id);
 			},
@@ -30,8 +33,15 @@ angular.module('KHO_CRM').factory('Todos', dataTodos);
 				console.log("HERE");
 				return $http.put('/api/todos/addAttempt/' + user_id, todoData);
 			},
+			checkRole : function(emial){
+				return $http.get('/api/todos/checkRole/' + emial);
+			},
 			deleteAttempt : function(user_id, attempt_id){
 				return $http.delete('/api/todos/deleteAttempt/' + user_id + '/' + attempt_id);
+			},
+			deleteMeeting : function(meetingId){
+				console.log(meetingId);
+				return $http.delete('/api/todos/deleteMeeting/' + meetingId);
 			},
 			findByIdTask : function(taskId){
 				return $http.get('/api/todos/findTask/' + taskId);
@@ -43,6 +53,9 @@ angular.module('KHO_CRM').factory('Todos', dataTodos);
 			addMeeting: function(formData){
 				return $http.post('/api/todos/createMeeting/', formData);
 			},
+			confirmPresent: function(formData){
+				return $http.put('/api/todos/confirmPresent/', formData);
+			},
 			getMeeting: function(){
 				return $http.get('/api/todos/getMeetings/');
 			},
@@ -51,8 +64,8 @@ angular.module('KHO_CRM').factory('Todos', dataTodos);
 				return $http.put('/api/meeting/adduser', todoData);
 			},
 			getAll : function(){
-            return $http.get('/api/users').then(handleSuccess, handleError('Error getting all users'));
-        },
+			            return $http.get('/api/users').then(handleSuccess, handleError('Error getting all users'));
+			        },
 
 			getById : function(id){
 			   return $http.get('/api/users/' + id).then(handleSuccess, handleError('Error getting user by id'));
@@ -60,21 +73,8 @@ angular.module('KHO_CRM').factory('Todos', dataTodos);
 
 			getByUsername: function(username){
 			   return $http.get('/api/users/' + username).then(handleSuccess, handleError('Error getting user by username'));
-			},
+			}
 
-
-
-			// create : function(user){
-			//    return $http.post('/api/users', user).then(handleSuccess, handleError('Error creating user'));
-			// },
-
-			// update : function(user){
-			//    return $http.put('/api/users/' + user.id, user).then(handleSuccess, handleError('Error updating user'));
-			// },
-
-			// delete : function(id){
-			//    return $http.delete('/api/users/' + id).then(handleSuccess, handleError('Error deleting user'));
-			// },
 		}
 
     }

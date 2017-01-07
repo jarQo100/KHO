@@ -10,10 +10,23 @@
         'Todos',
         '$location',
         '$timeout',
-        'md5'
+        'md5',
+        '$rootScope',
+        'KHO_CRM_CONFIG'
     ];
 
-    function CreateScoutController($scope, $http, Todos, $location, $timeout, md5) {
+    function CreateScoutController($scope, $http, Todos, $location, $timeout, md5, $rootScope, KHO_CRM_CONFIG) {
+
+    var username = $rootScope.globals.currentUser['username'];
+    Todos.checkRole(username).success(function(response){
+        $scope.role = response.role;
+
+        if(response.role == KHO_CRM_CONFIG.petent){
+            $location.path('/notAuthorize');
+        }
+    });
+
+$scope.teams = KHO_CRM_CONFIG.teams;
 
     		$scope.createScout = function(formData){
 
@@ -44,6 +57,8 @@
 			}
 
     		};
+
+
 
     }
 

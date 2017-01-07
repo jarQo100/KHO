@@ -10,10 +10,23 @@
         '$scope',
         '$http',
         'Todos',
-        '$timeout'
+        '$timeout',
+        '$rootScope',
+        'KHO_CRM_CONFIG',
+        '$location'
     ];
 
-    function MainPageController($scope, $http, Todos, $timeout) {
+    function MainPageController($scope, $http, Todos, $timeout, $rootScope, KHO_CRM_CONFIG, $location) {
+
+    var username = $rootScope.globals.currentUser['username'];
+    Todos.checkRole(username).success(function(response){
+        $scope.role = response.role;
+
+        if(response.role == KHO_CRM_CONFIG.petent){
+            $location.path('/notAuthorize');
+        }
+    });
+
 
             $scope.formData = {};
 

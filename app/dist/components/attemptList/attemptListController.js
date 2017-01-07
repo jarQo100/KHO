@@ -10,13 +10,26 @@ AttemptListController.$inject= [
 	'Todos',
 	'$timeout',
 	'$location',
-	'SetAlertClass'
+	'SetAlertClass',
+	'$rootScope',
+	'KHO_CRM_CONFIG'
 ];
 
-function AttemptListController($scope, $http, Todos, $timeout, $location, SetAlertClass){
+function AttemptListController($scope, $http, Todos, $timeout, $location, SetAlertClass, $rootScope, KHO_CRM_CONFIG){
 
 	$scope.formData = {};
 	$scope.users = [];
+
+    var username = $rootScope.globals.currentUser['username'];
+    Todos.checkRole(username).success(function(response){
+        $scope.role = response.role;
+         if(response.role == KHO_CRM_CONFIG.petent){
+            $location.path('/notAuthorize');
+        }
+    });
+
+
+
 
             Todos.get().success(function(data) {
 
@@ -26,7 +39,15 @@ function AttemptListController($scope, $http, Todos, $timeout, $location, SetAle
                				attempt.userID = user._id;
                				attempt.name = user.name;
                				attempt.surname = user.surname;
-					$scope.users.push(attempt);
+               				if($scope.role != KHO_CRM_CONFIG.petent){
+               					$scope.users.push(attempt);
+               				}else{
+               					if(user.email == username){
+               						$scope.users.push(attempt);
+               					}
+
+               				}
+
 
                			});
 
@@ -67,7 +88,7 @@ function AttemptListController($scope, $http, Todos, $timeout, $location, SetAle
 
 
 		  $scope.getClass = function(status) {
-		  	return SetAlertClass.setClassStatus(status);
+		  	return "label-" + SetAlertClass.setClassStatus(status);
 		  };
 
 

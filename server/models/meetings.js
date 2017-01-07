@@ -5,16 +5,15 @@ var Schema = mongoose.Schema;
 
 var candidatesSchema = new Schema({
 
-
-    _id: {
-    	type: String,
-    	default : ''
-    },
-    nameAndSurname: {
+   nameAndSurname: {
     	type : String,
     	default: ''
     },
-    gool :{
+    userId:{
+        type : String,
+        default: ''
+    },
+    goal :{
     	type : String,
     	default: ''
     },
@@ -26,10 +25,21 @@ var candidatesSchema = new Schema({
 
 });
 
+var memberSchema = new Schema({
+
+   nameAndSurname: {
+        type : String,
+        default: ''
+    },
+    userId:{
+        type : String,
+        default: ''
+    }
+});
 
 var Meetings = new Schema({
 
-	date: {
+    date: {
         type: Date,
         default: ''
     },
@@ -46,7 +56,9 @@ var Meetings = new Schema({
         default: ''
     },
 
-    candidates : [candidatesSchema]
+    candidates : [candidatesSchema],
+
+    member : [memberSchema]
 
 });
 

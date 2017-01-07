@@ -99,7 +99,9 @@
                             <div class="form-group">
                                 <label for="filter-company-team" class="col-sm-3 col-xs-12 control-label">{{ 'createScout.team' | translate }} </label>
                                 <div class="col-sm-9 col-xs-12">
-                                    <input id="team" type="text" class="form-control" ng-model="formData.team" placeholder="Nazwa drużyny" required>
+                                    <select name="role" id="role" class="form-control" ng-model="formData.team">
+                                        <option ng-repeat="team in teams" value="{{ team.name }}">{{ team.name }}</option>
+                                        </select>
                                 </div>
                             </div>
                         </div>
@@ -110,7 +112,7 @@
                                     <select name="role" id="role" class="form-control" ng-model="formData.role">
                                         <option value="Administrator">Administrator</option>
                                         <option value="Członek kapituły">Członek kapituły</option>
-                                        <option value="Petent">Petent</option>
+                                        <option value="Petent">Kandydat</option>
                                     </select>
                                 </div>
                             </div>
@@ -124,7 +126,7 @@
                             </div>
                         </div>
                         <div class="col-xs-12 col-md-12">
-                            <input ng-click="createScout(formData)" type="submit" value="{{ 'createScout.submit' | translate }}" class="btn btn-success alignright" />
+                            <button ng-click="createScout(formData)" type="submit" class="btn btn-success alignright">{{ 'createScout.submit' | translate }}</button>
                         </div>
                 </form>
                 </div>

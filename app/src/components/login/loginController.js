@@ -28,7 +28,7 @@
                 if (response.success) {
                     console.log("true");
                     AuthenticationService.SetCredentials(vm.username, vm.password);
-                    $location.path('/content/list');
+                    $location.path('/content/dashboard');
                 } else {
                     console.log("false");
                     //UserService.Error(response.message);

@@ -4,7 +4,10 @@
 	 "copyright": "Copyright © 2016 JarQo",
 	 "users" : "Użytkownicy systemu",
 	 "attempts" : "Próby na stopień",
-	 "logout" : "Wyloguj się"
+	 "logout" : "Wyloguj się",
+	 "dashboard" : "Panel główny",
+	 "meeting" : "Spotkania kapituły",
+	 "settings" : "Zarządzaj swoim kontem"
   },
   "mainPage": {
 	 "users": "Wszyscy użytkownicy systemu",
@@ -101,7 +104,8 @@
 		"commCategory" : "Kategoria komentarza",
 		"commDescription": "Komentarz",
 		"addComm" : "Dodaj komentarz",
-		"submit" : "Dodaj komentarz"
+		"submit" : "Dodaj komentarz",
+		"author" : "Autor"
 	},
 	"meetingDate" : {
 		"title" : "Spotkania kapituły",
@@ -116,6 +120,31 @@
 		 "starAttempt" : "Rozpoczęnie",
 		 "halfAttempt" : "Połówka",
 		 "endAttempt" : "Zakończenie",
-		 "chooseDate" : "Wybierz datę spotkania"
+		 "chooseDate" : "Wybierz datę spotkania",
+		 "report" : "Zgłoś się na spotkanie",
+		 "addMeeting" : "Dodaj spotkanie",
+		 "candidates" : "Liczba kandydatów",
+		 "options" : "Opcje",
+		 "candidatesDetails" : "Zgłoszeni",
+		 "meetingDetailsTitle" : "Szczegóły spotkania",
+		 "confirmPresent" : "Potwierdź swoją obecność na kapitule",
+		 "memberCount" : "Liczba członków kapituły",
+		 "member" : "Skład kapituły"
+	},
+	"dashbardView" : {
+		"title" : "Witaj!",
+		"countUsers" : "Liczba użytkowników w systemie",
+		"countOpenAttempt" : "Liczba otwartych prób",
+		"countCloseAttempt" : "Liczba zamkniętych prób",
+		"countAllAttempt" : "Liczba prowadzonych prób",
+		"nameAndSurname" : "Imię i nazwisko",
+		"date" : "Data dodania",
+		"category" : "Kategoria komentarza",
+		"description" : "Komentarz",
+		"taskName" : "Kategoria próby",
+		"lastComments" : "Ostatnio dodane komentarze do prób",
+		"nextMeetingDate" : "Następne spotkanie kapituły Harcerza Orlego odbędzie się: ",
+		"report" : "Zgłoś się na spotkanie z kapitułą",
+		"author" : "Autor"
 	}
 }

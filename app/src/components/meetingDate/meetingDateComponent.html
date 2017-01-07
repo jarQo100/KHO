@@ -2,28 +2,15 @@
     <div class="flat-panel">
         <div class="flat-panel-header">
             <h3 class="flat-panel-heading">
-                {{ 'meetingDate.title' | translate }}
+                {{role}} {{ 'meetingDate.title' | translate }}
                 <span ng-show="alertUpdateUser" type="button" class="deleteUserButton label label-success pull-right">{{ 'scoutsDetails.updateScout' | translate }}</span>
             </h3>
+            <span type="button" ng-show="role == 'Administrator'" ng-click="addMeetingToogle = !addMeetingToogle" class="deleteUserButton btn btn-default"><i class="fa fa-plus"></i> {{ 'meetingDate.addMeeting' | translate }}</span>
+            <span type="button" ng-show="role == 'Petent'" ng-click="reportToogle = !reportToogle" class="deleteUserButton btn btn-default"><i class="fa fa-plus"></i> {{ 'meetingDate.report' | translate }}</span>
+            <span type="button" ng-show="role == 'Administrator' || role == 'Członek kapituły'" ng-click="confirmPresentToogle = !confirmPresentToogle" class="deleteUserButton btn btn-default"><i class="fa fa-plus"></i> {{ 'meetingDate.confirmPresent' | translate }}</span>
         </div>
         <br />
-        <div class="col-md-8">
-            <table class="no-border table table-striped table-hover">
-                <thead class="text-center">
-                    <th>{{ 'meetingDate.date' | translate }}</th>
-                    <th>{{ 'meetingDate.place' | translate }}</th>
-                    <th>{{ 'meetingDate.description' | translate }}</th>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="row in meetingData | orderBy : '-date'">
-                        <td>{{ row.date | date:"dd MMMM yyyy" }}</td>
-                        <td>{{ row.place }}</td>
-                        <td>{{ row.description }}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="col-md-4">
+        <section class="well" ng-show="addMeetingToogle">
             <h5 class="text-center">
                 <strong>{{ 'meetingDate.submit' | translate }}</strong>
             </h5>
@@ -48,9 +35,8 @@
                         <input ng-click="createMeeting(formData)" type="submit" value="{{ 'meetingDate.submit' | translate }}" class="btn btn-success alignright" />
                     </div>
             </form>
-<br /><br />
-            <hr>
-<br /><br />
+        </section>
+        <section class="well" ng-show="reportToogle">
             <h5 class="text-center">
                 <strong>{{ 'meetingDate.reportSubmit' | translate }}</strong>
             </h5>
@@ -58,7 +44,8 @@
                 <div class="row">
                     <div class="col-xs-12 col-md-12">
                         <div class="form-group">
-                            <input type="text" class="form-control" ng-model="formDataReport.nameAndSurname" placeholder="{{ 'attemptCreate.nameAndSurname' | translate }}" required>
+                            <input type="text" class="form-control" ng-model="formDataReport.nameAndSurname" required disabled>
+                            <input type="hidden" class="form-control" ng-model="formDataReport.userId" required disabled>
                         </div>
                     </div>
                     <div class="col-xs-12 col-md-12">
@@ -88,135 +75,93 @@
                         <input ng-click="report(formDataReport)" type="submit" value="{{ 'meetingDate.reportSubmit' | translate }}" class="btn btn-success alignright" />
                     </div>
             </form>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
-<!-- <div class="flat-panel-body">
-                <div class="form-horizontal">
-                    <form novalidate class="css-form" name="formData">
-                        <div class="row">
-                            <div class="col-xs-12 col-md-6">
-                                <div class="form-group">
-                                    <label for="filter-company-name" class="col-sm-3 col-xs-12 control-label">{{ 'createScout.name' | translate }} </label>
-                                    <div class="col-sm-9 col-xs-12">
-                                        <input id="name" type="text" ng-model="formData.name" class="form-control" placeholder="Podaj imię" required>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-md-6">
-                                <div class="form-group">
-                                    <label for="filter-company-name" class="col-sm-3 col-xs-12 control-label">{{ 'createScout.surname' | translate }} </label>
-                                    <div class="col-sm-9 col-xs-12">
-                                        <input id="surname" type="text" ng-model="formData.surname" class="form-control" placeholder="Podaj nazwisko" required>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-md-6">
-                                <div class="form-group">
-                                    <label for="filter-company-name" class="col-sm-3 col-xs-12 control-label">{{ 'createScout.phone' | translate }} </label>
-                                    <div class="col-sm-9 col-xs-12">
-                                        <input id="phone" type="phone" ng-model="formData.phone" class="form-control" placeholder="Wpisz numer telefonu" required>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-md-6">
-                                <div class="form-group">
-                                    <label for="filter-company-name" class="col-sm-3 col-xs-12 control-label">{{ 'createScout.email' | translate }} </label>
-                                    <div class="col-sm-9 col-xs-12">
-                                        <input id="email" type="email" ng-model="formData.email" class="form-control" placeholder="Wpisz e-mail" required>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-md-6">
-                                <div class="form-group">
-                                    <label for="filter-company-address" class="col-sm-3 col-xs-12 control-label">{{ 'createScout.address' | translate }} </label>
-                                    <div class="col-sm-9 col-xs-12">
-                                        <input id="address" type="text" ng-model="formData.address" class="form-control" placeholder="Podaj adress" required>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-md-6">
-                                <div class="form-group">
-                                    <label for="filter-company-school" class="col-sm-3 col-xs-12 control-label">{{ 'createScout.school' | translate }} </label>
-                                    <div class="col-sm-9 col-xs-12">
-                                        <input id="school" type="text" ng-model="formData.school" class="form-control" value="" placeholder="Nazwa szkoły" required>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-md-6">
-                                <div class="form-group">
-                                    <label for="filter-company-rank" class="col-sm-3 col-xs-12 control-label">{{ 'createScout.rank' | translate }} </label>
-                                    <div class="col-sm-9 col-xs-12">
-                                        <select name="rank" id="rank" class="form-control" ng-model="formData.rank">
-                                            <option value="Brak">brak</option>
-                                            <option value="Młodzik">Młodzik</option>
-                                            <option value="Wywiadowca">Wywiadowca</option>
-                                            <option value="Ćwik">Ćwik</option>
-                                            <option value="Harcerz Orli">Harcerz Orli</option>
-                                            <option value="Harcerz Rzeczypospolitej">Harcerz Rzeczypospolitej</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-md-6">
-                                <div class="form-group">
-                                    <label for="filter-company-rank" class="col-sm-3 col-xs-12 control-label">{{ 'createScout.rankInst' | translate }} </label>
-                                    <div class="col-sm-9 col-xs-12">
-                                        <select name="rank" id="rank" class="form-control" ng-model="formData.rankInst">
-                                            <option value="Brak">Brak</option>
-                                            <option value="Przewodnik">Przewodnik</option>
-                                            <option value="Podharcmistrz">Podharcmistrz</option>
-                                            <option value="Harcmistrz">Harcmistrz</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-md-6">
-                                <div class="form-group">
-                                    <label for="filter-company-school" class="col-sm-3 col-xs-12 control-label">{{ 'createScout.birthday' | translate }} </label>
-                                    <div class="col-sm-9 col-xs-12">
-                                        <input id="birthday" type="text" ng-model="formData.birthday" class="form-control" placeholder="Data urodzenia" required>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-md-6">
-                                <div class="form-group">
-                                    <label for="filter-company-team" class="col-sm-3 col-xs-12 control-label">{{ 'createScout.team' | translate }} </label>
-                                    <div class="col-sm-9 col-xs-12">
-                                        <input id="team" type="text" class="form-control" ng-model="formData.team" placeholder="Nazwa drużyny" required>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-md-6">
-                                <div class="form-group">
-                                    <label for="filter-company-team" class="col-sm-3 col-xs-12 control-label">{{ 'createScout.role' | translate }} </label>
-                                    <div class="col-sm-9 col-xs-12">
-                                        <select name="role" id="role" class="form-control" ng-model="formData.role">
-                                            <option value="Administrator">Administrator</option>
-                                            <option value="Członek kapituły">Członek kapituły</option>
-                                            <option value="Petent">Petent</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- <div class="col-xs-12 col-md-6">
-                                <div class="form-group">
-                                    <label for="filter-company-team" class="col-sm-3 col-xs-12 control-label">{{ 'createScout.password' | translate }} </label>
-                                    <div class="col-sm-9 col-xs-12">
-                                        <input id="password" type="password" class="form-control" ng-model="formData.password" placeholder="{{ 'createScout.password' | translate }}" required>
-                                    </div>
-                                </div>
-                            </div> --
-                            <div class="col-xs-12 col-md-12">
-                                <input ng-click="updateScout(formData)" type="submit" value="{{ 'scoutsDetails.submit' | translate }}" class="btn btn-success alignright" />
-                            </div>
-                    </form>
+        </section>
+        <section class="well" ng-show="confirmPresentToogle">
+            <h5 class="text-center">
+                <strong>{{ 'meetingDate.confirmPresent' | translate }}</strong>
+            </h5>
+            <form novalidate class="css-form" name="formDataConfirmPresent">
+                <div class="row">
+                    <div class="col-xs-12 col-md-12">
+                        <div class="form-group">
+                            <input type="text" class="form-control" ng-model="formDataConfirmPresent.nameAndSurname" required disabled>
+                            <input type="hidden" class="form-control" ng-model="formDataConfirmPresent.userId" required disabled>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-12">
+                        <div class="form-group">
+                            <select ng-model="formDataConfirmPresent.meetingId" class="form-control" placeholder="dasD" required>
+                                <option value="" disabled selected>{{ 'meetingDate.chooseDate' | translate }} </option>
+                                <option ng-repeat="row in meetingData" value="{{ row._id }}">{{ row.place }} - {{ row.date | date : "dd MMMM yy" }} </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-12">
+                        <input ng-click="confirmPresent(formDataConfirmPresent)" type="submit" value="{{ 'meetingDate.confirmPresent' | translate }}" class="btn btn-success alignright" />
+                    </div>
+            </form>
+        </section>
+        <section class="well" ng-repeat="row in meetingData" ng-if="row._id == meetingDataDetailsId">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h5 style="padding-bottom: 10px;">
+                        <strong>{{ 'meetingDate.meetingDetailsTitle' | translate }}</strong>
+                    </h5>
+                </div>
+                <div class="col-lg-4">
+                    <p>
+                        <strong>{{ 'meetingDate.date' | translate }}: </strong>{{ row.date | date:"dd MMMM yyyy" }}</p>
+                    <p>
+                        <strong>{{ 'meetingDate.place' | translate }}: </strong>{{ row.place }}</p>
+                    <p>
+                        <strong>{{ 'meetingDate.description' | translate }}: </strong>{{ row.description }}</p>
+                </div>
+                <div class="col-lg-4">
+                    <div class="col-lg-5">
+                        <strong>{{ 'meetingDate.candidatesDetails' | translate }}: </strong>
+                    </div>
+                    <div class="col-lg-7">
+                        <p ng-repeat="candidates in row.candidates">{{ candidates.nameAndSurname }}</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="col-lg-5">
+                        <strong>{{ 'meetingDate.member' | translate }}: </strong>
+                    </div>
+                    <div class="col-lg-7">
+                        <p ng-repeat="member in row.member">{{ member.nameAndSurname }}</p>
                     </div>
                 </div>
             </div>
-        </div> -->
-<!-- /content -->
+        </section>
+        <br />
+        <br />
+        <table class="no-border table table-striped table-hover">
+            <thead class="text-center">
+                <th>{{ 'meetingDate.date' | translate }}</th>
+                <th>{{ 'meetingDate.place' | translate }}</th>
+                <th>{{ 'meetingDate.description' | translate }}</th>
+                <th class="text-center">{{ 'meetingDate.candidates' | translate }}</th>
+                <th class="text-center">{{ 'meetingDate.memberCount' | translate }}</th>
+                <th class="text-center">{{ 'meetingDate.options' | translate }}</th>
+            </thead>
+            <tbody>
+                <tr ng-repeat="row in meetingData | orderBy : '-date'">
+                    <td>{{ row.date | date:"dd MMMM yyyy" }}</td>
+                    <td>{{ row.place }}</td>
+                    <td>{{ row.description }}</td>
+                    <td class="text-center">{{row.candidates.length}}</td>
+                    <td class="text-center">{{row.member.length}}</td>
+                    <td class="text-center">
+                        <a ng-click="showDetails(row._id)" class="label label-default"><i class="fa fa-eye"></i></a>
+                        <a ng-show="role == 'Administrator'" class="label label-danger" ng-click="deleteMeeting(row._id)"><i class="fa fa-trash-o"></i> </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+        </div>
+        </div>
+    </div>
 </div>
 </div>

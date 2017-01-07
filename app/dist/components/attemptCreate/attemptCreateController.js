@@ -9,11 +9,21 @@ AttemptCreateController.$inject = [
 	'$http',
 	'Todos',
 	'$timeout',
-	'$location'
+	'$location',
+	'$rootScope',
+	'KHO_CRM_CONFIG'
 ];
 
-function AttemptCreateController($scope, $http, Todos, $timeout, $location){
+function AttemptCreateController($scope, $http, Todos, $timeout, $location, $rootScope, KHO_CRM_CONFIG){
 
+    var username = $rootScope.globals.currentUser['username'];
+    Todos.checkRole(username).success(function(response){
+        $scope.role = response.role;
+
+        if(response.role == KHO_CRM_CONFIG.petent){
+            $location.path('/notAuthorize');
+        }
+    });
 
 	$scope.formData  = {};
 	$scope.userData = {};
@@ -36,7 +46,7 @@ function AttemptCreateController($scope, $http, Todos, $timeout, $location){
 			$scope.formData2.tasks = $scope.tasks;
 
 			console.log($scope.formData2);
-console.log(attemptData.nameAndSurname);
+			console.log(attemptData.nameAndSurname);
 
 			if( attemptData.$valid ){
 

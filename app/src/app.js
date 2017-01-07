@@ -2,9 +2,16 @@
     'use strict';
 
     angular
-        .module('KHO_CRM', ['pascalprecht.translate', 'ngSanitize', 'ui.router', 'ngResource', 'ngCookies', 'angular-md5'])
+        .module('KHO_CRM', ['pascalprecht.translate', 'ngSanitize', 'ui.router', 'ngResource', 'ngCookies', 'angular-md5', 'chart.js', 'angular.filter'])
         .constant('KHO_CRM_CONFIG', {
-            defaultLang: 'pl_pl'
+            defaultLang: 'pl_pl',
+            admin: 'Administrator',
+            petent: 'Petent',
+            teams :  [
+              { name: "4 Rozborska Drużyna Harcerzy „Karacena” im. 10 Pułku Strzelców Konnych"},
+              { name: "1 Przeworska Drużyna Harcerzy „Borek” im. św. Franciszka z Asyżu"},
+              { name: "1 Jarosławska Drużyna Harcerzy „Pościg” im. Jana III Sobieskiego"}
+            ],
         })
         .config(configureFluoModule)
         .run(runApp);
@@ -14,12 +21,20 @@
          '$translateProvider',
          '$locationProvider',
          '$stateProvider',
-          '$urlRouterProvider',
-
-
+         '$urlRouterProvider',
+         'ChartJsProvider'
     ];
 
-    function configureFluoModule(KHO_CRM_CONFIG, $translateProvider, $locationProvider, $stateProvider, $urlRouterProvider) {
+    function configureFluoModule(KHO_CRM_CONFIG, $translateProvider, $locationProvider, $stateProvider, $urlRouterProvider, ChartJsProvider) {
+
+ChartJsProvider.setOptions({
+      //chartColors: ['#FF5252', '#FF8A80'],
+      responsive: false,
+      showLines: true,
+      colors : [ '#803690', '#00ADF9', '#DCDCDC', '#46BFBD', '#FDB45C', '#949FB1', '#4D5360'],
+      fullWidth : true,
+    });
+
 
       var loginState = {
         name: 'loginPage',
@@ -33,6 +48,12 @@
           name: 'mainView',
           url: '/content',
           templateUrl: 'pages/content/index.html',
+        }
+
+        var notAuthorize = {
+          name: 'notAuthorize',
+          url: '/notAuthorize',
+          templateUrl: 'pages/notAuthorize.html',
         }
 
         var dashboardView = {
@@ -112,6 +133,13 @@
           controller: 'MeetingDateController',
         }
 
+        var genereteTextToWebsite = {
+          name: 'mainView.genereteTextToWebsite',
+          url: '/genereteTextToWebsite',
+          templateUrl: 'src/components/genereteTextToWebsite/genereteTextToWebsiteComponent.html',
+          controller: 'GenereteTextToWebsiteController',
+        }
+
 
       $stateProvider.state(loginState);
       $stateProvider.state(mainView);
@@ -125,7 +153,9 @@
       $stateProvider.state(updateAttempt);
       $stateProvider.state(dashboardView);
       $stateProvider.state(meetingDate);
-      $urlRouterProvider.otherwise("/content/list");
+      $stateProvider.state(notAuthorize);
+      $stateProvider.state(genereteTextToWebsite);
+      $urlRouterProvider.otherwise("/content/dashboard");
 
 //$resourceProvider.defaults.stripTrailingSlashes = false;
         // $locationProvider.html5Mode({
@@ -147,9 +177,9 @@
 
     }
 
-    runApp.$inject = ['$translate', '$location', '$rootScope', '$cookies', '$http'];
+    runApp.$inject = ['$translate', '$location', '$rootScope', '$cookies', '$http', 'Todos'];
 
-    function runApp($translate, $location, $rootScope, $cookies, $http) {
+    function runApp($translate, $location, $rootScope, $cookies, $http, Todos) {
         var locationSearch = $location.search();
         if (locationSearch.hasOwnProperty('lang')) {
             $translate.use(locationSearch['lang'].toLowerCase());
@@ -166,12 +196,12 @@
             // redirect to login page if not logged in and trying to access a restricted page
             var restrictedPage = $.inArray($location.path(), ['/login', '/register']) === -1;
             var loggedIn = $rootScope.globals.currentUser;
+
             if (restrictedPage && !loggedIn) {
                 $location.path('/login');
             }
+
         });
-
-
 
     }
 

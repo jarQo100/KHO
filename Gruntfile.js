@@ -126,7 +126,12 @@ module.exports = function (grunt) {
                             'bootstrap/js/tooltip.js',
                              'bootstrap/dist/js/bootstrap.min.js',
                              'angular-cookies/angular-cookies.min.js',
-                             'angular-md5/angular-md5.min.js'
+                             'angular-md5/angular-md5.min.js',
+                             'angular-locale/pl_pl.js',
+                             'angular-permission/dist/angular-permission-ng.min.js',
+                             'chart.js/dist/Chart.min.js',
+                             'angular-chart.js/dist/angular-chart.min.js',
+                             'angular-filter/dist/angular-filter.min.js'
                         ],
                         dest: 'app/dist/node_modules/'
                     }

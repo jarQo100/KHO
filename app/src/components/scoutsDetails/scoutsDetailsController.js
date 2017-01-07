@@ -8,14 +8,30 @@
     	'$scope',
     	'$stateParams',
     	'Todos',
-                '$timeout'
+                '$timeout',
+                'md5',
+                '$rootScope',
+                'KHO_CRM_CONFIG',
+                '$location'
     ];
 
-    function ScoutsDetailsController($scope, $stateParams, Todos, $timeout) {
+    function ScoutsDetailsController($scope, $stateParams, Todos, $timeout, md5, $rootScope, KHO_CRM_CONFIG, $location) {
 
 	       var scoutIdParam = $stateParams.scoutsId;
-
+                        var username = $rootScope.globals.currentUser['username'];
+                        checkPermission();
+                        $scope.teams = KHO_CRM_CONFIG.teams;
 	       $scope.formData = {};
+
+                        function checkPermission(){
+                                    Todos.findByEmail(username).success(function(response){
+
+                                                        if(scoutIdParam != response._id && response.role == KHO_CRM_CONFIG.petent){
+                                                            $location.path('/notAuthorize');
+                                                        }
+                                                    });
+                        }
+
 
 
 
@@ -28,6 +44,9 @@
                 });
 
             $scope.updateScout = function(){
+                        if($scope.formData.password2 != null){
+                            $scope.formData.password = md5.createHash($scope.formData.password2);
+                        }
 
                         Todos.update($scope.formData).success(function(data) {
 

@@ -31,7 +31,7 @@
                         <textarea ng-model="commData.description" class="tasksDescription form-control" rows="6" placeholder="{{  'attemptCreate.descriptionPlaceholder' | translate }}"></textarea>
                     </div>
                     <div class="col-xs-12 col-md-12 ">
-                        <input ng-click="createTask(commData)" type="submit" value="{{ 'addComment.submit' | translate }}" class="btn btn-success alignright" style="margin-top: 30px;" />
+                        <button ng-click="createTask(commData)" type="submit" class="btn btn-success alignright" style="margin-top: 30px;">{{ 'addComment.submit' | translate }}</button>
                     </div>
                 </form>
             </div>
@@ -44,7 +44,11 @@
                             <i class="alignright commDate">{{ comm.date |  date:"dd MMMM yyyy" }}</i>
                         </div>
                         <div class="TaskInComment">
-                            <strong>{{ 'addComment.commDescription' | translate }}</strong> {{ comm.description }}</div>
+                            <strong>{{ 'addComment.author' | translate }}</strong> {{ comm.author }}
+                            </div>
+                        <div class="TaskInComment">
+                            <strong>{{ 'addComment.commDescription' | translate }}</strong> {{ comm.description }}
+                            </div>
                     </div>
                 </div>
             </div>

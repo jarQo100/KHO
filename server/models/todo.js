@@ -19,7 +19,11 @@ var commentsSchema = new Schema({
 	        taskName: {
 	            type : String,
 	            default : 'general'
-	        }
+	        },
+                        author : {
+                            type : String,
+                            default : ''
+                        }
 
 
 });
@@ -36,7 +40,7 @@ var tasksSchema = new Schema({
 				default: ''
 			},
 			dateEnd :{
-				type : Date,
+				type : String,
 				default: ''
 			},
 

@@ -9,22 +9,22 @@ function setClass() {
 			switch (category)
 			{
 				case "Raport" :
-					return "alert-report";
+					return "report";
 					break;
 				case "Uwaga" :
-					return "alert-warning";
+					return "warning";
 					break;
 				case "Opinia" :
-					return "alert-default";
+					return "default";
 					break;
 				case "Sukces" :
-					return "alert-success";
+					return "success";
 					break;
 				case "Zagrożenie" :
-					return "alert-zagrozenie";
+					return "zagrozenie";
 					break;
 				case "Niepowodzenie" :
-					return "alert-danger";
+					return "danger";
 					break;
 			}
 		},
@@ -32,13 +32,13 @@ function setClass() {
 			switch (status)
 			{
 				case "W trakcie realizacji" :
-					return "label-info";
+					return "info";
 					break;
 				case "Zamknięto pozytywnie" :
-					return "label-success";
+					return "success";
 					break;
 				case "Zamknięto negatywnie" :
-					return "label-danger";
+					return "danger";
 					break;
 			}
 		}

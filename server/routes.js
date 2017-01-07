@@ -93,12 +93,39 @@ module.exports = function (app) {
 
     });
 
+        app.delete('/api/todos/deleteMeeting/:meeting_id', function (req, res) {
+
+console.log(req.params.meeting_id);
+
+        Meetings.remove(
+               {_id: req.params.meeting_id}
+        , function (err, todo) {
+
+            if (err)
+                res.send(err);
+        });
+
+    });
+
 
     app.get('/api/todos/findById/:todo_id', function (req, res) {
         console.log(req.params.todo_id);
 
         Todo.findById({
             _id: req.params.todo_id
+        }, function (err, todo) {
+            if (err)
+                res.send(err);
+
+            res.json(todo);
+        });
+    });
+
+    app.get('/api/todos/findByEmail/:todo_email', function (req, res) {
+        console.log(req.params.todo_email);
+
+        Todo.findOne({
+            email: req.params.todo_email
         }, function (err, todo) {
             if (err)
                 res.send(err);
@@ -261,7 +288,7 @@ Todo.findById(query, function (err, todo) {
 
 app.post('/api/todos/createComment/:task_id', function (req, res) {
     console.log(req.params.task_id);
-    console.log(req.body.category);
+    console.log(req.body);
 
 
         Todo.update(
@@ -304,6 +331,15 @@ app.post('/api/authenticate', function (req, res) {
 
     });
 
+app.get('/api/todos/checkRole/:user_email', function(req, res){
+    console.log(req.params.user_email);
+    Todo.findOne(
+        {email : req.params.user_email}
+        ,function(err, todo){
+            console.log(todo.role);
+            return res.json({role : todo.role});
+    });
+});
 
 app.post('/api/todos/createMeeting/', function(req, res){
     Meetings.create({
@@ -323,33 +359,53 @@ app.post('/api/todos/createMeeting/', function(req, res){
         getMeetings(res);
     });
 
-    
+
     app.put('/api/meeting/adduser', function (req, res) {
         // use mongoose to get all todos in the database
-        console.log(req.body.meetingId);
+        console.log(req.body);
 
          var query = { _id : req.body.meetingId};
-         var update = { $pull : { 'candidates.$' : req.body } };
+         var update = { $push : { 'candidates' : req.body } };
          var options = {new: true};
 
-         Meetings.findOne(query, function(err, todo) {
-            
-            todo.candidates.push(req.body);
-            console.log("todo", todo);
+         Meetings.update(
 
+               {_id : req.body.meetingId},
+               update,
 
-            Meetings.findOneAndUpdate(
-               query,
-               todo,
-                function (err, todo) {
+            {safe: true, upsert: true, new : true
 
-                    if (err)
-                        res.send(err);
-                });
+        }, function (err, todo) {
 
+            console.log(todo);
 
             if (err)
                 res.send(err);
+
+        });
+  });
+         app.put('/api/todos/confirmPresent', function (req, res) {
+        // use mongoose to get all todos in the database
+        console.log(req.body);
+
+         var query = { _id : req.body.meetingId};
+         var update = { $push : { 'member' : req.body } };
+         var options = {new: true};
+
+         Meetings.update(
+
+               {_id : req.body.meetingId},
+               update,
+
+            {safe: true, upsert: true, new : true
+
+        }, function (err, todo) {
+
+            console.log(todo);
+
+            if (err)
+                res.send(err);
+
         });
 
 
