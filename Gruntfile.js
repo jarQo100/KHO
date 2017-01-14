@@ -133,7 +133,7 @@ module.exports = function (grunt) {
                              'angular-chart.js/dist/angular-chart.min.js',
                              'angular-filter/dist/angular-filter.min.js'
                         ],
-                        dest: 'app/dist/node_modules/'
+                        dest: 'public/dist/node_modules/'
                     }
                 ]
             },
