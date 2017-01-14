@@ -1,90 +1,281 @@
+/* 1 */
 {
     "_id" : ObjectId("584c14e302cf3911880be79b"),
-    "attempt" : [
-        {
-            "quide" : "Robert Baden-Powell",
-            "dateBegin" : ISODate("2015-12-11T23:00:00.000Z"),
-            "dateEnd" : ISODate("2015-12-11T23:00:00.000Z"),
-            "tasks" : [
-                {
-                    "category" : "222222",
-                    "description" : "2015-12-12",
-                    "dateEnd" : ISODate("2015-12-11T23:00:00.000Z"),
-                    "_id" : ObjectId("584c14f102cf3911880be79d")
-                }
-            ],
-            "_id" : ObjectId("584c14f102cf3911880be79c")
-        },
-        {
-            "quide" : "Robert Baden-Powell",
-            "dateBegin" : ISODate("2015-12-11T23:00:00.000Z"),
-            "dateEnd" : ISODate("2015-12-11T23:00:00.000Z"),
-            "tasks" : [
-                {
-                    "category" : "111111",
-                    "description" : "2015-12-12",
-                    "dateEnd" : ISODate("2015-12-11T23:00:00.000Z"),
-                    "_id" : ObjectId("584c1688e6654a052cbafce8")
-                }
-            ],
-            "_id" : ObjectId("584c1688e6654a052cbafce7")
-        },
-        {
-            "quide" : "Andrzej Małkowski",
-            "dateBegin" : ISODate("2015-12-11T23:00:00.000Z"),
-            "dateEnd" : ISODate("2015-12-11T23:00:00.000Z"),
-            "tasks" : [
-                {
-                    "category" : "WYCZYN",
-                    "description" : "Przez 4 miesiące będę uczęszczał 2 razy w tygodniu na basen i zdobędę sprawność „Pływak Doskonały ***”,  następnie w celu utrzymania kondycji będę pływał 1 raz w tygodniu",
-                    "dateEnd" : ISODate("2015-12-11T23:00:00.000Z"),
-                    "_id" : ObjectId("584c318767e68d0420932e81")
-                },
-                {
-                    "category" : "Rozwój kulturalny, ćwiczenie systematyczności",
-                    "description" : "Wezmę udział w kursie grania na gitarze, będę regularnie ćwiczył grę i zdobędę sprawność „Gitarzysta doskonały ***”  i dyplom „Animatora muzycznego Ruchu Apostolstwa Młodzieży ”",
-                    "dateEnd" : ISODate("2014-10-09T22:00:00.000Z"),
-                    "_id" : ObjectId("584c318767e68d0420932e80")
-                },
-                {
-                    "category" : "Służba Bogu i rozwój religijny",
-                    "description" : "Angażując się w ruch KSM będę:\n- prowadził spotkania 2 razy w miesiącu\n- samodzielnie pisał konspekty spotkań\nBędę pełnił białą służbę podczas SMAP-u",
-                    "dateEnd" : ISODate("2014-10-09T22:00:00.000Z"),
-                    "_id" : ObjectId("584c318767e68d0420932e7f")
-                },
-                {
-                    "category" : "Podnoszenie kwalifikacji i pogłębianie wiedzy  w dziedzinie zainteresowań",
-                    "description" : "Zorganizuję dla wędrowników całodniowy rajd po fortach Twierdzy Przemyśl.  Sporządzę kosztorys, plan wycieczki,  podczas zwiedzania opowiem druhom o historii fortów.  Relację z wypadu umieszczę na stronie hufca jako zachętę do uprawiania tego typu turystyki.\n\nW ramach rajdu rozpoczniemy zdobywanie odznak turystyczno-krajoznawczych PTTK (zdobędę Odznakę Turystyki Pieszej w stopniu mały brązowy)",
-                    "dateEnd" : ISODate("2014-10-09T22:00:00.000Z"),
-                    "_id" : ObjectId("584c318767e68d0420932e7e")
-                },
-                {
-                    "category" : "Służba na rzecz innych harcerzy",
-                    "description" : "Przeprowadzę w mojej miejscowości nabór, który odbędzie się w formie gry terenowej.  Następnie przeprowadzę cykl zbiórek z technik harcerskich tj.:\npionierka, rozpalanie ognisk, strzelectwo, budowa szałasów, kamuflaż, tropienie.",
-                    "dateEnd" : ISODate("2014-10-09T22:00:00.000Z"),
-                    "_id" : ObjectId("584c318767e68d0420932e7d")
-                },
-                {
-                    "category" : "Rozwój patriotyczny",
-                    "description" : "Wezmę czynnie udział w Biegu „Tropem Wilczym” w Przeworsku:\n- bieg na dystansie 1963 m\n- będę odpowiedzialny z część programu patriotycznego na ognisku harcerskim kończącym Bieg",
-                    "dateEnd" : ISODate("2014-10-09T22:00:00.000Z"),
-                    "_id" : ObjectId("584c318767e68d0420932e7c")
-                }
-            ],
-            "_id" : ObjectId("584c318767e68d0420932e7b")
-        }
-    ],
+    "password" : "1a1dc91c907325c69271ddf0c944bc72",
+    "attempt" : [],
     "photo" : "",
-    "team" : "SZPONA",
+    "team" : "4 Rozborska Drużyna Harcerzy „Karacena” im. 10 Pułku Strzelców Konnych",
     "date_add" : null,
-    "birthday" : "12.12.1994",
-    "rankInst" : "Podharcmistrz",
-    "rank" : "Ćwik",
+    "birthday" : "22.10.1993",
+    "rankInst" : "Przewodnik",
+    "rank" : "Harcerz Rzeczypospolitej",
     "school" : "UKSW",
-    "address" : "gfdsgd",
+    "address" : "Wola 49, 37-522 Szówsko",
     "email" : "jarko_krupa@o2.pl",
-    "phone" : "568125625",
+    "phone" : "512-320-499",
     "surname" : "Krupa",
     "name" : "Jarosław",
+    "__v" : 0,
+    "role" : "Administrator"
+}
+
+/* 2 */
+{
+    "_id" : ObjectId("58714b00ee0470169c7de6a6"),
+    "attempt" : [],
+    "role" : "Członek kapituły",
+    "password" : "21232f297a57a5a743894a0e4a801fc3",
+    "photo" : "",
+    "team" : "Administrator",
+    "date_add" : null,
+    "birthday" : "12.12.1994",
+    "rankInst" : "Harcmistrz",
+    "rank" : "Harcerz Rzeczypospolitej",
+    "school" : "test",
+    "address" : "test",
+    "email" : "mrozluk@wp.pl",
+    "phone" : "123123132",
+    "surname" : "Mróz",
+    "name" : "Łukasz",
+    "__v" : 0
+}
+
+/* 3 */
+{
+    "_id" : ObjectId("58714b38ee0470169c7de6a7"),
+    "attempt" : [
+        {
+            "quide" : "Przemysław Olejarz",
+            "dateBegin" : ISODate("2017-01-06T00:00:00.000Z"),
+            "dateEnd" : null,
+            "commandBegin" : "Rozkaz specjalny L. 1/2017",
+            "commandEnd" : "",
+            "results" : "W trakcie realizacji",
+            "comments" : [
+                {
+                    "category" : "Uwaga",
+                    "date" : ISODate("2017-01-07T20:19:16.320Z"),
+                    "description" : "Próba została otworzona 6 stycznia 2017r. w Betlejem rozkazem specjalnym L. 1/2017.",
+                    "taskName" : "general",
+                    "author" : "Jarosław Krupa",
+                    "_id" : ObjectId("58714d44ee0470169c7de6b2")
+                }
+            ],
+            "tasks" : [
+                {
+                    "category" : "Harc, przygoda, wyczyn",
+                    "description" : "Zorganizuje wyjazd Zz-tu do Muzeum Polskiej Techniki Wojskowej w Warszawie lub w inne miejsce związane ze sprzętem wojskowym.",
+                    "dateEnd" : ISODate("2016-12-31T23:00:00.000Z"),
+                    "_id" : ObjectId("58714ce7ee0470169c7de6b1")
+                },
+                {
+                    "category" : "Rozwój duchowy i religijny",
+                    "description" : "Wybiorę się do lokalnej rozgłośni katolickiej i przeprowadzę krótką audycję na temat wychowania religijnego w ZHR.",
+                    "dateEnd" : ISODate("2016-12-31T23:00:00.000Z"),
+                    "_id" : ObjectId("58714ce7ee0470169c7de6b0")
+                },
+                {
+                    "category" : "Rozwój intelektualny i zawodowy",
+                    "description" : "Korzystając z różnych źródeł poszerzę swoją wiedzę z zakresu genetyki oraz fizjologii i anatomii roślin co pomoże mi w uzyskaniu lepszego wyniku na maturze. Podejmę dodatkową lekturę literatury z kanonu ksiąg nieobowiązkowych.",
+                    "dateEnd" : null,
+                    "_id" : ObjectId("58714ce7ee0470169c7de6af")
+                },
+                {
+                    "category" : "Rozwój kulturalny",
+                    "description" : "Na wakacjach podejmę dorywczą pracę, a część zarobionych pieniędzy przeznaczę na biżuterii dla mojej dziewczyny.",
+                    "dateEnd" : ISODate("2016-12-31T23:00:00.000Z"),
+                    "_id" : ObjectId("58714ce7ee0470169c7de6ae")
+                },
+                {
+                    "category" : "Praca nad charakterem",
+                    "description" : "Przez okres 6 miesięcy będę raz w miesiącu odwiedzał zakład paliatywny. Będę pomagał pacjentom  w różnych czynnościach dnia codziennego oraz będę prowadził dialogi z nimi. Podczas wizyt nawiążę rozmowę z osobami, które były świadkami działań zbrojnych na naszej ziemi. Z uzyskanych wiadomości napisze artykuł na fanpage drużyny.",
+                    "dateEnd" : ISODate("2017-02-28T23:00:00.000Z"),
+                    "_id" : ObjectId("58714ce7ee0470169c7de6ad")
+                },
+                {
+                    "category" : "Rozwój fizyczny",
+                    "description" : "Przez okres 4 miesięcy będę regularnie 2 razy w tygodniu dystans minimum 2 km. Swoją wyniki będę zapisywał na aplikacji endomondo.",
+                    "dateEnd" : ISODate("2017-02-28T23:00:00.000Z"),
+                    "_id" : ObjectId("58714ce7ee0470169c7de6ac")
+                },
+                {
+                    "category" : "Praca nad charakterem",
+                    "description" : "Zdobędę sprawność PUSZCZANIN *** podczas której podejmę refleksję nad moją życiową drogą, kontaktami interpersonalnymi i najsłabszym punktem mojego charakteru.",
+                    "dateEnd" : ISODate("2016-12-31T23:00:00.000Z"),
+                    "_id" : ObjectId("58714ce7ee0470169c7de6ab")
+                },
+                {
+                    "category" : "Służba bliźnim i środowisku",
+                    "description" : "Aktywnie zaangażuje się w organizację HAL 2017 w zakresie logistyki.",
+                    "dateEnd" : ISODate("2016-12-31T23:00:00.000Z"),
+                    "_id" : ObjectId("58714ce7ee0470169c7de6aa")
+                }
+            ],
+            "_id" : ObjectId("58714ce7ee0470169c7de6a9")
+        }
+    ],
+    "role" : "Petent",
+    "password" : "21232f297a57a5a743894a0e4a801fc3",
+    "photo" : "",
+    "team" : "1 Jarosławska Drużyna Harcerzy „Pościg” im. Jana III Sobieskiego",
+    "date_add" : null,
+    "birthday" : "12.12.1994",
+    "rankInst" : "",
+    "rank" : "Ćwik",
+    "school" : "tmp",
+    "address" : "tmp",
+    "email" : "jacep@wp.pl",
+    "phone" : "132456798",
+    "surname" : "Petry",
+    "name" : "Jacek",
+    "__v" : 0
+}
+
+/* 4 */
+{
+    "_id" : ObjectId("58714c0eee0470169c7de6a8"),
+    "attempt" : [
+        {
+            "quide" : "Jarosław Krupa",
+            "dateBegin" : ISODate("2015-12-12T00:00:00.000Z"),
+            "dateEnd" : ISODate("2016-12-12T00:00:00.000Z"),
+            "commandBegin" : "Rl 2/20",
+            "commandEnd" : "Rl 33/20",
+            "results" : "Zamknięto pozytywnie",
+            "comments" : [],
+            "tasks" : [
+                {
+                    "category" : "Wyczyn",
+                    "description" : "TEST",
+                    "dateEnd" : null,
+                    "_id" : ObjectId("58715477ee0470169c7de6d8")
+                }
+            ],
+            "_id" : ObjectId("58715477ee0470169c7de6d7")
+        },
+        {
+            "quide" : "Jarosław Krupa",
+            "dateBegin" : ISODate("2015-12-12T00:00:00.000Z"),
+            "dateEnd" : ISODate("2016-12-12T00:00:00.000Z"),
+            "commandBegin" : "Rl 2/20",
+            "commandEnd" : "Rl 33/20",
+            "results" : "Zamknięto pozytywnie",
+            "comments" : [],
+            "tasks" : [
+                {
+                    "category" : "Wyczyn",
+                    "description" : "TEST",
+                    "dateEnd" : "TEST",
+                    "_id" : ObjectId("58715497e5d7be17249545b1")
+                }
+            ],
+            "_id" : ObjectId("58715497e5d7be17249545b0")
+        }
+    ],
+    "role" : "Członek kapituły",
+    "password" : "21232f297a57a5a743894a0e4a801fc3",
+    "photo" : "",
+    "team" : "Administrator",
+    "date_add" : null,
+    "birthday" : "12.12.1994",
+    "rankInst" : "Przewodnik",
+    "rank" : "Harcerz Orli",
+    "school" : "tmp",
+    "address" : "tmp",
+    "email" : "przemeA@ASD.PL",
+    "phone" : "123456456",
+    "surname" : "Olejarz",
+    "name" : "Przemysław",
+    "__v" : 0
+}
+
+/* 5 */
+{
+    "_id" : ObjectId("5871501fee0470169c7de6c7"),
+    "attempt" : [
+        {
+            "quide" : "Leszek Mac",
+            "dateBegin" : ISODate("2015-02-10T00:00:00.000Z"),
+            "dateEnd" : null,
+            "commandBegin" : "Rozkaz specjalny L. 2/2015",
+            "commandEnd" : "",
+            "results" : "W trakcie realizacji",
+            "comments" : [],
+            "tasks" : [
+                {
+                    "category" : "Praca nad sobą",
+                    "description" : "Zdobędę naramiennik wędrowniczy",
+                    "dateEnd" : ISODate("2014-12-31T23:00:00.000Z"),
+                    "_id" : ObjectId("58715100ee0470169c7de6cf")
+                },
+                {
+                    "category" : "Rozwój Duchowy",
+                    "description" : "Wezmę udział w „Drzwiach Otwartych” Wyższego \nSeminarium Duchownego, \nZgromadzenia Księży \nMisjonarzy Saletynów w Krakowie.",
+                    "dateEnd" : null,
+                    "_id" : ObjectId("58715100ee0470169c7de6ce")
+                },
+                {
+                    "category" : "Rozwój  intelektualny",
+                    "description" : "Przeczytam książki:\nMarek Kudasiewicz „ Obrzędowy Piec”\nRobert Baden\n-\nPowell „Wskazówki dla Skautmistrzów\nHenryk Glass\n-\n„Gawędy z drużynowym”. \nZaplanuję i po\nprowadzę zajęcia na kursie \nzastępowych.",
+                    "dateEnd" : ISODate("2014-12-31T23:00:00.000Z"),
+                    "_id" : ObjectId("58715100ee0470169c7de6cd")
+                },
+                {
+                    "category" : "Służba  harcerska",
+                    "description" : "Zaangażuję się w pracę hufca. Będę pełnił funkcję \nskarbnika hufca.",
+                    "dateEnd" : null,
+                    "_id" : ObjectId("58715100ee0470169c7de6cc")
+                },
+                {
+                    "category" : "Służba  harcerska",
+                    "description" : "Będę brał udział w przygotowaniach planu pracy \nzimowiska i będę \nodpowiadał za jego realizację\nw trakcie trwania akcji zimowej.",
+                    "dateEnd" : ISODate("2014-12-31T23:00:00.000Z"),
+                    "_id" : ObjectId("58715100ee0470169c7de6cb")
+                },
+                {
+                    "category" : "Wyczyn",
+                    "description" : "Zdobędę Srebrną Szyszkę wędrowniczą",
+                    "dateEnd" : ISODate("2014-12-31T23:00:00.000Z"),
+                    "_id" : ObjectId("58715100ee0470169c7de6ca")
+                }
+            ],
+            "_id" : ObjectId("58715100ee0470169c7de6c9")
+        }
+    ],
+    "role" : "Petent",
+    "password" : "df4f769b18fe412f3393adf4af3aacb5",
+    "photo" : "",
+    "team" : "4 Rozborska Drużyna Harcerzy „Karacena” im. 10 Pułku Strzelców Konnych",
+    "date_add" : null,
+    "birthday" : "12.12.2014",
+    "rankInst" : "",
+    "rank" : "Ćwik",
+    "school" : "tmp",
+    "address" : "tmp",
+    "email" : "email@eee.pl",
+    "phone" : "132465798",
+    "surname" : "Hołub",
+    "name" : "Arkadiusz",
+    "__v" : 0
+}
+
+/* 6 */
+{
+    "_id" : ObjectId("58715047ee0470169c7de6c8"),
+    "attempt" : [],
+    "role" : "Członek kapituły",
+    "password" : "21232f297a57a5a743894a0e4a801fc3",
+    "photo" : "",
+    "team" : "4 Rozborska Drużyna Harcerzy „Karacena” im. 10 Pułku Strzelców Konnych",
+    "date_add" : null,
+    "birthday" : "12.12.2014",
+    "rankInst" : "Podharcmistrz",
+    "rank" : "Harcerz Rzeczypospolitej",
+    "school" : "tmp",
+    "address" : "tmp",
+    "email" : "leszekmac@ss.pl",
+    "phone" : "123456798",
+    "surname" : "Mac",
+    "name" : "Leszek",
     "__v" : 0
 }

@@ -18,6 +18,7 @@ angular.module('KHO_CRM').factory('Todos', dataTodos);
 				return $http.get('/api/todos/findById/' + id);
 			},
 			findByEmail : function(email){
+				console.log("WYSYŁAM D");
 				return $http.get('/api/todos/findByEmail/' + email)
 			},
 			findByIdAttempt : function(id) {
