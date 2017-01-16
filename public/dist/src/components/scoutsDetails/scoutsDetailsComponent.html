@@ -92,7 +92,7 @@
                             <div class="form-group">
                                 <label for="filter-company-school" class="col-sm-3 col-xs-12 control-label">{{ 'createScout.birthday' | translate }} </label>
                                 <div class="col-sm-9 col-xs-12">
-                                    <input id="birthday" type="text" ng-model="formData.birthday" class="form-control" placeholder="Data urodzenia" required>
+                                    <input id="birthday" type="text" data-provide="datepicker" ng-model="formData.birthday" class="form-control" placeholder="Data urodzenia" required>
                                 </div>
                             </div>
                         </div>
@@ -102,7 +102,7 @@
                                 <div class="col-sm-9 col-xs-12">
                                     <select name="role" id="role" class="form-control" ng-model="formData.team">
                                         <option ng-repeat="team in teams" value="{{ team.name }}">{{ team.name }}</option>
-                                        </select>
+                                    </select>
                                 </div>
                             </div>
                         </div>

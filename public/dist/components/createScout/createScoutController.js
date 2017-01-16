@@ -17,21 +17,23 @@
 
     function CreateScoutController($scope, $http, Todos, $location, $timeout, md5, $rootScope, KHO_CRM_CONFIG) {
 
+var vm = this;
+
     var username = $rootScope.globals.currentUser['username'];
     Todos.checkRole(username).success(function(response){
-        $scope.role = response.role;
+        vm.role = response.role;
 
         if(response.role == KHO_CRM_CONFIG.petent){
             $location.path('/notAuthorize');
         }
     });
 
-$scope.teams = KHO_CRM_CONFIG.teams;
+vm.teams = KHO_CRM_CONFIG.teams;
 
-    		$scope.createScout = function(formData){
+    		vm.createScout = function(formData){
 
-			$scope.invalidForm = false;
-			$scope.formData = formData;
+			vm.invalidForm = false;
+			vm.formData = formData;
 			formData.password = md5.createHash(formData.password);
 			console.log(formData.password);
 			if( formData.$valid ){
@@ -39,19 +41,19 @@ $scope.teams = KHO_CRM_CONFIG.teams;
 				Todos.create(formData)
 					.success(function(data) {
 						console.log("SUCCESS");
-						$scope.loading = false;
-						$scope.formData = {};
-						$scope.todos = data;
+						vm.loading = false;
+						vm.formData = {};
+						vm.todos = data;
 						$location.path('/content/list');
 				}).error(function(){
 					console.log("ERROR CREATE");
 				});
 
 			}else{
-				$scope.invalidForm = true;
+				vm.invalidForm = true;
 
 				$timeout(function () {
-	                                		$scope.invalidForm = false;
+	                                		vm.invalidForm = false;
 	                            	}, 5000);
 
 			}

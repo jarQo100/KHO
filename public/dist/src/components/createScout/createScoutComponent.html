@@ -4,7 +4,7 @@
         <div class="flat-panel-header">
             <h3 class="flat-panel-heading">
                 {{ 'createScout.createScoutTitle' | translate }}
-                <span ng-show="invalidForm" type="button" class="deleteUserButton label label-danger pull-right">{{ 'createScout.invalidForm' | translate }}</span>
+                <span ng-show="createScoutVM.invalidForm" type="button" class="deleteUserButton label label-danger pull-right">{{ 'createScout.invalidForm' | translate }}</span>
             </h3>
         </div>
         <br />
@@ -91,7 +91,7 @@
                             <div class="form-group">
                                 <label for="filter-company-school" class="col-sm-3 col-xs-12 control-label">{{ 'createScout.birthday' | translate }} </label>
                                 <div class="col-sm-9 col-xs-12">
-                                    <input id="birthday" type="text" ng-model="formData.birthday" class="form-control" placeholder="Data urodzenia" required>
+                                    <input id="birthday" data-provide="datepicker" type="text" ng-model="formData.birthday" class="form-control" placeholder="Data urodzenia" required>
                                 </div>
                             </div>
                         </div>
@@ -100,8 +100,8 @@
                                 <label for="filter-company-team" class="col-sm-3 col-xs-12 control-label">{{ 'createScout.team' | translate }} </label>
                                 <div class="col-sm-9 col-xs-12">
                                     <select name="role" id="role" class="form-control" ng-model="formData.team">
-                                        <option ng-repeat="team in teams" value="{{ team.name }}">{{ team.name }}</option>
-                                        </select>
+                                        <option ng-repeat="team in createScoutVM.teams" value="{{ team.name }}">{{ team.name }}</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -126,7 +126,7 @@
                             </div>
                         </div>
                         <div class="col-xs-12 col-md-12">
-                            <button ng-click="createScout(formData)" type="submit" class="btn btn-success alignright">{{ 'createScout.submit' | translate }}</button>
+                            <button ng-click="createScoutVM.createScout(formData)" type="submit" class="btn btn-success alignright">{{ 'createScout.submit' | translate }}</button>
                         </div>
                 </form>
                 </div>

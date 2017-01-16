@@ -2,23 +2,23 @@
     <div class="flat-panel">
         <div class="flat-panel-header">
             <h3 class="flat-panel-heading">
-                {{role}} {{ 'meetingDate.title' | translate }}
-                <span ng-show="alertUpdateUser" type="button" class="deleteUserButton label label-success pull-right">{{ 'scoutsDetails.updateScout' | translate }}</span>
+                {{ 'meetingDate.title' | translate }}
+                <span ng-show="meetingViewVM.alertUpdateUser" type="button" class="deleteUserButton label label-success pull-right">{{ 'scoutsDetails.updateScout' | translate }}</span>
             </h3>
-            <span type="button" ng-show="role == 'Administrator'" ng-click="addMeetingToogle = !addMeetingToogle" class="deleteUserButton btn btn-default"><i class="fa fa-plus"></i> {{ 'meetingDate.addMeeting' | translate }}</span>
-            <span type="button" ng-show="role == 'Petent'" ng-click="reportToogle = !reportToogle" class="deleteUserButton btn btn-default"><i class="fa fa-plus"></i> {{ 'meetingDate.report' | translate }}</span>
-            <span type="button" ng-show="role == 'Administrator' || role == 'Członek kapituły'" ng-click="confirmPresentToogle = !confirmPresentToogle" class="deleteUserButton btn btn-default"><i class="fa fa-plus"></i> {{ 'meetingDate.confirmPresent' | translate }}</span>
+            <span type="button" ng-show="meetingViewVM.role == 'Administrator'" ng-click="addMeetingToogle = !addMeetingToogle" class="deleteUserButton btn btn-default"><i class="fa fa-plus"></i> {{ 'meetingDate.addMeeting' | translate }}</span>
+            <span type="button" ng-show="meetingViewVM.role == 'Petent'" ng-click="reportToogle = !reportToogle" class="deleteUserButton btn btn-default"><i class="fa fa-plus"></i> {{ 'meetingDate.report' | translate }}</span>
+            <span type="button" ng-show="meetingViewVM.role == 'Administrator' || role == 'Członek kapituły'" ng-click="confirmPresentToogle = !confirmPresentToogle" class="deleteUserButton btn btn-default"><i class="fa fa-plus"></i> {{ 'meetingDate.confirmPresent' | translate }}</span>
         </div>
         <br />
         <section class="well" ng-show="addMeetingToogle">
             <h5 class="text-center">
                 <strong>{{ 'meetingDate.submit' | translate }}</strong>
             </h5>
-            <form novalidate class="css-form" name="formData">
+            <form novalidate class="css-form" name="meetingViewVM.formData">
                 <div class="row">
                     <div class="col-xs-12 col-md-12">
                         <div class="form-group">
-                            <input id="date" type="date" ng-model="formData.date" class="form-control" placeholder="{{ 'meetingDate.date' | translate }}" required>
+                            <input id="date" type="text" data-provide="datepicker" ng-model="formData.date" class="form-control" placeholder="{{ 'meetingDate.date' | translate }}" required>
                         </div>
                     </div>
                     <div class="col-xs-12 col-md-12">
@@ -32,7 +32,7 @@
                         </div>
                     </div>
                     <div class="col-xs-12 col-md-12">
-                        <input ng-click="createMeeting(formData)" type="submit" value="{{ 'meetingDate.submit' | translate }}" class="btn btn-success alignright" />
+                        <input ng-click="meetingViewVM.createMeeting(formData)" type="submit" value="{{ 'meetingDate.submit' | translate }}" class="btn btn-success alignright" />
                     </div>
             </form>
         </section>
@@ -52,7 +52,7 @@
                         <div class="form-group">
                             <select ng-model="formDataReport.meetingId" class="form-control" placeholder="dasD" required>
                                 <option value="" disabled selected>{{ 'meetingDate.chooseDate' | translate }} </option>
-                                <option ng-repeat="row in meetingData" value="{{ row._id }}">{{ row.place }} - {{ row.date | date : "dd MMMM yy" }} </option>
+                                <option ng-repeat="row in meetingViewVM.meetingData" value="{{ row._id }}">{{ row.place }} - {{ row.date | date : "dd MMMM yy" }} </option>
                             </select>
                         </div>
                     </div>
@@ -72,7 +72,7 @@
                         </div>
                     </div>
                     <div class="col-xs-12 col-md-12">
-                        <input ng-click="report(formDataReport)" type="submit" value="{{ 'meetingDate.reportSubmit' | translate }}" class="btn btn-success alignright" />
+                        <input ng-click="meetingViewVM.report(formDataReport)" type="submit" value="{{ 'meetingDate.reportSubmit' | translate }}" class="btn btn-success alignright" />
                     </div>
             </form>
         </section>
@@ -80,28 +80,28 @@
             <h5 class="text-center">
                 <strong>{{ 'meetingDate.confirmPresent' | translate }}</strong>
             </h5>
-            <form novalidate class="css-form" name="formDataConfirmPresent">
+            <form novalidate class="css-form" name="meetingViewVM.formDataConfirmPresent">
                 <div class="row">
                     <div class="col-xs-12 col-md-12">
                         <div class="form-group">
-                            <input type="text" class="form-control" ng-model="formDataConfirmPresent.nameAndSurname" required disabled>
-                            <input type="hidden" class="form-control" ng-model="formDataConfirmPresent.userId" required disabled>
+                            <input type="text" class="form-control" ng-model="meetingViewVM.formDataConfirmPresent.nameAndSurname" required disabled>
+                            <input type="hidden" class="form-control" ng-model="meetingViewVM.formDataConfirmPresent.userId" required disabled>
                         </div>
                     </div>
                     <div class="col-xs-12 col-md-12">
                         <div class="form-group">
-                            <select ng-model="formDataConfirmPresent.meetingId" class="form-control" placeholder="dasD" required>
+                            <select ng-model="meetingViewVM.formDataConfirmPresent.meetingId" class="form-control" placeholder="dasD" required>
                                 <option value="" disabled selected>{{ 'meetingDate.chooseDate' | translate }} </option>
-                                <option ng-repeat="row in meetingData" value="{{ row._id }}">{{ row.place }} - {{ row.date | date : "dd MMMM yy" }} </option>
+                                <option ng-repeat="row in meetingViewVM.meetingData" value="{{ row._id }}">{{ row.place }} - {{ row.date | date : "dd MMMM yy" }} </option>
                             </select>
                         </div>
                     </div>
                     <div class="col-xs-12 col-md-12">
-                        <input ng-click="confirmPresent(formDataConfirmPresent)" type="submit" value="{{ 'meetingDate.confirmPresent' | translate }}" class="btn btn-success alignright" />
+                        <input ng-click="meetingViewVM.confirmPresent(meetingViewVM.formDataConfirmPresent)" type="submit" value="{{ 'meetingDate.confirmPresent' | translate }}" class="btn btn-success alignright" />
                     </div>
             </form>
         </section>
-        <section class="well" ng-repeat="row in meetingData" ng-if="row._id == meetingDataDetailsId">
+        <section class="well" ng-repeat="row in meetingViewVM.meetingData" ng-if="row._id == meetingViewVM.meetingDataDetailsId">
             <div class="row">
                 <div class="col-lg-12">
                     <h5 style="padding-bottom: 10px;">
@@ -146,15 +146,15 @@
                 <th class="text-center">{{ 'meetingDate.options' | translate }}</th>
             </thead>
             <tbody>
-                <tr ng-repeat="row in meetingData | orderBy : '-date'">
+                <tr ng-repeat="row in meetingViewVM.meetingData | orderBy : '-date'">
                     <td>{{ row.date | date:"dd MMMM yyyy" }}</td>
                     <td>{{ row.place }}</td>
                     <td>{{ row.description }}</td>
                     <td class="text-center">{{row.candidates.length}}</td>
                     <td class="text-center">{{row.member.length}}</td>
                     <td class="text-center">
-                        <a ng-click="showDetails(row._id)" class="label label-default"><i class="fa fa-eye"></i></a>
-                        <a ng-show="role == 'Administrator'" class="label label-danger" ng-click="deleteMeeting(row._id)"><i class="fa fa-trash-o"></i> </a>
+                        <a ng-click="meetingViewVM.showDetails(row._id)" class="label label-default"><i class="fa fa-eye"></i></a>
+                        <a ng-show="meetingViewVM.role == 'Administrator'" class="label label-danger" ng-click="meetingViewVM.deleteMeeting(row._id)"><i class="fa fa-trash-o"></i> </a>
                     </td>
                 </tr>
             </tbody>

@@ -23,9 +23,8 @@
             var pass = md5.createHash(vm.password);
             console.log(pass);
             vm.dataLoading = true;
-console.log("fdsfsdfsdfsd");
+
             AuthenticationService.Login(vm.username, pass, function (response) {
-				console.log("fdsfsdfsdfsd");
                 if (response.success) {
                     console.log("true");
                     AuthenticationService.SetCredentials(vm.username, vm.password);

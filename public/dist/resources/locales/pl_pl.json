@@ -39,7 +39,8 @@
 	"submit" : "Utwórz użytkownika",
 	"invalidForm" : "Błędy w formularzu! Proszę poprawić.",
 	"password" : "Hasło",
-	"role" : "Uprawnienia"
+	"role" : "Uprawnienia",
+	"success" : "Uaktualniono próbę"
   },
 	"scoutsDetails" : {
 		"title" : "Szczegóły użytkownika",
@@ -105,7 +106,10 @@
 		"commDescription": "Komentarz",
 		"addComm" : "Dodaj komentarz",
 		"submit" : "Dodaj komentarz",
-		"author" : "Autor"
+		"author" : "Autor",
+		"yes" : "TAK",
+		"no" : "NIE",
+		"sendMailToGroup" : "Czy chcesz wysłać tą wiadomość do kapituły via e-mail?"
 	},
 	"meetingDate" : {
 		"title" : "Spotkania kapituły",
@@ -146,5 +150,14 @@
 		"nextMeetingDate" : "Następne spotkanie kapituły Harcerza Orlego odbędzie się: ",
 		"report" : "Zgłoś się na spotkanie z kapitułą",
 		"author" : "Autor"
+	},
+	"loginView" : {
+		"title" : "KHO CRM",
+		"login" : "Podaj adres email",
+		"pass" : "Hasło",
+		"submit" : "Zaloguj się",
+		"loginRequire" : "Login jest wymagany!",
+		"passRequire" : "Hasło jest wymagane",
+		"wrong" : "Podane dane są niepoprawne! Spróbuj ponownie."
 	}
 }

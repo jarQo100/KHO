@@ -17,64 +17,70 @@
 
     function MeetingDateController($scope, $http, Todos, $timeout, $location, $rootScope) {
 
-    $scope.formData = {};
+        var vm = this;
+    vm.formData = {};
+    vm.formDataReport = {};
     getMeetingsDate();
     getMeetingDateToReportForm();
     findUserIDByEmail();
 
     var username = $rootScope.globals.currentUser['username'];
     Todos.checkRole(username).success(function(response){
-        $scope.role = response.role;
+        vm.role = response.role;
     });
 
     //console.log(result.value.data.role);
-    console.log($scope.role);
+    console.log(vm.role);
 
 
 
-        $scope.report = function(formDataReport){
-            formDataReport.user_id = $rootScope.globals.currentUser['username'];
+        vm.report = function(formDataReport){
 
+            vm.formDataReport.user_id = $rootScope.globals.currentUser['username'];
+            formDataReport.nameAndSurname = vm.formDataReport.nameAndSurname;
+            formDataReport.username = vm.formDataReport.user_id
+console.log(formDataReport);
              Todos.addPersonToMeeting(formDataReport);
-                    $scope.formDataReport.$setUntouched();
-                    $scope.formDataReport = {};
+                    //vm.formDataReport.$setUntouched();
+                    vm.formDataReport = {};
                     getMeetingsDate();
-                    $scope.reportToogle = false;
+                    vm.reportToogle = false;
         }
 
-        $scope.createMeeting = function(formData){
+        vm.createMeeting = function(formData){
              Todos.addMeeting(formData);
-                $scope.formData.$setUntouched();
-                $scope.formData = {};
+                //vm.formData.$setUntouched();
+                vm.formData = {};
                  getMeetingsDate();
-                $scope.addMeetingToogle = false;
+                vm.addMeetingToogle = false;
         }
 
     function getMeetingsDate(){
         Todos.getMeeting().success(function(data){
-            $scope.meetingData = data;
+            vm.meetingData = data;
         });
     }
 
     function getMeetingDateToReportForm(){
         Todos.getMeeting().success(function(data){
-            $scope.formData.meetingDate = data.date;
+            vm.formData.meetingDate = data.date;
         });
     }
 
      function findUserIDByEmail(){
+
         formDataReport.user_id = $rootScope.globals.currentUser['username'];
 
         Todos.findByEmail(formDataReport.user_id).success(function(data){
-            $scope.formDataReport.nameAndSurname = data.name + " " + data.surname;
-            $scope.formDataReport.userId = data._id;
-            $scope.formDataConfirmPresent.nameAndSurname = data.name + " " + data.surname;
-            $scope.formDataConfirmPresent.userId = data._id;
+            vm.formDataReport.nameAndSurname = data.name + " " + data.surname;
+            vm.formDataReport.userId = data._id;
+            vm.formDataConfirmPresent.nameAndSurname = data.name + " " + data.surname;
+            vm.formDataConfirmPresent.userId = data._id;
         });
 
 
 
-        $scope.deleteMeeting = function (meetingId){
+        vm.deleteMeeting = function (meetingId){
 
                 var  confirmResult = confirm("Czy na pewno chcesz usunąć spotkanie?");
 
@@ -82,24 +88,24 @@
                             Todos.deleteMeeting(meetingId);
                             getMeetingsDate();
 
-                            $scope.alertDeleteUser = true;
+                            vm.alertDeleteUser = true;
                                 $timeout(function () {
-                                     $scope.alertDeleteUser = false;
+                                     vm.alertDeleteUser = false;
                                 }, 5000);
 
 
              }
         }
 
-        $scope.showDetails = function(meetingId){
-            $scope.meetingDataDetailsId = meetingId;
+        vm.showDetails = function(meetingId){
+            vm.meetingDataDetailsId = meetingId;
         }
 
-        $scope.confirmPresent = function(formData){
+        vm.confirmPresent = function(formData){
             console.log(formData);
             Todos.confirmPresent(formData);
                  getMeetingsDate();
-                $scope.confirmTooge = false;
+                 vm.confirmTooge = false;
         }
 
 

@@ -13,23 +13,15 @@
 
 	function DetailsAttemptController($scope, $stateParams, $http, Todos){
 
+		var vm = this;
 		var scoutIdParam = $stateParams.userId;
-		$scope.attemptIdParam = $stateParams.attemptId;
+		vm.attemptIdParam = $stateParams.attemptId;
 
-	       	$scope.formData = {};
+	       	vm.formData = {};
 
-
-
-
-			$scope.formData = Todos.findById(scoutIdParam).success(function(data) {
-	                        	$scope.formData = data;
+			vm.formData = Todos.findById(scoutIdParam).success(function(data) {
+	                        	vm.formData = data;
 		                })
-
-
-
-
-
-
 
 	}
 

@@ -4,6 +4,9 @@ var Meetings = require('./models/meetings');
 var mongoose = require('mongoose');
 mongoose.Promise = Promise;
 
+var nodemailer = require('nodemailer');
+ var sender = require('./mails/sender.js');
+
 function getTodos(res) {
     Todo.find(function (err, todos) {
         // if there is an error retrieving, send the error. nothing after res.send(err) will execute
@@ -411,6 +414,22 @@ app.post('/api/todos/createMeeting/', function(req, res){
 
 
     });
+
+
+
+app.put('/api/sendEmail', function (req, res) {
+         sender.send(req.body);
+
+});
+
+app.put('/api/todos/confirmPresent/sendEmail', function (req, res) {
+         sender.confirmPresent(req.body);
+});
+
+app.put('/api/meeting/adduser/sendEmail', function (req, res) {
+    console.log(req.body);
+         //sender.confirmPresent(req.body);
+});
 
 
 

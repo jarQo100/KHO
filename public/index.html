@@ -15,17 +15,14 @@
 
         <link rel="stylesheet" href="css/styles.min.css">
 
-        <base href=".">
+        <base href="/">
     </head>
     <body data-ng-app="KHO_CRM">
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-
         <ui-view></ui-view>
-
-
 
         <script src="node_modules/jquery/dist/jquery.js"></script>
         <script src="node_modules/angular/angular.js"></script>
@@ -41,6 +38,8 @@
         <script src="node_modules/chart.js/dist/Chart.min.js"></script>
          <script src="node_modules/angular-chart.js/dist/angular-chart.min.js"></script>
          <script src="node_modules/angular-filter/dist/angular-filter.min.js"></script>
+         <script src="node_modules/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+         <script src="node_modules/angular-datetime-input/dist/datetime.js"></script>
 
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/X.Y.Z/angular-resource.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-resource.js"></script>
@@ -54,7 +53,7 @@
         <script src="services/setAlertClass.js"></script>
         <script src="services/authenticationService.js"></script>
         <script src="services/userService.js"></script>
-
+        <script src="services/sendEmailToGroup.js"></script>
         <!-- Filters, Factory -->
 
 
@@ -76,7 +75,7 @@
 
         <!-- Components -->
         <script src="components/mainView/mainViewComponent.js"></script>
-        <script src="components/mainPage/mainPageComponent.js"></script>
+        <!-- <script src="components/mainPage/mainPageComponent.js"></script>
         <script src="components/createScout/createScoutComponent.js"></script>
         <script src="components/scoutsDetails/scoutsDetailsComponent.js"></script>
         <script src="components/attemptList/attemptListComponent.js"></script>
@@ -86,7 +85,7 @@
         <script src="components/updateAttempt/updateAttemptComponent.js"></script>
          <script src="components/login/loginComponent.js"></script>
          <script src="components/dashboardView/dashboardViewComponent.js"></script>
-         <script src="components/meetingDate/meetingDateComponent.js"></script>
+         <script src="components/meetingDate/meetingDateComponent.js"></script> -->
 
         <!-- Directives -->
         <script src="directives/attemptFormDirectives.js"></script>

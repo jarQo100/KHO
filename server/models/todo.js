@@ -40,7 +40,7 @@ var tasksSchema = new Schema({
 				default: ''
 			},
 			dateEnd :{
-				type : String,
+				type : Date,
 				default: ''
 			},
 

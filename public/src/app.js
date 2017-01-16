@@ -22,7 +22,7 @@
          '$locationProvider',
          '$stateProvider',
          '$urlRouterProvider',
-         'ChartJsProvider'
+         'ChartJsProvider',
     ];
 
     function configureFluoModule(KHO_CRM_CONFIG, $translateProvider, $locationProvider, $stateProvider, $urlRouterProvider, ChartJsProvider) {
@@ -48,6 +48,7 @@ ChartJsProvider.setOptions({
           name: 'mainView',
           url: '/content',
           templateUrl: 'pages/content/index.html',
+          //controller: 'MainViewController as mainViewVm'
         }
 
         var notAuthorize = {
@@ -60,21 +61,21 @@ ChartJsProvider.setOptions({
           name: 'mainView.dashboard',
           url: '/dashboard',
           templateUrl: 'src/components/dashboardView/dashboardViewComponent.html',
-          controller: 'DashboardViewController'
+          controller: 'DashboardViewController as dashboardViewVM'
         }
 
         var mainViewList = {
           name: 'mainView.List',
           url: '/list',
           templateUrl: 'src/components/mainPage/mainPageComponent.html',
-          controller: 'MainPageController',
+          controller: 'MainPageController as mainPageVM',
         }
 
         var createScout = {
           name: 'mainView.Create',
           url: '/create',
           templateUrl: 'src/components/createScout/createScoutComponent.html',
-          controller: 'CreateScoutController',
+          controller: 'CreateScoutController as createScoutVM',
         }
 
         var scoutsDetailsList = {
@@ -88,49 +89,49 @@ ChartJsProvider.setOptions({
           name: 'mainView.attemptList',
           url: '/attemptList',
           templateUrl: 'src/components/attemptList/attemptListComponent.html',
-          controller: 'AttemptListController',
+          controller: 'AttemptListController as attemptListVM',
         }
 
         var attemptCrete = {
           name: 'mainView.attemptCreate',
           url: '/attemptCreate',
           templateUrl: 'src/components/attemptCreate/attemptCreateComponent.html',
-          controller: 'AttemptCreateController',
+          controller: 'AttemptCreateController as attemptCreateVM',
         }
 
         var detailsAttempt = {
           name: 'mainView.detailsAttempt',
           url: '/detailsAttempt/:userId/:attemptId',
           templateUrl: 'src/components/detailsAttempt/detailsAttemptComponent.html',
-          controller: 'DetailsAttemptController',
+          controller: 'DetailsAttemptController as detailsAttemptVM',
         }
 
         var addComment = {
           name: 'mainView.addComment',
           url: '/addComment/:attemptId',
           templateUrl: 'src/components/addComment/addCommentComponent.html',
-          controller: 'AddCommentController',
+          controller: 'AddCommentController as addCommentVM',
         }
 
         var updateAttempt = {
           name: 'mainView.updateAttempt',
           url: '/updateAttempt/:attemptId',
           templateUrl: 'src/components/updateAttempt/updateAttemptComponent.html',
-          controller: 'UpdateAttemptController',
+          controller: 'UpdateAttemptController as updateAttemptVM',
         }
 
-        var updateAttempt = {
-          name: 'mainView.updateAttempt',
-          url: '/updateAttempt/:attemptId',
-          templateUrl: 'src/components/updateAttempt/updateAttemptComponent.html',
-          controller: 'UpdateAttemptController',
-        }
+        // var updateAttempt = {
+        //   name: 'mainView.updateAttempt',
+        //   url: '/updateAttempt/:attemptId',
+        //   templateUrl: 'src/components/updateAttempt/updateAttemptComponent.html',
+        //   controller: 'UpdateAttemptController as attemptCreateVM',
+        // }
 
         var meetingDate = {
           name: 'mainView.meetingDate',
           url: '/meetingDate',
           templateUrl: 'src/components/meetingDate/meetingDateComponent.html',
-          controller: 'MeetingDateController',
+          controller: 'MeetingDateController as meetingViewVM',
         }
 
         var genereteTextToWebsite = {

@@ -1,12 +1,12 @@
 <div class="row">
-    <div class="col-xs-12 col-md-6" ng-show="nameSurname">
+    <div class="col-xs-12 col-md-6" ng-show="attemptCreateVM.nameSurname">
         <div class="form-group">
             <label for="filter-company-name" class="col-sm-3 col-xs-12 control-label">{{ 'attemptCreate.nameAndSurname' | translate }} </label>
             <div class="col-sm-9 col-xs-12">
                 <select class="form-control" id="nameAndSurname" ng-model="attemptData.nameAndSurname">
                     <option value="" disabled selected>{{ 'attemptCreate.selectPerson' | translate }}
                     </option>
-                    <option ng-repeat="user in formData" value="{{ user._id }} ">{{ user.name }} {{ user.surname }} - {{ user.team }}</option>
+                    <option ng-repeat="user in attemptCreateVM.formData" value="{{ user._id }} ">{{ user.name }} {{ user.surname }} - {{ user.team }}</option>
                 </select>
             </div>
         </div>
@@ -18,7 +18,7 @@
                 <select class="form-control" id="quide" ng-model="attemptData.quide">
                     <option value="{{ attemptData.quide }}" disabled selected>{{ attemptData.quide }}
                     </option>
-                    <option ng-repeat="user in formData" value="{{ user.name }} {{ user.surname }}">{{ user.name }} {{ user.surname }}
+                    <option ng-repeat="user in attemptCreateVM.formData" value="{{ user.name }} {{ user.surname }}">{{ user.name }} {{ user.surname }}
                     </option>
                 </select>
             </div>
@@ -28,7 +28,7 @@
         <div class="form-group">
             <label for="filter-company-name" class="col-sm-3 col-xs-12 control-label">{{ 'attemptCreate.dateBegin' | translate }} </label>
             <div class="col-sm-9 col-xs-12">
-                <input id="dataBegin" type="text" ng-model="attemptData.dateBegin" class="form-control" placeholder="Format: RRRR-MM-DD" required>
+                <input id="dataBegin" data-provide="datepicker" type="text" ng-model="attemptData.dateBegin" class="form-control" placeholder="Format: RRRR-MM-DD" required>
             </div>
         </div>
     </div>
@@ -44,7 +44,7 @@
         <div class="form-group">
             <label for="filter-company-name" class="col-sm-3 col-xs-12 control-label">{{ 'attemptCreate.dateEnd' | translate }} </label>
             <div class="col-sm-9 col-xs-12">
-                <input id="dataEnd" type="text" ng-model="attemptData.dateEnd" class="form-control" placeholder="Format: RRRR-MM-DD">
+                <input id="dataEnd" data-provide="datepicker" type="text" ng-model="attemptData.dateEnd" class="form-control" placeholder="Format: RRRR-MM-DD">
             </div>
         </div>
     </div>
@@ -69,7 +69,7 @@
             </div>
         </div>
     </div>
-    <div ng-repeat="task in tasks" class="tasksForm">
+    <div ng-repeat="task in attemptCreateVM.tasks" class="tasksForm">
         <div class="row">
             <div class="col-xs-12 col-md-12">
                 <br />
@@ -89,7 +89,7 @@
             <div class="form-group">
                 <label for="filter-company-name" class="col-sm-3 col-xs-12 control-label">{{ 'attemptCreate.taskDateEnd' | translate }}</label>
                 <div class="col-sm-9 col-xs-12">
-                    <input type="text" ng-model="task.dateEnd" class="form-control" placeholder="Format: RRRR-MM-DD" required>
+                    <input type="text" data-provide="datepicker" ng-model="task.dateEnd" class="form-control" placeholder="Format: RRRR-MM-DD" required>
                 </div>
             </div>
         </div>
@@ -103,4 +103,4 @@
         <br />
         <br />
     </div>
-    <button class="btn btn-danger aligncenter" type="submit" ng-click="addButton();"><i class="fa fa-plus"></i> Dodaj kolejny punkt próby</button>
+    <button class="btn btn-danger aligncenter" type="submit" ng-click="attemptCreateVM.addButton();"><i class="fa fa-plus"></i> Dodaj kolejny punkt próby</button>

@@ -9,39 +9,46 @@ UpdateAttemptController.$inject = [
 	'Todos',
 	'$location',
 	'$stateParams',
-	'$timeout'
+	'$timeout',
 ];
 
 function UpdateAttemptController($scope, Todos, $location, $stateParams, $timeout){
-
+var vm = this;
 		//var scoutIdParam = $stateParams.userId;
 		var attemptIdParam = $stateParams.attemptId;
 
 		var userID;
 
-	       	$scope.formData = {};
-	       	$scope.tasks =  {};
+	       	vm.formData = {};
+	       	vm.formData2 = {};
+	       	vm.tasks =  {};
 
-	       	$scope.addButton = function(){
-			$scope.tasks.push({});
+	       	vm.addButton = addButton;
+	       	vm.getAttempt = getAttempt;
+
+	       	getAttempt();
+
+	        	function addButton(){
+			vm.tasks.push({});
 		}
 
-	       	Todos.get().success(function(data) {
-	                $scope.formData = data;
-							userID = data._id;
-	                console.log("DATA", data);
-	            });
+		function getAttempt(){
+		       	Todos.get().success(function(data) {
+		                	vm.formData = data;
+				userID = data._id;
+		            });
+	       	};
 
 
-		$scope.formData = Todos.findByIdTask(attemptIdParam).success(function(data) {
+		vm.formData = Todos.findByIdTask(attemptIdParam).success(function(data) {
 
-		   	$scope.attemptData = data.attempt
-			$scope.attemptData = {};
+		   	vm.attemptData = data.attempt
+			vm.attemptData = {};
 
 			angular.forEach(data.attempt, function(attempt) {
 				  if(attempt._id == attemptIdParam){
-				  	$scope.attemptData = attempt;
-				  	$scope.tasks = attempt.tasks;
+				  	vm.attemptData = attempt;
+				  	vm.tasks = attempt.tasks;
 				  }
 
 			});
@@ -49,33 +56,30 @@ function UpdateAttemptController($scope, Todos, $location, $stateParams, $timeou
 
 		});
 
-		            $scope.createAttempt = function(attemptData){
+		            vm.createAttempt = function(attemptData){
 
-
-			$scope.formData2 = attemptData;
-			$scope.formData2.tasks = $scope.tasks;
-			$scope.formData2.userId = userID;
-
-			console.log("DORMDATA2", $scope.formData2);
-
+			vm.formData2 = attemptData;
+			vm.formData2.tasks = vm.tasks;
+			vm.formData2.userId = userID;
 
 
 
 				Todos.updateAttempt(attemptData).success(function(data) {
 
-			                        $scope.userData = data;
-			                        $scope.userData.attempt = attemptData;
+			                        vm.userData = data;
+			                        vm.userData.attempt = attemptData;
 
 
 			              }).error(function(){
 			              	console.log("BŁĄD");
 			              });
 
-$location.path('/content/dashboard');
+vm.success = true;
+//$location.path('/content/dashboard');
 
 
     		};
-
+return vm;
 }
 
 

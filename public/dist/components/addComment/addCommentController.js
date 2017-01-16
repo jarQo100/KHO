@@ -10,49 +10,65 @@ AddCommentController.$inject = [
 	'$http',
 	'Todos',
 	'SetAlertClass',
-	'$rootScope'
+	'$rootScope',
+	'SendEmailToGroup'
 ];
 
-function AddCommentController($scope, $stateParams, $http, Todos, SetAlertClass, $rootScope){
+function AddCommentController($scope, $stateParams, $http, Todos, SetAlertClass, $rootScope, SendEmailToGroup){
 
-		$scope.attemptIdParam = $stateParams.attemptId;
-		$scope.nameAndSurname;
-		$scope.formData = {};
+		var vm = this;
+
+		// Deklaracja zmiennych
+		vm.attemptIdParam = $stateParams.attemptId;
+		vm.nameAndSurname;
+		vm.formData = {};
+
+		// Przypisanie funkcji do zmiennych
+		vm.createTask = createTaskFun;
+		vm.getClass = getClass;
+		vm.showForm = showForm;
+
 		getComments();
 
 
-		$scope.createTask = function(commData){
+		function createTaskFun(commData){
 			var username = $rootScope.globals.currentUser['username'];
+
+
 			Todos.findByEmail(username).success(function(data){
+			          commData.author = data.name + " " + data.surname;
 
-			         commData.author = data.name + " " + data.surname;
-
-				         	Todos.addComment($scope.attemptIdParam, commData).success(function(data) {
-						console.log("SUCCESS");
-				            }).error(function(err){
-				                       console.log("GET ERROR: " + err);
-				            });
-
+				Todos.addComment(vm.attemptIdParam, commData);
 				getComments();
-				$scope.showFormComm = false;
+				vm.showFormComm = false;
+
+				if(commData.sendMail == "true"){
+					commData.username = username;
+					SendEmailToGroup.sendFromAddComment(commData);
+				}
+
+
 			  });
+
+
 		}
 
 		function getComments(){
-			Todos.findByIdTask($scope.attemptIdParam).success(function(data) {
-				$scope.formData = data;
+			Todos.findByIdTask(vm.attemptIdParam).success(function(data) {
+				vm.formData = data;
+				console.log(vm.formData);
 			});
 		}
 
-		$scope.getClass = function(category){
+		function getClass(category){
 			return "alert-" + SetAlertClass.set(category);
 		}
 
-		$scope.showForm = function(){
-			if($scope.showFormComm == true){
-				$scope.showFormComm = false;
+		function showForm(){
+			if(vm.showFormComm == true){
+				vm.showFormComm = false;
 			}else{
-				$scope.showFormComm = true;
+				vm.showFormComm = true;
 			}
 		}
 

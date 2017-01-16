@@ -17,16 +17,19 @@ AttemptListController.$inject= [
 
 function AttemptListController($scope, $http, Todos, $timeout, $location, SetAlertClass, $rootScope, KHO_CRM_CONFIG){
 
-	$scope.formData = {};
-	$scope.users = [];
+	var vm = this;
+	vm.formData = {};
+	vm.users = [];
+	vm.deleteAttempt = deleteAttempt;
+	vm.getClass = getClass;
 
-    var username = $rootScope.globals.currentUser['username'];
-    Todos.checkRole(username).success(function(response){
-        $scope.role = response.role;
-         if(response.role == KHO_CRM_CONFIG.petent){
-            $location.path('/notAuthorize');
-        }
-    });
+	    var username = $rootScope.globals.currentUser['username'];
+	    Todos.checkRole(username).success(function(response){
+	        vm.role = response.role;
+	         if(response.role == KHO_CRM_CONFIG.petent){
+	            $location.path('/notAuthorize');
+	        }
+	    });
 
 
 
@@ -39,11 +42,11 @@ function AttemptListController($scope, $http, Todos, $timeout, $location, SetAle
                				attempt.userID = user._id;
                				attempt.name = user.name;
                				attempt.surname = user.surname;
-               				if($scope.role != KHO_CRM_CONFIG.petent){
-               					$scope.users.push(attempt);
+               				if(vm.role != KHO_CRM_CONFIG.petent){
+               					vm.users.push(attempt);
                				}else{
                					if(user.email == username){
-               						$scope.users.push(attempt);
+               						vm.users.push(attempt);
                					}
 
                				}
@@ -53,15 +56,15 @@ function AttemptListController($scope, $http, Todos, $timeout, $location, SetAle
 
 			});
 
-               		console.log($scope.users);
+               		console.log(vm.users);
 
             }).error(function(err){
                 console.log("GET ERROR: " + err);
             });
 
-            $scope.deleteAttempt = function(userID, attemptID){
-            	 $scope.loading = true;
+            function deleteAttempt(userID, attemptID){
 
+            	 vm.loading = true;
 	            var  confirmResult = confirm("Czy na pewno chcesz usunąć próbę użytkownika?");
 
 	                if(confirmResult == true){
@@ -75,19 +78,19 @@ function AttemptListController($scope, $http, Todos, $timeout, $location, SetAle
 
 			$location.path('/content/attemptList');
 
-	                        $scope.alertDeleteUser = true;
+	                        vm.alertDeleteUser = true;
 	                            $timeout(function () {
-	                                 $scope.alertDeleteUser = false;
+	                                 vm.alertDeleteUser = false;
 	                            }, 5000);
 
 	                }
 	         }
 
-	         $scope.propertyName = 'age';
-		  $scope.reverse = true;
+	         	vm.propertyName = 'age';
+		  vm.reverse = true;
 
 
-		  $scope.getClass = function(status) {
+		  function getClass(status) {
 		  	return "label-" + SetAlertClass.setClassStatus(status);
 		  };
 

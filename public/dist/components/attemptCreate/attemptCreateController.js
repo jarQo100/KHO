@@ -16,48 +16,51 @@ AttemptCreateController.$inject = [
 
 function AttemptCreateController($scope, $http, Todos, $timeout, $location, $rootScope, KHO_CRM_CONFIG){
 
+	var vm = this;
+
     var username = $rootScope.globals.currentUser['username'];
     Todos.checkRole(username).success(function(response){
-        $scope.role = response.role;
+        vm.role = response.role;
 
         if(response.role == KHO_CRM_CONFIG.petent){
             $location.path('/notAuthorize');
         }
     });
 
-	$scope.formData  = {};
-	$scope.userData = {};
-	$scope.tasks = [{}];
-	$scope.nameSurname = true;
+	vm.formData  = {};
+	vm.userData = {};
+	vm.tasks = [{}];
+	vm.nameSurname = true;
+	vm.createAttempt = createAttempt;
+	vm.addButton = addButton;
 
-	$scope.addButton = function(){
-		$scope.tasks.push({});
+
+	function addButton(){
+		vm.tasks.push({});
 	}
 
             Todos.get().success(function(data) {
-                $scope.formData = data;
-            }).error(function(err){
-                console.log("GET ERROR: " + err);
+                vm.formData = data;
             });
 
-            $scope.createAttempt = function(attemptData){
+            function createAttempt(attemptData){
 
-			$scope.formData2 = attemptData;
-			$scope.formData2.tasks = $scope.tasks;
+			vm.formData2 = vm.attemptData;
+			vm.formData2.tasks = vm.tasks;
 
-			console.log($scope.formData2);
+			console.log(attemptData);
 			console.log(attemptData.nameAndSurname);
 
-			if( attemptData.$valid ){
+
 
 				Todos.findById(attemptData.nameAndSurname).success(function(data) {
 
-			                        $scope.userData = data;
-			                        $scope.userData.attempt = attemptData;
+			                        vm.userData = data;
+			                        vm.userData.attempt = attemptData;
 
-			              		Todos.addAttempt($scope.userData._id, $scope.userData.attempt).success(function(data) {
+			              		Todos.addAttempt(vm.userData._id, vm.userData.attempt).success(function(data) {
 
-				                                  $scope.alertUpdateUser = false;
+				                                  vm.alertUpdateUser = false;
 
 				                        }).error(function(err){
 				                                   console.log("GET ERROR: " + err);
@@ -70,14 +73,7 @@ function AttemptCreateController($scope, $http, Todos, $timeout, $location, $roo
 			              });
 
 
-			}else{
-				$scope.invalidForm = true;
 
-				$timeout(function () {
-	                             		$scope.invalidForm = false;
-	                            	}, 5000);
-
-			}
 
     		};
 

@@ -18,6 +18,7 @@ angular.module('KHO_CRM').factory('Todos', dataTodos);
 				return $http.get('/api/todos/findById/' + id);
 			},
 			findByEmail : function(email){
+				console.log("WYSYŁAM D");
 				return $http.get('/api/todos/findByEmail/' + email)
 			},
 			findByIdAttempt : function(id) {
@@ -54,13 +55,14 @@ angular.module('KHO_CRM').factory('Todos', dataTodos);
 				return $http.post('/api/todos/createMeeting/', formData);
 			},
 			confirmPresent: function(formData){
+				$http.put('/api/todos/confirmPresent/sendEmail', formData);
 				return $http.put('/api/todos/confirmPresent/', formData);
 			},
 			getMeeting: function(){
 				return $http.get('/api/todos/getMeetings/');
 			},
 			addPersonToMeeting: function(todoData){
-				console.log(todoData);
+				$http.put('/api/meeting/adduser/sendEmail', todoData);
 				return $http.put('/api/meeting/adduser', todoData);
 			},
 			getAll : function(){
@@ -73,6 +75,11 @@ angular.module('KHO_CRM').factory('Todos', dataTodos);
 
 			getByUsername: function(username){
 			   return $http.get('/api/users/' + username).then(handleSuccess, handleError('Error getting user by username'));
+			},
+
+			sendEmail: function(mailOptions){
+				console.log(mailOptions);
+				return $http.put('/api/sendEmail', mailOptions);
 			}
 
 		}

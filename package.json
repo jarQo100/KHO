@@ -37,6 +37,7 @@
     "angular": "1.5.8",
     "angular-chart.js": "^1.1.1",
     "angular-cookies": "^1.6.0",
+    "angular-datetime-input": "^5.0.0",
     "angular-md5": "^0.1.10",
     "body-parser": "^1.4.3",
     "express": "^4.13.4",

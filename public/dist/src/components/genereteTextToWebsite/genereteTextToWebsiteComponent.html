@@ -1,18 +1,12 @@
 <div class="col-lg-12">
-	<div class="genereteText" ng-repeat="(team, users) in users | toArray  | groupBy: 'team' " >
-
-	<h5>{{ team }}</h5>
-
-	<ul ng-repeat="user in users">
-		<li ng-repeat="attempt in user.attempt" ng-if="attempt.results == 'W trakcie realizacji' ">
-			<strong>{{user.rank}} {{ user.name }} {{ user.surname }}</strong>
-			opiekun próby: {{ attempt.quide }}
-			({{ attempt.commandBegin }} data otwarcia {{attempt.dateBegin | date:"dd MMMM yyyy"}} )
-		</li>
-	</ul>
-
-	<br />
-
-</div>
-
+    <div class="genereteText" ng-repeat="(team, users) in users | toArray  | groupBy: 'team' ">
+        <h5>{{ team }}</h5>
+        <ul ng-repeat="user in users">
+            <li ng-repeat="attempt in user.attempt" ng-if="attempt.results == 'W trakcie realizacji' ">
+                <strong>{{user.rank}} {{ user.name }} {{ user.surname }}</strong>
+                opiekun próby: {{ attempt.quide }} ({{ attempt.commandBegin }} data otwarcia {{attempt.dateBegin | date:"dd MMMM yyyy"}} )
+            </li>
+        </ul>
+        <br />
+    </div>
 </div>

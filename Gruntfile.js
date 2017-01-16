@@ -16,7 +16,7 @@ module.exports = function (grunt) {
         //     server: {
         //         options: {
         //             port: 9001,
-        //             base: './app/dist',
+        //             base: './public/dist',
         //             middleware: function (connect, options, defaultMiddleware) {
         //                 var proxy = require('grunt-connect-proxy/lib/utils').proxyRequest;
         //                 return [
@@ -38,7 +38,7 @@ module.exports = function (grunt) {
         //     server: {
         //       options: {
         //         port: 9001,
-        //         bases: './app/dist'
+        //         bases: './public/dist'
         //       }
         //     }
         //   }
@@ -46,9 +46,9 @@ module.exports = function (grunt) {
             dist: {
                 files: [{
                     expand: true,
-                    cwd: 'app/src/',
+                    cwd: 'public/src/',
                     src: ['**/*.js'],
-                    dest: 'app/dist/'
+                    dest: 'public/dist/'
                 }]
             }
         },
@@ -58,7 +58,7 @@ module.exports = function (grunt) {
               sourceMap: true
             },
             files: {
-              'app/dist/css/styles.min.css': 'app/less/style.less'
+              'public/dist/css/styles.min.css': 'public/less/style.less'
             },
          }
         },
@@ -66,35 +66,35 @@ module.exports = function (grunt) {
         watch: {
             options:{livereload:true},
             css: {
-                files: ['app/less/*.less'],
+                files: ['public/less/*.less'],
                 tasks: ['less'],
 
             },
             js: {
-                files: ['app/src/**/*.js'],
+                files: ['public/src/**/*.js'],
                 tasks: ['copy:js'],
 
             },
             html: {
-                files: ['app/src/**/**/*.html', 'app/index.html', 'app/pages/**/*.html'],
+                files: ['public/src/**/**/*.html', 'public/index.html', 'public/pages/**/*.html'],
                 tasks: ['clean:watch', 'copy:html'],
 
             },
             resources: {
-                files: ['app/resources/**/*', '!app/resources/flags'],
+                files: ['public/resources/**/*', '!public/resources/flags'],
                 tasks: ['copy:resources']
             },
             flags: {
-                files: ['app/resources/flags/**/*'],
+                files: ['public/resources/flags/**/*'],
                 tasks: ['sprite:flags']
             },
         },
         sprite: {
             flags: {
                 name: 'flags',
-                src: 'app/resources/flags/*.png',
-                dest: 'app/dist/resources/flags.png',
-                destCss: 'app/dist/css/flags.css',
+                src: 'public/resources/flags/*.png',
+                dest: 'public/dist/resources/flags.png',
+                destCss: 'public/dist/css/flags.css',
                 cssVarMap: function (sprite) {
                     sprite.name = 'flag-' + sprite.name;
                 }
@@ -131,7 +131,9 @@ module.exports = function (grunt) {
                              'angular-permission/dist/angular-permission-ng.min.js',
                              'chart.js/dist/Chart.min.js',
                              'angular-chart.js/dist/angular-chart.min.js',
-                             'angular-filter/dist/angular-filter.min.js'
+                             'angular-filter/dist/angular-filter.min.js',
+                             'bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js',
+                             'angular-datetime-input/dist/datetime.js'
                         ],
                         dest: 'public/dist/node_modules/'
                     }
@@ -142,9 +144,9 @@ module.exports = function (grunt) {
                 files: [
                     {
                         expand: true,
-                        cwd: 'app/resources',
+                        cwd: 'public/resources',
                         src: ['**/*', '!flags'],
-                        dest: 'app/dist/resources'
+                        dest: 'public/dist/resources'
                     }
                 ]
             },
@@ -152,9 +154,9 @@ module.exports = function (grunt) {
                 files: [
                     {
                         expand: true,
-                        cwd: 'app/',
-                        src: ['**/*.html', '!app/dist/'],
-                        dest: 'app/dist'
+                        cwd: 'public/',
+                        src: ['**/*.html', '!public/dist/'],
+                        dest: 'public/dist'
                     }
                 ]
             },
@@ -162,16 +164,16 @@ module.exports = function (grunt) {
                 files: [
                     {
                         expand: true,
-                        cwd: 'app/src/',
+                        cwd: 'public/src/',
                         src: ['**/*.js'],
-                        dest: 'app/dist/'
+                        dest: 'public/dist/'
                     }
                 ]
             }
         },
         clean: {
-            watch: ['app/dist/**/*.html'],
-            build: ['app/dist']
+            watch: ['public/dist/**/*.html'],
+            build: ['public/dist']
         },
         prettify: {
            options: {
@@ -182,10 +184,10 @@ module.exports = function (grunt) {
               },
             all: {
                 expand: true,
-                cwd: 'app/src/',
+                cwd: 'public/src/',
                 ext: '.html',
                 src: '**/*.html',
-                dest: 'app/src/'
+                dest: 'public/src/'
             }
           }
 

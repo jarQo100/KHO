@@ -18,9 +18,11 @@
 
     function MainPageController($scope, $http, Todos, $timeout, $rootScope, KHO_CRM_CONFIG, $location) {
 
+    var vm = this;
+
     var username = $rootScope.globals.currentUser['username'];
     Todos.checkRole(username).success(function(response){
-        $scope.role = response.role;
+        vm.role = response.role;
 
         if(response.role == KHO_CRM_CONFIG.petent){
             $location.path('/notAuthorize');
@@ -28,13 +30,13 @@
     });
 
 
-            $scope.formData = {};
+            vm.formData = {};
 
             Todos.get().success(function(data) {
 
-                $scope.users = data;
-                $scope.loading = false;
-                $scope.alertDeleteUser = false;
+                vm.users = data;
+                vm.loading = false;
+                vm.alertDeleteUser = false;
 
             }).error(function(err){
 
@@ -43,9 +45,9 @@
             });
 
 
-        $scope.deleteUser = function(id){
+        vm.deleteUser = function(id){
 
-            $scope.loading = true;
+            vm.loading = true;
 
             var  confirmResult = confirm("Czy na pewno chcesz usunąć użytkownika z bazy danych?");
 
@@ -53,13 +55,13 @@
 
                         Todos.delete(id)
                         .success(function(data) {
-                            $scope.loading = false;
-                            $scope.users = data;
+                            vm.loading = false;
+                            vm.users = data;
                         });
 
-                        $scope.alertDeleteUser = true;
+                        vm.alertDeleteUser = true;
                             $timeout(function () {
-                                 $scope.alertDeleteUser = false;
+                                 vm.alertDeleteUser = false;
                             }, 5000);
 
                 }

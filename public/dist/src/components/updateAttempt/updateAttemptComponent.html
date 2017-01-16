@@ -4,23 +4,123 @@
         <div class="flat-panel-header">
             <h3 class="flat-panel-heading">
                 {{ 'attemptCreate.title' | translate }}
-                <span ng-show="invalidForm" type="button" class="deleteUserButton label label-danger pull-right">{{ 'createScout.invalidForm' | translate }}</span>
+                <span ng-show="updateAttemptVM.invalidForm" type="button" class="deleteUserButton label label-danger pull-right">{{ 'createScout.invalidForm' | translate }}</span>
+
             </h3>
         </div>
         <br />
         <div class="flat-panel-body">
             <div class="form-horizontal">
-                <form novalidate class="css-form" name="attemptData">
+                <form novalidate class="css-form" name="updateAttemptVM.attemptData">
                     <!-- directives attemptForm -->
-                    <attempt-form></attempt-form>
-                    <div class="col-xs-12 col-md-12 ">
-                        <input ng-click="createAttempt(attemptData)" type="submit" value="{{ 'attemptCreate.submit' | translate }}" class="btn btn-success alignright" style="margin-top: 30px;" />
-                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-md-6">
+                            <div class="form-group">
+                                <label for="filter-company-name" class="col-sm-3 col-xs-12 control-label">{{ 'attemptCreate.quide' | translate }} </label>
+                                <div class="col-sm-9 col-xs-12">
+                                    <select class="form-control" id="quide" ng-model="updateAttemptVM.attemptData.quide">
+                                        <option value="{{ updateAttemptVM.attemptData.quide }}" disabled selected>{{ updateAttemptVM.attemptData.quide }}
+                                        </option>
+                                        <option ng-repeat="user in updateAttemptVM.formData" value="{{ user.name }} {{ user.surname }}">{{ user.name }} {{ user.surname }}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-md-6">
+                            <div class="form-group">
+                                <label for="filter-company-name" class="col-sm-3 col-xs-12 control-label">{{ 'attemptCreate.dateBegin' | translate }} </label>
+                                <div class="col-sm-9 col-xs-12">
+                                    <input id="dataBegin" data-provide="datepicker" type="text" ng-model="updateAttemptVM.attemptData.dateBegin" class="form-control" placeholder="Format: RRRR-MM-DD" required app-datetime>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-md-6">
+                            <div class="form-group">
+                                <label for="filter-company-name" class="col-sm-3 col-xs-12 control-label">{{ 'attemptCreate.commandBegin' | translate }} </label>
+                                <div class="col-sm-9 col-xs-12">
+                                    <input id="commandBegin" type="text" ng-model="updateAttemptVM.attemptData.commandBegin" class="form-control" placeholder="{{ 'attemptCreate.commandBegin' | translate }}" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-md-6">
+                            <div class="form-group">
+                                <label for="filter-company-name" class="col-sm-3 col-xs-12 control-label">{{ 'attemptCreate.dateEnd' | translate }} </label>
+                                <div class="col-sm-9 col-xs-12">
+                                    <input id="dataEnd" data-provide="datepicker" type="text" ng-model="updateAttemptVM.attemptData.dateEnd" class="form-control" placeholder="Format: RRRR-MM-DD" app-datetime>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-md-6">
+                            <div class="form-group">
+                                <label for="filter-company-name" class="col-sm-3 col-xs-12 control-label">{{ 'attemptCreate.commandEnd' | translate }} </label>
+                                <div class="col-sm-9 col-xs-12">
+                                    <input id="commandEnd" type="text" ng-model="updateAttemptVM.attemptData.commandEnd" class="form-control" placeholder="{{ 'attemptCreate.commandEnd' | translate }}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-md-6">
+                            <div class="form-group">
+                                <label for="filter-company-name" class="col-sm-3 col-xs-12 control-label">{{ 'attemptCreate.status' | translate }} </label>
+                                <div class="col-sm-9 col-xs-12">
+                                    <select class="form-control" id="result" ng-model="updateAttemptVM.attemptData.results">
+                                        <option value="" disabled selected>{{ 'attemptCreate.result' | translate }} </option>
+                                        <option value="W trakcie realizacji">W trakcie realizacji</option>
+                                        <option value="Zamknięto pozytywnie">Zamknięto pozytywnie</option>
+                                        <option value="Zamknięto negatywnie">Zamknięto negatywnie</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div ng-repeat="task in updateAttemptVM.tasks" class="tasksForm">
+                            <div class="row">
+                                <div class="col-xs-12 col-md-12">
+                                    <br />
+                                    <h5 class="text-center">{{ 'attemptCreate.addTasks' | translate }} {{$index + 1}}</h5>
+                                    <br />
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-md-6">
+                                <div class="form-group">
+                                    <label for="filter-company-name" class="col-sm-3 col-xs-12 control-label">{{ 'attemptCreate.category' | translate }} </label>
+                                    <div class="col-sm-9 col-xs-12">
+                                        <input type="text" ng-model="task.category" class="form-control" placeholder="{{  'attemptCreate.category' | translate }}" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-md-6">
+                                <div class="form-group">
+                                    <label for="filter-company-name" class="col-sm-3 col-xs-12 control-label">{{ 'attemptCreate.taskDateEnd' | translate }}</label>
+                                    <div class="col-sm-9 col-xs-12">
+                                        <input type="text" data-provide="datepicker" ng-model="task.dateEnd" class="form-control" placeholder="Format: RRRR-MM-DD" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-md-12">
+                                <div class="form-group">
+                                    <div class="col-md-12 col-xs-12">
+                                        <textarea ng-model="task.description" class="tasksDescription form-control" rows="3" placeholder="{{  'attemptCreate.descriptionPlaceholder' | translate }}"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                            <br />
+                        </div>
+                        <button class="btn btn-danger aligncenter" type="submit" ng-click="updateAttemptVM.addButton();"><i class="fa fa-plus"></i> Dodaj kolejny punkt próby</button>
+
+
+                        <div class="col-sm-6">
+                            <span ng-show="updateAttemptVM.success" type="button" class="alert alert-success">{{ 'createScout.success' | translate }}</span>
+                        </div>
+                        <div class="col-xs-12 col-md-6 ">
+                            <input ng-click="updateAttemptVM.createAttempt(updateAttemptVM.attemptData)" type="submit" value="{{ 'attemptCreate.submit' | translate }}" class="btn btn-success alignright" style="margin-top: 30px;" />
+                        </div>
+
                 </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
 </div>
 <!-- /content -->
 </div>
