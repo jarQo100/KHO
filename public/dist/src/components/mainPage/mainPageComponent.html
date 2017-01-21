@@ -58,7 +58,7 @@
                         <td class="text-center">{{ user.email }}</td>
                         <td class="text-center">
                             <a href="" ui-sref="mainView.Details({ scoutsId: user._id })" class="label label-primary">{{ 'mainPage.details' | translate }}</a>
-                            <a href="#" class="label label-danger" ng-click="deleteUser( user._id )"> <i class="fa fa-trash-o"></i> </a>
+                            <a href="#" class="label label-danger" ng-click="mainPageVM.deleteUser( user._id )"> <i class="fa fa-trash-o"></i> </a>
                         </td>
                     </tr>
                 </tbody>

@@ -76,7 +76,8 @@
 		"result" : "Wybierz status próby",
 		"commandBegin" : "Rozkaz otwarcia",
 		"commandEnd" : "Rozkaz zamknięcia",
-		"status" : "Status próby"
+		"status" : "Status próby",
+		"updateAttempt" : "Uaktualniono próbę"
 	},
 	"detailsAttempt" : {
 		"title" : "Karta próby na stopień Harcerz Orli",

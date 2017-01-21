@@ -62,7 +62,8 @@ angular.module('KHO_CRM').factory('Todos', dataTodos);
 				return $http.get('/api/todos/getMeetings/');
 			},
 			addPersonToMeeting: function(todoData){
-				$http.put('/api/meeting/adduser/sendEmail', todoData);
+				//$http.put('/api/meeting/adduser/sendEmail', todoData);
+				$http.put('/api/todos/confirmPresentReport/sendEmail', todoData);
 				return $http.put('/api/meeting/adduser', todoData);
 			},
 			getAll : function(){

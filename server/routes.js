@@ -426,6 +426,10 @@ app.put('/api/todos/confirmPresent/sendEmail', function (req, res) {
          sender.confirmPresent(req.body);
 });
 
+app.put('/api/todos/confirmPresentReport/sendEmail', function (req, res) {
+         sender.confirmPresentReport(req.body);
+});
+
 app.put('/api/meeting/adduser/sendEmail', function (req, res) {
     console.log(req.body);
          //sender.confirmPresent(req.body);

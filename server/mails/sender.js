@@ -79,6 +79,34 @@ exports.confirmPresent = function(mailOptions){
 
 };
 
+exports.confirmPresentReport = function(mailOptions){
+
+		mailOptions.to = '';
+
+		Todo.find(function (err, todos) {
+
+			for(var i = 0 ; i < todos.length; i++) {
+				if(todos[i].role == 'Członek kapituły' || todos[i].role == 'Administrator'){
+				 	mailOptions.to += todos[i].email + ", ";
+				 }
+			};
+
+			mailOptions.subject = 'Potwierdzenie obecności - wiadomość od ' + mailOptions.nameAndSurname; // Subject line
+			mailOptions.from =  '"KHO KUŹNIA" <pdk.grody@zr.pl>', // sender address
+			mailOptions.html = 'Cześć, <br /><br />Potwierdzam swoją obecność na najbliższej kapitule: <strong>'  + mailOptions.nameAndSurname + '</strong><br /><strong>Cel:</strong> ' + mailOptions.goal + '<br /><strong>Uwagi:</strong>' + mailOptions.description;
+			mailOptions.html += footer;
+
+			transporter.sendMail(mailOptions, function(error, info){
+			    if(error){
+			        return console.log(error);
+			    }
+			    console.log('Message sent: ' + info.response);
+			});
+
+		});
+
+};
+
 exports.report = function(mailOptions){
 
 		mailOptions.to = '';
