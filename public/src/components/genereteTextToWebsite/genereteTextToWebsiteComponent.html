@@ -1,8 +1,38 @@
 <div class="col-lg-12">
-    <div class="genereteText" ng-repeat="(team, users) in users | toArray  | groupBy: 'team' ">
+    <h3 class="flat-panel-heading">Próby w trakcie realizacji</h3>
+    <br />
+    <div class="genereteText" ng-repeat="(team, users) in users | toArray  | groupBy: 'team' " ng-if="team != 'GRODY' ">
         <h5>{{ team }}</h5>
         <ul ng-repeat="user in users">
             <li ng-repeat="attempt in user.attempt" ng-if="attempt.results == 'W trakcie realizacji' ">
+                <strong>{{user.rank}} {{ user.name }} {{ user.surname }}</strong>
+                opiekun próby: {{ attempt.quide }} ({{ attempt.commandBegin }} data otwarcia {{attempt.dateBegin | date:"dd MMMM yyyy"}} )
+            </li>
+        </ul>
+        <br />
+    </div>
+</div>
+<div class="col-lg-12">
+    <h3 class="flat-panel-heading">Próby zamknięte pozytywnie</h3>
+    <br />
+    <div class="genereteText" ng-repeat="(team, users) in users | toArray  | groupBy: 'team' " ng-if="team != 'GRODY' ">
+        <h5>{{ team }}</h5>
+        <ul ng-repeat="user in users">
+            <li ng-repeat="attempt in user.attempt" ng-if="attempt.results == 'Zamknięto pozytywnie' ">
+                <strong>{{user.rank}} {{ user.name }} {{ user.surname }}</strong>
+                opiekun próby: {{ attempt.quide }} ({{ attempt.commandBegin }} data otwarcia {{attempt.dateBegin | date:"dd MMMM yyyy"}} )
+            </li>
+        </ul>
+        <br />
+    </div>
+</div>
+<div class="col-lg-12">
+    <h3 class="flat-panel-heading">Próby zamknięte negatywnie</h3>
+    <br />
+    <div class="genereteText" ng-repeat="(team, users) in users | toArray  | groupBy: 'team' " ng-if="team != 'GRODY' ">
+        <h5>{{ team }}</h5>
+        <ul ng-repeat="user in users">
+            <li ng-repeat="attempt in user.attempt" ng-if="attempt.results == 'Zamknięto negatywnie' ">
                 <strong>{{user.rank}} {{ user.name }} {{ user.surname }}</strong>
                 opiekun próby: {{ attempt.quide }} ({{ attempt.commandBegin }} data otwarcia {{attempt.dateBegin | date:"dd MMMM yyyy"}} )
             </li>

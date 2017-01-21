@@ -20,6 +20,7 @@
         var vm = this;
     vm.formData = {};
     vm.formDataReport = {};
+    vm.update = updatedTogle;
     getMeetingsDate();
     getMeetingDateToReportForm();
     findUserIDByEmail();
@@ -45,6 +46,7 @@ console.log(formDataReport);
                     vm.formDataReport = {};
                     getMeetingsDate();
                     vm.reportToogle = false;
+                     vm.update();
         }
 
         vm.createMeeting = function(formData){
@@ -53,6 +55,7 @@ console.log(formDataReport);
                 vm.formData = {};
                  getMeetingsDate();
                 vm.addMeetingToogle = false;
+                 vm.update();
         }
 
     function getMeetingsDate(){
@@ -105,11 +108,22 @@ console.log(formDataReport);
             console.log(formData);
             Todos.confirmPresent(formData);
                  getMeetingsDate();
-                 vm.confirmTooge = false;
+                 vm.confirmPresentToogle = false;
+
+                   vm.update();
+
         }
 
 
 
+    }
+
+
+    function updatedTogle(){
+                vm.updated = true;
+                    $timeout(function () {
+                                      vm.updated = false;
+                                }, 5000);
     }
 
 }

@@ -7,7 +7,8 @@
 	 "logout" : "Wyloguj się",
 	 "dashboard" : "Panel główny",
 	 "meeting" : "Spotkania kapituły",
-	 "settings" : "Zarządzaj swoim kontem"
+	 "settings" : "Zarządzaj swoim kontem",
+	 "genereteTextToWebsite" : "Historia prób"
   },
   "mainPage": {
 	 "users": "Wszyscy użytkownicy systemu",
@@ -134,7 +135,8 @@
 		 "meetingDetailsTitle" : "Szczegóły spotkania",
 		 "confirmPresent" : "Potwierdź swoją obecność na kapitule",
 		 "memberCount" : "Liczba członków kapituły",
-		 "member" : "Skład kapituły"
+		 "member" : "Skład kapituły",
+		 "update" : "Poprawnie uaktualniono!"
 	},
 	"dashbardView" : {
 		"title" : "Witaj!",

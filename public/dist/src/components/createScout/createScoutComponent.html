@@ -80,6 +80,7 @@
                                 <label for="filter-company-rank" class="col-sm-3 col-xs-12 control-label">{{ 'createScout.rankInst' | translate }} </label>
                                 <div class="col-sm-9 col-xs-12">
                                     <select name="rank" id="rank" class="form-control" ng-model="formData.rankInst">
+                                        <option value="Brak">Brak</option>
                                         <option value="Przewodnik">Przewodnik</option>
                                         <option value="Podharcmistrz">Podharcmistrz</option>
                                         <option value="Harcmistrz">Harcmistrz</option>
@@ -101,6 +102,7 @@
                                 <div class="col-sm-9 col-xs-12">
                                     <select name="role" id="role" class="form-control" ng-model="formData.team">
                                         <option ng-repeat="team in createScoutVM.teams" value="{{ team.name }}">{{ team.name }}</option>
+                                         <option value="GRODY">GRODY</option>
                                     </select>
                                 </div>
                             </div>

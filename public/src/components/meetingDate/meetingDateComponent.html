@@ -3,14 +3,14 @@
         <div class="flat-panel-header">
             <h3 class="flat-panel-heading">
                 {{ 'meetingDate.title' | translate }}
-                <span ng-show="meetingViewVM.alertUpdateUser" type="button" class="deleteUserButton label label-success pull-right">{{ 'scoutsDetails.updateScout' | translate }}</span>
+                <span ng-show="meetingViewVM.updated" type="button" class="deleteUserButton label label-success pull-right">{{ 'meetingDate.update' | translate }}</span>
             </h3>
-            <span type="button" ng-show="meetingViewVM.role == 'Administrator'" ng-click="addMeetingToogle = !addMeetingToogle" class="deleteUserButton btn btn-default"><i class="fa fa-plus"></i> {{ 'meetingDate.addMeeting' | translate }}</span>
-            <span type="button" ng-show="meetingViewVM.role == 'Petent'" ng-click="reportToogle = !reportToogle" class="deleteUserButton btn btn-default"><i class="fa fa-plus"></i> {{ 'meetingDate.report' | translate }}</span>
-            <span type="button" ng-show="meetingViewVM.role == 'Administrator' || role == 'Członek kapituły'" ng-click="confirmPresentToogle = !confirmPresentToogle" class="deleteUserButton btn btn-default"><i class="fa fa-plus"></i> {{ 'meetingDate.confirmPresent' | translate }}</span>
+            <span type="button" ng-show="meetingViewVM.role == 'Administrator'" ng-click="meetingViewVM.addMeetingToogle = !meetingViewVM.addMeetingToogle" class="deleteUserButton btn btn-default"><i class="fa fa-plus"></i> {{ 'meetingDate.addMeeting' | translate }}</span>
+            <span type="button" ng-show="meetingViewVM.role == 'Petent'" ng-click="meetingViewVM.reportToogle = !meetingViewVM.reportToogle" class="deleteUserButton btn btn-default"><i class="fa fa-plus"></i> {{ 'meetingDate.report' | translate }}</span>
+            <span type="button" ng-show="meetingViewVM.role == 'Administrator' || role == 'Członek kapituły'" ng-click="meetingViewVM.confirmPresentToogle = !meetingViewVM.confirmPresentToogle" class="deleteUserButton btn btn-default"><i class="fa fa-plus"></i> {{ 'meetingDate.confirmPresent' | translate }}</span>
         </div>
         <br />
-        <section class="well" ng-show="addMeetingToogle">
+        <section class="well" ng-show="meetingViewVM.addMeetingToogle">
             <h5 class="text-center">
                 <strong>{{ 'meetingDate.submit' | translate }}</strong>
             </h5>
@@ -36,7 +36,7 @@
                     </div>
             </form>
         </section>
-        <section class="well" ng-show="reportToogle">
+        <section class="well" ng-show="meetingViewVM.reportToogle">
             <h5 class="text-center">
                 <strong>{{ 'meetingDate.reportSubmit' | translate }}</strong>
             </h5>
@@ -76,7 +76,7 @@
                     </div>
             </form>
         </section>
-        <section class="well" ng-show="confirmPresentToogle">
+        <section class="well" ng-show="meetingViewVM.confirmPresentToogle">
             <h5 class="text-center">
                 <strong>{{ 'meetingDate.confirmPresent' | translate }}</strong>
             </h5>
