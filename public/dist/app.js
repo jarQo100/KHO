@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('KHO_CRM', ['pascalprecht.translate', 'ngSanitize', 'ui.router', 'ngResource', 'ngCookies', 'angular-md5', 'chart.js', 'angular.filter', 'ngFileUpload'])
+        .module('KHO_CRM', ['pascalprecht.translate', 'ngSanitize', 'ui.router', 'ngResource', 'ngCookies', 'angular-md5', 'chart.js', 'angular.filter'])
         .constant('KHO_CRM_CONFIG', {
             defaultLang: 'pl_pl',
             admin: 'Administrator',

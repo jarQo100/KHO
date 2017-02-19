@@ -12,11 +12,10 @@ AddCommentController.$inject = [
 	'SetAlertClass',
 	'$rootScope',
 	'SendEmailToGroup',
-	'Upload',
 	'$timeout'
 ];
 
-function AddCommentController($scope, $stateParams, $http, Todos, SetAlertClass, $rootScope, SendEmailToGroup, Upload, $timeout){
+function AddCommentController($scope, $stateParams, $http, Todos, SetAlertClass, $rootScope, SendEmailToGroup, $timeout){
 
 		var vm = this;
 
