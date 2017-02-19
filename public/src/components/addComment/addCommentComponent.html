@@ -10,6 +10,27 @@
         </div>
         <br />
         <div class="flat-panel-body">
+
+<form novalidate class="css-form">
+<h4>Upload on file select</h4>
+  <button class="btn btn-success" ngf-select="uploadFiles($files, $invalidFiles)" multiple
+          accept="image/*" ngf-max-height="1000" ngf-max-size="1MB">
+      Select Files</button>
+  <br><br>
+  Files:
+  <ul>
+    <li ng-repeat="f in files" style="font:smaller">{{f.name}} {{f.$errorParam}}
+      <span class="progress" ng-show="f.progress >= 0">
+        <div style="width:{{f.progress}}%"
+            ng-bind="f.progress + '%'"></div>
+      </span>
+    </li>
+    <li ng-repeat="f in errFiles" style="font:smaller">{{f.name}} {{f.$error}} {{f.$errorParam}}
+    </li>
+  </ul>
+  {{errorMsg}}
+</form>
+
             <div ng-show="addCommentVM.showFormComm" class="row" style="margin-top: 30px;">
                 <form novalidate class="css-form" name="addCommentVM.commData">
                     <div class="col-xs-12 col-md-6">

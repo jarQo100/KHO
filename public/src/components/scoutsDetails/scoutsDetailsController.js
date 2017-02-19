@@ -21,7 +21,8 @@
                         var username = $rootScope.globals.currentUser['username'];
                         checkPermission();
                         $scope.teams = KHO_CRM_CONFIG.teams;
-	       $scope.formData = {};
+	        $scope.formData = {};
+                        $scope.notAuthorize = true;
 
                         function checkPermission(){
                                     Todos.findByEmail(username).success(function(response){
@@ -29,7 +30,15 @@
                                                         if(scoutIdParam != response._id && response.role == KHO_CRM_CONFIG.petent){
                                                             $location.path('/notAuthorize');
                                                         }
+
+                                                        if(response.role == KHO_CRM_CONFIG.petent){
+                                                              $scope.notAuthorize = false;
+                                                        }
+
+
                                                     });
+
+
                         }
 
 

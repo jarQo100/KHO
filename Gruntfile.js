@@ -133,7 +133,8 @@ module.exports = function (grunt) {
                              'angular-chart.js/dist/angular-chart.min.js',
                              'angular-filter/dist/angular-filter.min.js',
                              'bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js',
-                             'angular-datetime-input/dist/datetime.js'
+                             'angular-datetime-input/dist/datetime.js',
+                             'ng-file-upload/dist/ng-file-upload.min.js'
                         ],
                         dest: 'public/dist/node_modules/'
                     }

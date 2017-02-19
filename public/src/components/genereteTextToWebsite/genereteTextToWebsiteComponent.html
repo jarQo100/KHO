@@ -20,7 +20,7 @@
         <ul ng-repeat="user in users">
             <li ng-repeat="attempt in user.attempt" ng-if="attempt.results == 'Zamknięto pozytywnie' ">
                 <strong>{{user.rank}} {{ user.name }} {{ user.surname }}</strong>
-                opiekun próby: {{ attempt.quide }} ({{ attempt.commandBegin }} data otwarcia {{attempt.dateBegin | date:"dd MMMM yyyy"}} )
+                opiekun próby: {{ attempt.quide }} ({{ attempt.commandBegin }} data zamknięcia {{attempt.dateBegin | date:"dd MMMM yyyy"}} )
             </li>
         </ul>
         <br />
@@ -34,7 +34,7 @@
         <ul ng-repeat="user in users">
             <li ng-repeat="attempt in user.attempt" ng-if="attempt.results == 'Zamknięto negatywnie' ">
                 <strong>{{user.rank}} {{ user.name }} {{ user.surname }}</strong>
-                opiekun próby: {{ attempt.quide }} ({{ attempt.commandBegin }} data otwarcia {{attempt.dateBegin | date:"dd MMMM yyyy"}} )
+                opiekun próby: {{ attempt.quide }} ({{ attempt.commandBegin }} data zamknięcia {{attempt.dateBegin | date:"dd MMMM yyyy"}} )
             </li>
         </ul>
         <br />
