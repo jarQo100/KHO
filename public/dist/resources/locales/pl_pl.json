@@ -154,7 +154,10 @@
 		"lastComments" : "Ostatnio dodane komentarze do prób",
 		"nextMeetingDate" : "Następne spotkanie kapituły Harcerza Orlego odbędzie się: ",
 		"report" : "Zgłoś się na spotkanie z kapitułą",
-		"author" : "Autor"
+		"author" : "Autor",
+		"edit" : "Edytuj",
+		"comments": "Komenarze",
+		"show" : "Pokaż"
 	},
 	"loginView" : {
 		"title" : "KHO CRM",
