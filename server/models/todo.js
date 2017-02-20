@@ -68,6 +68,10 @@ const attemptSchema = new Schema({
 	 			type: String,
 	 			default: ''
 	 		},
+                                                typeAttempt : {
+                                                                type: String,
+                                                                default: ''
+                                                },
 	 		results : {
 	 			type: String,
 	 			default: 'W trakcie realizacji'

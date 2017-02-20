@@ -69,7 +69,6 @@ var vm = this;
 			                        vm.userData = data;
 			                        vm.userData.attempt = attemptData;
 
-
 			              }).error(function(){
 			              	console.log("BŁĄD");
 			              });

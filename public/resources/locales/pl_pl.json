@@ -59,7 +59,8 @@
 		"closeAttemps" : "Lista prób zamkniętych",
 		"result" : "Status",
 		"card" : "Karta",
-		"update" : "Edytuj"
+		"update" : "Edytuj",
+		"typeAttempt" : "Próba na stopień"
 },
 	"attemptCreate" : {
 		"title" : "Dodaj nową próbę",
@@ -78,10 +79,11 @@
 		"commandBegin" : "Rozkaz otwarcia",
 		"commandEnd" : "Rozkaz zamknięcia",
 		"status" : "Status próby",
-		"updateAttempt" : "Uaktualniono próbę"
+		"updateAttempt" : "Uaktualniono próbę",
+		"typeAttempt" : "Typ próby"
 	},
 	"detailsAttempt" : {
-		"title" : "Karta próby na stopień Harcerz Orli",
+		"title" : "Karta próby na stopień",
 		"rank" : "Stopień",
 		"quide" : "Opiekun próby",
 		"dateBegin" : "Data otwarcia",

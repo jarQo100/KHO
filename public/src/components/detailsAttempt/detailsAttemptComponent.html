@@ -4,7 +4,7 @@
     <div class="flat-panel">
         <div class="flat-panel-header">
             <h3 class="flat-panel-heading text-center">
-                {{ 'detailsAttempt.title' | translate }}
+                {{ 'detailsAttempt.title' | translate }} {{ detailsAttemptVM.attemptData.typeAttempt }}
                 <span ng-show="detailsAttemptVM.invalidForm" type="button" class="deleteUserButton label label-danger pull-right">{{ 'createScout.invalidForm' | translate }}</span>
             </h3>
         </div>
@@ -12,17 +12,17 @@
         <div class="flat-panel-body">
             <ul class="DetailsAttemptHead">
                 <li>{{ 'attemptCreate.nameAndSurname' | translate }}:
-                    <strong>{{ detailsAttemptVM.formData.name }} {{ detailsAttemptVM.formData.surname }} </strong>
+                    <strong>{{ detailsAttemptVM.scoutDetails.name }} {{ detailsAttemptVM.scoutDetails.surname }} </strong>
                 </li>
-                <li>{{ 'detailsAttempt.rank' | translate }}
-                    <strong>{{ detailsAttemptVM.formData.rank }}</strong>
+                <li>{{ 'detailsAttempt.rank' | translate }}:
+                    <strong>{{ detailsAttemptVM.scoutDetails.rank }}</strong>
                 </li>
-                <li>{{ 'detailsAttempt.quide' | translate }}
-                    <strong>{{ detailsAttemptVM.formData.attempt[0].quide }}</strong>
+                <li>{{ 'detailsAttempt.quide' | translate }}:
+                    <strong>{{ detailsAttemptVM.attemptData.quide }}</strong>
                     <a href="" ui-sref="mainView.addComment({ attemptId: detailsAttemptVM.attemptIdParam})" class="btn btn-default alignright">{{ 'detailsAttempt.addComment' | translate }}</a>
                 </li>
-                <li>{{ 'detailsAttempt.dateBegin' | translate }}
-                    <strong>{{ detailsAttemptVM.formData.attempt[0].dateBegin | date:"dd MMMM yyyy" }}
+                <li>{{ 'detailsAttempt.dateBegin' | translate }}:
+                    <strong>{{ detailsAttemptVM.attemptData.dateBegin | date:"dd MMMM yyyy" }}
                     </strong>
                 </li>
             </ul>
@@ -32,8 +32,8 @@
                     <th>{{ 'detailsAttempt.task' | translate }}</th>
                     <th>{{ 'detailsAttempt.term' | translate }}</th>
                 </thead>
-                <tbody ng-repeat="attempt in detailsAttemptVM.formData.attempt" ng-if="attempt._id == detailsAttemptVM.attemptIdParam">
-                    <tr ng-repeat="task in attempt.tasks">
+                <tbody >
+                    <tr ng-repeat="task in detailsAttemptVM.attemptData.tasks" ng-if="detailsAttemptVM.attemptData._id == detailsAttemptVM.attemptIdParam">
                         <td class="text-center" width="10%">{{ task.category }}</td>
                         <td>{{ task.description }}</td>
                         <td class="text-center" width="15%">{{ task.dateEnd | date:"dd MMMM yyyy" }}</td>

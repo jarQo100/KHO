@@ -17,11 +17,28 @@
 		var scoutIdParam = $stateParams.userId;
 		vm.attemptIdParam = $stateParams.attemptId;
 
-	       	vm.formData = {};
+	       	vm.attemptData = {};
+	       	vm.scoutDetails = {};
 
-			vm.formData = Todos.findById(scoutIdParam).success(function(data) {
-	                        	vm.formData = data;
-		                })
+			Todos.findById(scoutIdParam).success(function(data) {
+
+				vm.scoutDetails = data;
+
+				angular.forEach(data.attempt, function(attempt) {
+
+               				if(attempt._id == vm.attemptIdParam){
+               					vm.attemptData = attempt;
+               					console.log(vm.attemptData);
+               				}
+
+
+               			});
+
+		                });
+
+
+
+
 
 	}
 
