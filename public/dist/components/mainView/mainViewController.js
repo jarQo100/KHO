@@ -16,6 +16,7 @@
     function MainViewController($scope, AuthenticationService, $location, Todos, $rootScope, KHO_CRM_CONFIG) {
 
     var vm = this;
+    vm.showMenuToggle = true;
 
     var username = $rootScope.globals.currentUser['username'];
     Todos.checkRole(username).success(function(response){

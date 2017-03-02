@@ -52,12 +52,8 @@ body {
   font-family: "Raleway", Helvetica, sans-serif;
   font-weight: 400;
 }
-#outer-wrapper {
-  display: table;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
+.no-padding-left {
+  padding-left: 0px;
 }
 /* breadcrumbs */
 .breadcrumb {
@@ -95,12 +91,8 @@ body {
 ===============================*/
 #sidebar {
   background: #272930;
-  width: 280px;
-  z-index: 2;
-  display: table-cell;
-  position: relative;
-  vertical-align: top;
-  padding-bottom: 200px;
+  width: 100%;
+  height: 100vh;
 }
 #sidebar .sidebar-logo {
   background: #3d566d;
@@ -793,10 +785,6 @@ ul.timeline li .content .img-thumbnail {
     -moz-border-radius: 3px;
     border-radius: 3px;
   }
-  nav.sidebar-navigation,
-  #sidebar .sidebar-copyrights {
-    display: none;
-  }
   #sidebar .sidebar-navigation > ul > li > a > span {
     display: inline-block;
   }
@@ -1444,4 +1432,28 @@ h5.head-title {
   margin-right: -5px;
 }
 /*# sourceMappingURL=bootstrap-datepicker.css.map */
+h3.remove-margin-top {
+  margin-top: 0px;
+  padding: 12px 0;
+}
+@media all and (max-width: 767px) {
+  #sidebar {
+    height: 100%;
+  }
+  .no-padding-left {
+    padding: 0px;
+    margin: 0px;
+  }
+  .sidebar-logo2 .ng-binding {
+    margin: 0px;
+    padding: 20px 0;
+  }
+  #sidebar .sidebar-copyrights {
+    position: relative;
+  }
+  .sidebar-navigation,
+  .sidebar-copyrights {
+    display: none;
+  }
+}
 /*# sourceMappingURL=styles.min.css.map */

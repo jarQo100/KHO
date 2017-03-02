@@ -1,65 +1,76 @@
-<div id="outer-wrapper">
+<div class="col-sm-1 col-md-3 no-padding-left">
     <div id="sidebar">
-        <div class="semifluid-layout">
-            <div class="btn-rwd-menu">
-                <i class="fa fa-bars"></i>
-            </div>
-            <div class="sidebar-logo2 text-center">
-                <h3>{{ 'mainView.title' | translate }}</h3>
-            </div>
-            <nav class="sidebar-navigation">
-                <ul>
-                    <li ng-class="mainViewVm.getActiveClass('/content/dashboard');">
-                        <a href="" ui-sref="mainView.dashboard">
-                            <i class="fa fa-tachometer"></i>
-                            <span>{{ 'mainView.dashboard' | translate }}</span>
-                        </a>
-                    </li>
-                    <li ng-class="mainViewVm.getActiveClass('/content/list');" ng-show="mainViewVm.role != 'Petent'">
-                        <a href="" ui-sref="mainView.List">
-                            <i class="fa fa-users"></i>
-                            <span>{{ 'mainView.users' | translate }}</span>
-                        </a>
-                    </li>
-                    <li ng-class="mainViewVm.getActiveClass('/content/attemptList');" ng-show="mainViewVm.role != 'Petent'">
-                        <a href="" ui-sref="mainView.attemptList">
-                            <i class="fa fa-bar-chart"></i>
-                            <span>{{ 'mainView.attempts' | translate }}</span>
-                        </a>
-                    </li>
-                    <li ng-class="mainViewVm.getActiveClass('/content/meetingDate');">
-                        <a href="" ui-sref="mainView.meetingDate">
-                            <i class="fa fa-calendar"></i>
-                            <span>{{ 'mainView.meeting' | translate }}</span>
-                        </a>
-                    </li>
-                    <li ng-class="mainViewVm.getActiveClass('/content/details');">
-                        <a href="" ui-sref="mainView.Details({ scoutsId: mainViewVm.scout_id })">
-                            <i class="fa fa-cogs"></i>
-                            <span>{{ 'mainView.settings' | translate }}</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="" ui-sref="mainView.genereteTextToWebsite" ng-show="mainViewVm.role != 'Petent'">
-                            <i class="fa fa-eye"></i>
-                            <span>{{ 'mainView.genereteTextToWebsite' | translate }}</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" ng-click="mainViewVm.logout()" title="">
-                            <i class="fa fa-sign-out"></i>
-                            <span>{{ 'mainView.logout' | translate }}</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-            <div class="sidebar-copyrights">
-                {{ 'mainView.copyright' | translate }}
-            </div>
+        <div class="btn-rwd-menu">
+            <i class="fa fa-bars"></i>
+        </div>
+        <div class="sidebar-logo2 text-center">
+            <h3 class="remove-margin-top">{{ 'mainView.title' | translate }}</h3>
+        </div>
+        <nav class="sidebar-navigation">
+            <ul>
+                <li ng-class="mainViewVm.getActiveClass('/content/dashboard');">
+                    <a href="" ui-sref="mainView.dashboard">
+                        <i class="fa fa-tachometer"></i>
+                        <span>{{ 'mainView.dashboard' | translate }}</span>
+                    </a>
+                </li>
+                <li ng-class="mainViewVm.getActiveClass('/content/list');" ng-show="mainViewVm.role != 'Petent'">
+                    <a href="" ui-sref="mainView.List">
+                        <i class="fa fa-users"></i>
+                        <span>{{ 'mainView.users' | translate }}</span>
+                    </a>
+                </li>
+                <li ng-class="mainViewVm.getActiveClass('/content/attemptList');" ng-show="mainViewVm.role != 'Petent'">
+                    <a href="" ui-sref="mainView.attemptList">
+                        <i class="fa fa-bar-chart"></i>
+                        <span>{{ 'mainView.attempts' | translate }}</span>
+                    </a>
+                </li>
+                <li ng-class="mainViewVm.getActiveClass('/content/meetingDate');">
+                    <a href="" ui-sref="mainView.meetingDate">
+                        <i class="fa fa-calendar"></i>
+                        <span>{{ 'mainView.meeting' | translate }}</span>
+                    </a>
+                </li>
+                <li ng-class="mainViewVm.getActiveClass('/content/details');">
+                    <a href="" ui-sref="mainView.Details({ scoutsId: mainViewVm.scout_id })">
+                        <i class="fa fa-cogs"></i>
+                        <span>{{ 'mainView.settings' | translate }}</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="" ui-sref="mainView.genereteTextToWebsite" ng-show="mainViewVm.role != 'Petent'">
+                        <i class="fa fa-eye"></i>
+                        <span>{{ 'mainView.genereteTextToWebsite' | translate }}</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" ng-click="mainViewVm.logout()" title="">
+                        <i class="fa fa-sign-out"></i>
+                        <span>{{ 'mainView.logout' | translate }}</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="sidebar-copyrights">
+            {{ 'mainView.copyright' | translate }}
         </div>
     </div>
+</div>
+<div class="col-sm-11 col-md-9">
     <div class="pages navbar-through toolbar-through">
         <ui-view></ui-view>
         <!-- <main-page data-page="index" class="page"></main-page> -->
     </div>
 </div>
+</div>
+<script type="text/javascript">
+$('document').ready(function()
+{
+    $('.btn-rwd-menu').click(function()
+    {
+        $('.sidebar-navigation').toggle();
+        $('.sidebar-copyrights').toggle();
+    });
+});
+</script>

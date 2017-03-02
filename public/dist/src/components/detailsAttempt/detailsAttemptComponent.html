@@ -32,7 +32,7 @@
                     <th>{{ 'detailsAttempt.task' | translate }}</th>
                     <th>{{ 'detailsAttempt.term' | translate }}</th>
                 </thead>
-                <tbody >
+                <tbody>
                     <tr ng-repeat="task in detailsAttemptVM.attemptData.tasks" ng-if="detailsAttemptVM.attemptData._id == detailsAttemptVM.attemptIdParam">
                         <td class="text-center" width="10%">{{ task.category }}</td>
                         <td>{{ task.description }}</td>

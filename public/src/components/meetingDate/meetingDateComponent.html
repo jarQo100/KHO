@@ -136,29 +136,31 @@
         </section>
         <br />
         <br />
-        <table class="no-border table table-striped table-hover">
-            <thead class="text-center">
-                <th>{{ 'meetingDate.date' | translate }}</th>
-                <th>{{ 'meetingDate.place' | translate }}</th>
-                <th>{{ 'meetingDate.description' | translate }}</th>
-                <th class="text-center">{{ 'meetingDate.candidates' | translate }}</th>
-                <th class="text-center">{{ 'meetingDate.memberCount' | translate }}</th>
-                <th class="text-center">{{ 'meetingDate.options' | translate }}</th>
-            </thead>
-            <tbody>
-                <tr ng-repeat="row in meetingViewVM.meetingData | orderBy : '-date'">
-                    <td>{{ row.date | date:"dd MMMM yyyy" }}</td>
-                    <td>{{ row.place }}</td>
-                    <td>{{ row.description }}</td>
-                    <td class="text-center">{{row.candidates.length}}</td>
-                    <td class="text-center">{{row.member.length}}</td>
-                    <td class="text-center">
-                        <a ng-click="meetingViewVM.showDetails(row._id)" class="label label-default"><i class="fa fa-eye"></i></a>
-                        <a ng-show="meetingViewVM.role == 'Administrator'" class="label label-danger" ng-click="meetingViewVM.deleteMeeting(row._id)"><i class="fa fa-trash-o"></i> </a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="table-responsive">
+            <table class="no-border table table-striped table-hover">
+                <thead class="text-center">
+                    <th>{{ 'meetingDate.date' | translate }}</th>
+                    <th>{{ 'meetingDate.place' | translate }}</th>
+                    <th>{{ 'meetingDate.description' | translate }}</th>
+                    <th class="text-center">{{ 'meetingDate.candidates' | translate }}</th>
+                    <th class="text-center">{{ 'meetingDate.memberCount' | translate }}</th>
+                    <th class="text-center">{{ 'meetingDate.options' | translate }}</th>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="row in meetingViewVM.meetingData | orderBy : '-date'">
+                        <td>{{ row.date | date:"dd MMMM yyyy" }}</td>
+                        <td>{{ row.place }}</td>
+                        <td>{{ row.description }}</td>
+                        <td class="text-center">{{row.candidates.length}}</td>
+                        <td class="text-center">{{row.member.length}}</td>
+                        <td class="text-center">
+                            <a ng-click="meetingViewVM.showDetails(row._id)" class="label label-default"><i class="fa fa-eye"></i></a>
+                            <a ng-show="meetingViewVM.role == 'Administrator'" class="label label-danger" ng-click="meetingViewVM.deleteMeeting(row._id)"><i class="fa fa-trash-o"></i> </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
         </div>
         </div>
         </div>
