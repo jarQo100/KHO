@@ -1,70 +1,68 @@
-<div class="row">
-    <div class="col-xs-12">
-        <div class="flat-panel">
-            <div class="flat-panel-header">
-                <h3 class="flat-panel-heading">
-                    {{ 'mainPage.users' | translate }}
-                    <a href="#" ui-sref="mainView.Create" class="label label-success pull-right" title="Dodaj nowego klienta"><i class="glyphicon glyphicon-plus"></i>
+<div class="col-xs-12">
+    <div class="flat-panel">
+        <div class="flat-panel-header">
+            <h3 class="flat-panel-heading">
+                {{ 'mainPage.users' | translate }}
+                <a href="#" ui-sref="mainView.Create" class="label label-success pull-right" title="Dodaj nowego klienta"><i class="glyphicon glyphicon-plus"></i>
                     <span class="sub-title">{{ 'mainPage.addNew' | translate }}</span></a>
-                    <span ng-show="mainPageVM.alertDeleteUser" type="button" class="deleteUserButton label label-danger pull-right">{{ 'mainPage.deleteUser' | translate }}</span>
-                </h3>
-            </div>
-            <div class="flat-panel-body table-responsive">
-                <table class="no-border table table-striped table-hover ">
-                    <thead>
-                        <tr>
-                            <th class="text-center">
-                                <span class="sort-btn">
-                                    {{ 'mainPage.nameAndSurname' | translate }}
-                                    <i class="fa fa-sort"></i>
-                                </span>
-                            </th>
-                            <th class="text-center">
-                                <span class="sort-btn">
-                                    {{ 'mainPage.phone' | translate }}
-                                    <i class="fa fa-sort"></i>
-                                </span>
-                            </th>
-                            <th class="text-center">
-                                <span class="sort-btn">
-                                    {{ 'mainPage.address' | translate }}
-                                </span>
-                            </th>
-                            <th class="text-center">
-                                <span class="sort-btn">
-                                    {{ 'mainPage.rank' | translate }}
-                                    <i class="fa fa-sort"></i>
-                                </span>
-                            </th>
-                            <th class="text-center">
-                                <span class="sort-btn">
-                                    {{ 'mainPage.rankInst' | translate }}
-                                </span>
-                            </th>
-                            <th class="text-center">
-                                <span class="sort-btn">
-                                    {{ 'mainPage.email' | translate }}
-                                </span>
-                            </th>
-                            <th class="text-center" style="width: 150px;">{{ 'mainPage.actions' | translate }}</th>
-                        </tr>
-                    </thead>
-                    <tbody class="no-border">
-                        <tr ng-repeat="user in mainPageVM.users">
-                            <td class="text-center">{{ user.name }} {{ user.surname }}</td>
-                            <td class="text-center">{{ user.phone }}</td>
-                            <td class="text-center">{{ user.address }}</td>
-                            <td class="text-center">{{ user.rank }}</td>
-                            <td class="text-center">{{ user.rankInst }}</td>
-                            <td class="text-center">{{ user.email }}</td>
-                            <td class="text-center">
-                                <a href="" ui-sref="mainView.Details({ scoutsId: user._id })" class="label label-primary">{{ 'mainPage.details' | translate }}</a>
-                                <a href="#" class="label label-danger" ng-click="mainPageVM.deleteUser( user._id )"> <i class="fa fa-trash-o"></i> </a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+                <span ng-show="mainPageVM.alertDeleteUser" type="button" class="deleteUserButton label label-danger pull-right">{{ 'mainPage.deleteUser' | translate }}</span>
+            </h3>
+        </div>
+        <div class="flat-panel-body table-responsive">
+            <table class="no-border table table-striped table-hover ">
+                <thead>
+                    <tr>
+                        <th class="text-center">
+                            <span class="sort-btn">
+                                {{ 'mainPage.nameAndSurname' | translate }}
+                                <i class="fa fa-sort"></i>
+                            </span>
+                        </th>
+                        <th class="text-center">
+                            <span class="sort-btn">
+                                {{ 'mainPage.phone' | translate }}
+                                <i class="fa fa-sort"></i>
+                            </span>
+                        </th>
+                        <th class="text-center">
+                            <span class="sort-btn">
+                                {{ 'mainPage.address' | translate }}
+                            </span>
+                        </th>
+                        <th class="text-center">
+                            <span class="sort-btn">
+                                {{ 'mainPage.rank' | translate }}
+                                <i class="fa fa-sort"></i>
+                            </span>
+                        </th>
+                        <th class="text-center">
+                            <span class="sort-btn">
+                                {{ 'mainPage.rankInst' | translate }}
+                            </span>
+                        </th>
+                        <th class="text-center">
+                            <span class="sort-btn">
+                                {{ 'mainPage.email' | translate }}
+                            </span>
+                        </th>
+                        <th class="text-center" style="width: 150px;">{{ 'mainPage.actions' | translate }}</th>
+                    </tr>
+                </thead>
+                <tbody class="no-border">
+                    <tr ng-repeat="user in mainPageVM.users">
+                        <td class="text-center">{{ user.name }} {{ user.surname }}</td>
+                        <td class="text-center">{{ user.phone }}</td>
+                        <td class="text-center">{{ user.address }}</td>
+                        <td class="text-center">{{ user.rank }}</td>
+                        <td class="text-center">{{ user.rankInst }}</td>
+                        <td class="text-center">{{ user.email }}</td>
+                        <td class="text-center">
+                            <a href="" ui-sref="mainView.Details({ scoutsId: user._id })" class="label label-primary">{{ 'mainPage.details' | translate }}</a>
+                            <a href="#" class="label label-danger" ng-click="mainPageVM.deleteUser( user._id )"> <i class="fa fa-trash-o"></i> </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

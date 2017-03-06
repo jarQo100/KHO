@@ -1,0 +1,41 @@
+ <div class="loginForm col-sm-4 col-sm-offset-4">
+
+   <h3>{{ 'registerView.title' | translate }}</h3>
+<br />
+    <form ng-submit="RegisterControllerVM.register()">
+     <div class="form-group" ng-class="{ 'has-error': form.name.$dirty && form.username.$error.required }">
+            <label for="name">{{ 'registerView.name' | translate }}</label>
+            <input type="text" name="name" id="name" class="form-control" ng-model="RegisterControllerVM.registerForm.name" required />
+            <span ng-show="form.username.$dirty && form.username.$error.required" class="help-block">{{ 'loginView.loginRequire' | translate }}</span>
+        </div>
+         <div class="form-group" ng-class="{ 'has-error': form.surname.$dirty && form.username.$error.required }">
+            <label for="surname">{{ 'registerView.surname' | translate }}</label>
+            <input type="text" name="surname" id="surname" class="form-control" ng-model="RegisterControllerVM.registerForm.surname" required />
+            <span ng-show="form.username.$dirty && form.username.$error.required" class="help-block">{{ 'loginView.loginRequire' | translate }}</span>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': form.email.$dirty && form.email.$error.required }">
+            <label for="email">{{ 'registerView.login' | translate }}</label>
+            <input type="email" name="email" id="email" class="form-control" ng-model="RegisterControllerVM.registerForm.email" required />
+            <span ng-show="form.email.$dirty && form.email.$error.required" class="help-block">{{ 'loginView.loginRequire' | translate }}</span>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': form.password.$dirty && form.password.$error.required }">
+            <label for="password">{{ 'loginView.pass' | translate }}</label>
+            <input type="password" name="password" id="password" class="form-control" ng-model="RegisterControllerVM.registerForm.password" required />
+            <span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">{{ 'loginView.passRequire' | translate }}</span>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': form.password.$dirty && form.confirmpass.$error.required }">
+            <label for="confirmpass">{{ 'registerView.confirmpass' | translate }}</label>
+            <input type="password" name="confirmpass" id="confirmpass" class="form-control" ng-model="RegisterControllerVM.registerForm.confirmpass" required />
+            <span ng-show="form.confirmpass.$dirty && form.confirmpass.$error.required" class="help-block">{{ 'loginView.passRequire' | translate }}</span>
+        </div>
+        <p class="alert alert-danger" ng-if="vm.errorLoginData">{{ 'loginView.wrong' | translate }}</p>
+        <div class="form-actions">
+        	<span class="alert alert-danger" ng-show="RegisterControllerVM.notMatchpass">Hasła różnią się</span>
+            <button type="submit" ng-disabled="form.$invalid || vm.dataLoading" class="btn btn-primary">{{ 'registerView.submit' | translate }}</button>
+           </div>
+    </form>
+<br />
+    <a href="" ui-sref="registerPage">UTWÓRZ KONTO</a>
+
+    <!-- <img src="http://grody.zhr.pl/wp-content/uploads/2014/03/kHO-z-napisem-300x298.jpg" width="250" class="aligncenter text-center" alt=""> -->
+</div>

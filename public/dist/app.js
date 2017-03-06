@@ -41,7 +41,13 @@ ChartJsProvider.setOptions({
         url: '/login',
         templateUrl: 'pages/login/index.html',
         controller: 'LoginController',
-        controllerAs: 'vm'
+      }
+
+      var registerState = {
+        name: 'registerPage',
+        url: '/utworz-konto',
+        templateUrl: 'pages/register/index.html',
+        controller: 'RegisterController as RegisterControllerVM'
       }
 
       var mainView = {
@@ -143,6 +149,7 @@ ChartJsProvider.setOptions({
 
 
       $stateProvider.state(loginState);
+      $stateProvider.state(registerState);
       $stateProvider.state(mainView);
       $stateProvider.state(mainViewList);
       $stateProvider.state(scoutsDetailsList);

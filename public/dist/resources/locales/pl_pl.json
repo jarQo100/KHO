@@ -60,7 +60,8 @@
 		"result" : "Status",
 		"card" : "Karta",
 		"update" : "Edytuj",
-		"typeAttempt" : "Próba na stopień"
+		"typeAttempt" : "Próba na stopień",
+		"deleteAttempt": "Usunięto próbę"
 },
 	"attemptCreate" : {
 		"title" : "Dodaj nową próbę",
@@ -142,7 +143,7 @@
 	},
 	"dashbardView" : {
 		"title" : "Witaj!",
-		"countUsers" : "Liczba użytkowników w systemie",
+		"countUsers" : "Liczba użytkowników",
 		"countOpenAttempt" : "Liczba otwartych prób",
 		"countCloseAttempt" : "Liczba zamkniętych prób",
 		"countAllAttempt" : "Liczba prowadzonych prób",
@@ -167,5 +168,13 @@
 		"loginRequire" : "Login jest wymagany!",
 		"passRequire" : "Hasło jest wymagane",
 		"wrong" : "Podane dane są niepoprawne! Spróbuj ponownie."
+	},
+	"registerView":{
+		"title" : "Wypełnij formularz aby utworzyć konto",
+		"name" : "Imię",
+		"surname": "Nazwisko",
+		"confirmpass" : "Powtórz hasło",
+		"submit": "Utwórz konto",
+		"login" : "Podaj adres emial. Email będzie loginem w aplikacji"
 	}
 }
