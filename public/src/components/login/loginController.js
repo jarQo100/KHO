@@ -11,7 +11,6 @@
         var vm = this;
 
         vm.login = login;
-        console.log("elo");
 
         (function initController() {
             // reset login status
@@ -20,17 +19,15 @@
         })();
 
         function login() {
+            console.log("fdsfs");
             var pass = md5.createHash(vm.password);
-            console.log(pass);
             vm.dataLoading = true;
 
             AuthenticationService.Login(vm.username, pass, function (response) {
                 if (response.success) {
-                    console.log("true");
                     AuthenticationService.SetCredentials(vm.username, vm.password);
                     $location.path('/content/dashboard');
                 } else {
-                    console.log("false");
                     //UserService.Error(response.message);
                     vm.password = {};
                     vm.errorLoginData = true;

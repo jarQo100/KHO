@@ -40,7 +40,7 @@ ChartJsProvider.setOptions({
         name: 'loginPage',
         url: '/login',
         templateUrl: 'pages/login/index.html',
-        controller: 'LoginController',
+        controller: 'LoginController as vm',
       }
 
       var registerState = {
