@@ -2,7 +2,22 @@
 
 "use strinct";
 
-angular.module("KHO_CRM").controller('AddCommentController', AddCommentController);
+angular.module("KHO_CRM")
+	.controller('AddCommentController', AddCommentController)
+	.directive('ngFiles', ['$parse', function ($parse) {
+
+	            function fn_link(scope, element, attrs) {
+	                var onChange = $parse(attrs.ngFiles);
+	                element.on('change', function (event) {
+	                    onChange(scope, { $files: event.target.files });
+	                });
+	            };
+
+	            return {
+	                link: fn_link
+	            }
+	        }
+        ]);
 
 AddCommentController.$inject = [
 	'$scope',
@@ -12,7 +27,7 @@ AddCommentController.$inject = [
 	'SetAlertClass',
 	'$rootScope',
 	'SendEmailToGroup',
-	'$timeout'
+	'$timeout',
 ];
 
 function AddCommentController($scope, $stateParams, $http, Todos, SetAlertClass, $rootScope, SendEmailToGroup, $timeout){
@@ -23,6 +38,7 @@ function AddCommentController($scope, $stateParams, $http, Todos, SetAlertClass,
 		vm.attemptIdParam = $stateParams.attemptId;
 		vm.nameAndSurname;
 		vm.formData = {};
+		vm.files = {};
 
 		// Przypisanie funkcji do zmiennych
 		vm.createTask = createTaskFun;
@@ -73,30 +89,31 @@ function AddCommentController($scope, $stateParams, $http, Todos, SetAlertClass,
 			}
 		}
 
-		$scope.uploadFiles = function(file, errFiles) {
-		        $scope.f = file;
-		        $scope.errFile = errFiles && errFiles[0];
-		        console.log(file);
-		        if (file) {
-		            file.upload = Upload.upload({
-		                url: 'https://angular-file-upload-cors-srv.appspot.com/upload',
-		                data: {file: file}
-		            });
+		vm.submit = function() {
+		      if (vm.form.file.$valid && vm.form.file) {
+		      	console.log(vm.form.file);
+		        	vm.upload(vm.form.file);
+		      }
+		    };
 
-		        //     file.upload.then(function (response) {
-		        //         $timeout(function () {
-		        //             file.result = response.data;
-		        //         });
-		        //     }, function (response) {
-		        //         if (response.status > 0)
-		        //             $scope.errorMsg = response.status + ': ' + response.data;
-		        //     }, function (evt) {
-		        //         file.progress = Math.min(100, parseInt(100.0 *
-		        //                                  evt.loaded / evt.total));
-		        //     });
 
-		     }
-    		}
+    //upload on file select or drop
+    vm.upload = function (file) {
+    	Todos.sendFiles("jarek", file);
+}
+
+    // // for multiple files:
+    // $scope.uploadFiles = function (files) {
+    //   if (files && files.length) {
+    //     for (var i = 0; i < files.length; i++) {
+    //       Upload.upload({..., data: {file: files[i]}, ...})...;
+    //     }
+    //     // or send them all together for HTML5 browsers:
+    //     Upload.upload({..., data: {file: files}, ...})...;
+    //   }
+    // }
+
+
 
 }
 

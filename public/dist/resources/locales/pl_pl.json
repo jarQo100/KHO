@@ -114,7 +114,8 @@
 		"author" : "Autor",
 		"yes" : "TAK",
 		"no" : "NIE",
-		"sendMailToGroup" : "Czy chcesz wysłać tą wiadomość do kapituły via e-mail?"
+		"sendMailToGroup" : "Czy chcesz wysłać tą wiadomość do kapituły via e-mail?",
+		"addFile" : "Dodaj pliki"
 	},
 	"meetingDate" : {
 		"title" : "Spotkania kapituły",

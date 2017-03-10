@@ -81,6 +81,20 @@ angular.module('KHO_CRM').factory('Todos', dataTodos);
 			sendEmail: function(mailOptions){
 				console.log(mailOptions);
 				return $http.put('/api/sendEmail', mailOptions);
+			},
+			sendFiles: function(username, files){
+				console.log(username);
+				console.log(files);
+				return $http({
+				        method: 'POST',
+				        url: '/api/sendFiles',
+				        data: {
+				        	username: username,
+				        	filse: files
+				        },
+				        //headers: {'Content-Type': 'multipart/form-data'}
+				});
+
 			}
 
 		}

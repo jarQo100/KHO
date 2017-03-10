@@ -7,6 +7,10 @@ mongoose.Promise = Promise;
 var nodemailer = require('nodemailer');
  var sender = require('./mails/sender.js');
 
+var path = require('path');
+var formidable = require('formidable');
+var fs = require('fs');
+
 function getTodos(res) {
     Todo.find(function (err, todos) {
         // if there is an error retrieving, send the error. nothing after res.send(err) will execute
@@ -261,31 +265,6 @@ Todo.findById(query, function (err, todo) {
 });
 
 
-    // Todo.update(query, update, options, function(err, superhero){
-
-    //     console.log(superhero)
-
-    //   });
-
-
-
-
-
-
-
-       //Todo.update(query);
-
-
-// var query = Todo.findOne({ _id : req.params.user_id});
-// console.log(query);
-
-// query.then(function(user){
-
-//     user.attempt.push({attempt : req.body});
-//     user.save();
-
-// });
-
 });
 
 
@@ -431,6 +410,38 @@ app.put('/api/todos/confirmPresentReport/sendEmail', function (req, res) {
 
 app.put('/api/meeting/adduser/sendEmail', function (req, res) {
          sender.confirmPresent(req.body);
+});
+
+app.post('/api/sendFiles', function (req, res) {
+        // create an incoming form object
+        console.log(req.body.username);
+        console.log(__dirname);
+          var form = new formidable.IncomingForm();
+
+          // specify that we want to allow the user to upload multiple files in a single request
+          //form.multiples = true;
+
+          // store all uploads in the /uploads directory
+          form.uploadDir = path.join(__dirname, '/uploads_files');
+          form.encoding = 'binary';
+          // every time a file has been uploaded successfully,
+          // rename it to it's orignal name
+          form.on('file', function(field, file) {
+            fs.rename(file.path, path.join(form.uploadDir, file.name));
+          });
+
+          // log any errors that occur
+          form.on('error', function(err) {
+            console.log('An error has occured: \n' + err);
+          });
+
+          // once all the files have been uploaded, send a response to the client
+          form.on('end', function() {
+            res.end('success');
+          });
+
+          // parse the incoming request containing the form data
+          form.parse(req);
 });
 
 
