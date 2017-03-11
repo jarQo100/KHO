@@ -42,7 +42,7 @@ function AddCommentController($scope, $stateParams, $http, Todos, SetAlertClass,
 		vm.nameAndSurname;
 		vm.formData = {};
 		var username = $rootScope.globals.currentUser['username'];
-		vm._dir = './user_uploads/' + username;
+		vm._dir = './resources/user_uploads/' + username;
 
 		// Przypisanie funkcji do zmiennych
 		vm.createTask = createTaskFun;

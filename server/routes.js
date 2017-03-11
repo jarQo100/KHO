@@ -38,7 +38,7 @@ function getMeetings(res) {
 
 var storage = multer.diskStorage({ //multers disk storage settings
         destination: function (req, file, cb) {
-            var dir = './public/dist/user_uploads/' + req.params.username + '/';
+            var dir = './public/dist/resources/user_uploads/' + req.params.username + '/';
 
             if (!fs.existsSync(dir)){
                 fs.mkdirSync(dir);
@@ -449,7 +449,7 @@ app.post('/api/sendFiles/:username', function(req,res){
 app.post('/api/readFiles/', function(req,res){
     console.log("gdffsdfg" + req.body.username);
 
-    var dirname = './public/dist/user_uploads/' + req.body.username;
+    var dirname = './public/dist/resources/user_uploads/' + req.body.username;
 
 fs.readdir(dirname, function(err, filenames) {
     if (err) {
