@@ -32,9 +32,13 @@ exports.send = function (mailOptions) {
 		Todo.find(function (err, todos) {
 
 			for(var i = 0 ; i < todos.length; i++) {
-				if(todos[i].role == 'Członek kapituły' || todos[i].role == 'Administrator'){
-				 	mailOptions.to += todos[i].email + ", ";
-				 }
+				if(mailOptions.whom == "Kapitula"){
+					if(todos[i].role == 'Członek kapituły' || todos[i].role == 'Administrator'){
+					 	mailOptions.to += todos[i].email + ", ";
+					 }
+				}else if(mailOptions.whom == "Candidate"){
+					mailOptions.to = mailOptions.toCandidate;
+				}
 			};
 
 			mailOptions.from =  '"KHO KUŹNIA" <pdk.grody@zr.pl>', // sender address

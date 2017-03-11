@@ -103,7 +103,7 @@
 		"opinion": "Opinia",
 		"report" : "Raport",
 		"success" : "Sukces",
-		"danger" : "Zagrożenie",
+		"danger" : "Pytanie",
 		"failed" : "Niepowodzenie",
 		"attention" : "Uwaga",
 		"addComments" : "Dodane komentarze",
@@ -114,12 +114,13 @@
 		"author" : "Autor",
 		"yes" : "TAK",
 		"no" : "NIE",
-		"sendMailToGroup" : "Czy chcesz wysłać tą wiadomość do kapituły via e-mail?",
+		"sendMailToGroup" : "Czy chcesz wysłać tą wiadomość przez e-mail do kapituły?",
 		"addFile" : "Dodaj pliki",
 		"fileName" : "Nazwa pliku",
 		"seeFile" : "Zobacz plik",
 		"addFileForm" : "Dodaj pliki do próby",
-		"addFileBtn" : "Kliknij aby załączyć plik"
+		"addFileBtn" : "Kliknij aby załączyć plik",
+		"sendMailToCandidate" : "Czy chcesz wysłać tą wiadomość przez e-mail do kandydata?"
 	},
 	"meetingDate" : {
 		"title" : "Spotkania kapituły",

@@ -18,7 +18,6 @@ angular.module('KHO_CRM').factory('Todos', dataTodos);
 				return $http.get('/api/todos/findById/' + id);
 			},
 			findByEmail : function(email){
-				console.log("WYSYŁAM D");
 				return $http.get('/api/todos/findByEmail/' + email)
 			},
 			findByIdAttempt : function(id) {
@@ -41,14 +40,12 @@ angular.module('KHO_CRM').factory('Todos', dataTodos);
 				return $http.delete('/api/todos/deleteAttempt/' + user_id + '/' + attempt_id);
 			},
 			deleteMeeting : function(meetingId){
-				console.log(meetingId);
 				return $http.delete('/api/todos/deleteMeeting/' + meetingId);
 			},
 			findByIdTask : function(taskId){
 				return $http.get('/api/todos/findTask/' + taskId);
 			},
 			addComment: function(taskId, commData){
-				console.log(commData.category);
 				return $http.post('/api/todos/createComment/' + taskId, commData);
 			},
 			addMeeting: function(formData){
@@ -79,12 +76,10 @@ angular.module('KHO_CRM').factory('Todos', dataTodos);
 			},
 
 			sendEmail: function(mailOptions){
-				console.log(mailOptions);
 				return $http.put('/api/sendEmail', mailOptions);
 			},
 
 			readFiles: function(username){
-				console.log("todos" + username);
 				return $http.post('/api/readFiles/', username);
 			}
 

@@ -115,7 +115,7 @@ ChartJsProvider.setOptions({
 
         var addComment = {
           name: 'mainView.addComment',
-          url: '/addComment/:attemptId',
+          url: '/addComment/:userId/:attemptId',
           templateUrl: 'src/components/addComment/addCommentComponent.html',
           controller: 'AddCommentController as addCommentVM',
         }

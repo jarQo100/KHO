@@ -39,6 +39,8 @@ function AddCommentController($scope, $stateParams, $http, Todos, SetAlertClass,
 
 		// Deklaracja zmiennych
 		vm.attemptIdParam = $stateParams.attemptId;
+		var userIdParam = $stateParams.userId;
+
 		vm.nameAndSurname;
 		vm.formData = {};
 		var username = $rootScope.globals.currentUser['username'];
@@ -50,14 +52,25 @@ function AddCommentController($scope, $stateParams, $http, Todos, SetAlertClass,
 		vm.showForm = showForm;
 		vm.showFormFile = showFormFile;
 		vm.read = read();
+		vm.role = {};
 
+		var candidateEmail = {};
+
+		findCandidateEmail();
 		getComments();
 		read();
+		checkPermission();
+
+		function findCandidateEmail(){
+			Todos.findById(userIdParam).then(function(response){
+				candidateEmail = response.data.email;
+			});
+		}
+
 
 
 		function createTaskFun(commData){
 			var username = $rootScope.globals.currentUser['username'];
-
 
 			Todos.findByEmail(username).success(function(data){
 			          commData.author = data.name + " " + data.surname;
@@ -70,7 +83,11 @@ function AddCommentController($scope, $stateParams, $http, Todos, SetAlertClass,
 					commData.username = username;
 					SendEmailToGroup.sendFromAddComment(commData);
 				}
-
+				if(commData.sendMailToCandidate == "true"){
+					commData.username = username;
+					commData.sendToCandidate = candidateEmail;
+					SendEmailToGroup.sendFromAddCommentToCandidate(commData);
+				}
 
 			  });
 
@@ -78,6 +95,7 @@ function AddCommentController($scope, $stateParams, $http, Todos, SetAlertClass,
 		}
 
 		function getComments(){
+
 			Todos.findByIdTask(vm.attemptIdParam).success(function(data) {
 				vm.formData = data;
 			});
@@ -103,9 +121,19 @@ function AddCommentController($scope, $stateParams, $http, Todos, SetAlertClass,
 			}
 		}
 
+		function checkPermission(){
+                                    Todos.findByEmail(username).success(function(response){
+
+                                                        if(response.role != KHO_CRM_CONFIG.petent){
+                                                            vm.role = true;
+                                                        }else{
+                                                        	vm.role = false;
+                                                        }
+
+                                      });
+                        }
+
 vm.submit = function(){
-	console.log("fdsfsd");
-	console.log(vm.file);
             if (vm.upload_form.file.$valid && vm.file) {
                 vm.upload(vm.file);
             }

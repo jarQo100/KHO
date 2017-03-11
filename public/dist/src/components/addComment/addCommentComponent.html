@@ -56,10 +56,19 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group" ng-show="!addCommentVM.role">
                                 <label for="filter-company-name" class="col-sm-9 col-xs-12 control-label text-center">{{ 'addComment.sendMailToGroup' | translate }} </label>
                                 <div class="col-sm-3 col-xs-12">
                                     <select name="sendMail" id="rank" class="form-control" ng-model="commData.sendMail" style="margin-bottom: 20px;">
+                                        <option value="true">{{ 'addComment.yes' | translate }}</option>
+                                        <option value="false" selected>{{ 'addComment.no' | translate }}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group" ng-show="addCommentVM.role">
+                                <label for="filter-company-name" class="col-sm-9 col-xs-12 control-label text-center">{{ 'addComment.sendMailToCandidate' | translate }} </label>
+                                <div class="col-sm-3 col-xs-12">
+                                    <select name="sendMail" id="rank" class="form-control" ng-model="commData.sendMailToCandidate" style="margin-bottom: 20px;">
                                         <option value="true">{{ 'addComment.yes' | translate }}</option>
                                         <option value="false" selected>{{ 'addComment.no' | translate }}</option>
                                     </select>
