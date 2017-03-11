@@ -112,7 +112,7 @@ vm.submit = function(){
         vm.upload = function (file) {
         	var username = $rootScope.globals.currentUser['username'];
             Upload.upload({
-                url: '/api/sendFiles/'+username, //webAPI exposed to upload the file
+                url: '/api/sendFiles/:'+username, //webAPI exposed to upload the file
                 data:{
                 	file:file,
                 } ,
