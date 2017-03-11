@@ -36,6 +36,26 @@ function getMeetings(res) {
     });
 };
 
+var storage = multer.diskStorage({ //multers disk storage settings
+        destination: function (req, file, cb) {
+            var dir = './uploads/' + req.params.username + '/';
+
+            if (!fs.existsSync(dir)){
+                fs.mkdirSync(dir);
+            }
+            cb(null, dir)
+        },
+        filename: function (req, file, cb) {
+            console.log(file);
+            var datetimestamp = Date.now();
+            cb(null,  datetimestamp + '-' + file.originalname)
+        }
+    });
+
+var upload = multer({ //multer settings
+                    storage: storage
+                }).single('file');
+
 module.exports = function (app) {
 
     // api ---------------------------------------------------------------------
@@ -413,27 +433,6 @@ app.put('/api/meeting/adduser/sendEmail', function (req, res) {
          sender.confirmPresent(req.body);
 });
 
-
-var storage = multer.diskStorage({ //multers disk storage settings
-        destination: function (req, file, cb) {
-            var dir = './uploads/' + req.params.username + '/';
-
-            if (!fs.existsSync(dir)){
-                fs.mkdirSync(dir);
-            }
-            cb(null, dir)
-        },
-        filename: function (req, file, cb) {
-            console.log(file);
-            var datetimestamp = Date.now();
-            cb(null,  datetimestamp + '-' + file.originalname)
-        }
-    });
-
-var upload = multer({ //multer settings
-                    storage: storage
-                }).single('file');
-
 app.post('/api/sendFiles/:username', function(req,res){
     console.log(req.params.username);
 
@@ -447,9 +446,10 @@ app.post('/api/sendFiles/:username', function(req,res){
 
 });
 
-app.post('/api/readFiles', function(req,res){
-    console.log(req.body.username);
-    var dir = './uploads/' + req.body.username + '/';
+app.post('/api/readFiles/', function(req,res){
+    console.log("gdfg" + req.body.username);
+
+    var dir = './uploads/' + req.body.username;
 
     fs.readdir(dir, (err, files) => {
       files.forEach(file => {
