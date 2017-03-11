@@ -84,6 +84,7 @@ module.exports = function (grunt) {
                 files: ['public/resources/**/*', '!public/resources/flags'],
                 tasks: ['copy:resources']
             },
+
             flags: {
                 files: ['public/resources/flags/**/*'],
                 tasks: ['sprite:flags']
