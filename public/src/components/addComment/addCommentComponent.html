@@ -13,43 +13,29 @@
         </div>
         <br />
         <div class="flat-panel-body">
-
             <div ng-show="addCommentVM.showFormFileField" class="row" style="margin-top: 30px;">
-             <p ng-show="addCommentVM.progress" class="text-center alert alert-success">{{addCommentVM.progress}}</p>
+                <p ng-show="addCommentVM.progress" class="text-center alert alert-success">{{addCommentVM.progress}}</p>
                 <div class="well" style="height: 250px;">
-                    <h5 class="text-center">{{ 'addComment.addFileForm' | translate }}</h5><br /><br />
-
+                    <h5 class="text-center">{{ 'addComment.addFileForm' | translate }}</h5>
+                    <br />
+                    <br />
                     <form name="addCommentVM.upload_form">
                         <div class="col-sm-4">
-
-                            <input id="fileInput" type="file"
-                                class="ng-hide"
-                                ngf-select ng-model="addCommentVM.file"
-                                name="file"
-                                ngf-max-size="20MB" />
-
-                               <div class="md-raised addFileField" ng-click="addCommentVM.upload2()">
-                                  <div class="">{{ 'addComment.addFileBtn' | translate }}</div>
-
-                                </div>
-
+                            <input id="fileInput" type="file" class="ng-hide" ngf-select ng-model="addCommentVM.file" name="file" ngf-max-size="20MB" />
+                            <div class="md-raised addFileField" ng-click="addCommentVM.upload2()">
+                                <div class="">{{ 'addComment.addFileBtn' | translate }}</div>
                             </div>
-                          <div class="col-sm-4">
-                            <img style="height:100px;" ngf-thumbnail="addCommentVM.file" />
-                            {{addCommentVM.file.name}}
                         </div>
-
+                        <div class="col-sm-4">
+                            <img style="height:100px;" ngf-thumbnail="addCommentVM.file" /> {{addCommentVM.file.name}}
+                        </div>
                         <div class="col-sm-4">
                             <button type="submit" class="addPhotoBtn btn btn-success" ng-click="addCommentVM.submit()">Wyślij plik</button>
                         </div>
-
-
                     </form>
-
                 </div>
-</div>
-
-<div class="row">
+            </div>
+            <div class="row">
                 <div ng-show="addCommentVM.showFormComm" class="row" style="margin-top: 30px;">
                     <form novalidate class="css-form" name="addCommentVM.commData">
                         <div class="col-xs-12 col-md-6">
