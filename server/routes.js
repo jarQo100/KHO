@@ -449,14 +449,21 @@ app.post('/api/sendFiles/:username', function(req,res){
 app.post('/api/readFiles/', function(req,res){
     console.log("gdffsdfg" + req.body.username);
 
-    var dir = './uploads/' + req.body.username;
-
-    fs.readdir(dir, (err, files) => {
+    var dirname = './uploads/' + req.body.username;
+    var dir = __dirname;
+fs.readdir(dirname, function(err, filenames) {
+    if (err) {
+      return;
+    }
+    fs.readdir(dirname, (err, files) => {
       files.forEach(file => {
         console.log(file);
       });
-      res.json(files);
-    })
+      res.json({'dir' : dir}  );
+    });
+  });
+
+
 
 });
 

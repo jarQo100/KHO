@@ -7,6 +7,7 @@
             defaultLang: 'pl_pl',
             admin: 'Administrator',
             petent: 'Petent',
+            _dir: '../../uploads',
             teams :  [
               { name: "4 Rozborska Drużyna Harcerzy „Karacena” im. 10 Pułku Strzelców Konnych"},
               { name: "1 Przeworska Drużyna Harcerzy „Borek” im. św. Franciszka z Asyżu"},

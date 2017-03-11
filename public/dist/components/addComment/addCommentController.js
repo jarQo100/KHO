@@ -29,10 +29,11 @@ AddCommentController.$inject = [
 	'$rootScope',
 	'SendEmailToGroup',
 	'$timeout',
-	'Upload'
+	'Upload',
+	'KHO_CRM_CONFIG'
 ];
 
-function AddCommentController($scope, $stateParams, $http, Todos, SetAlertClass, $rootScope, SendEmailToGroup, $timeout, Upload){
+function AddCommentController($scope, $stateParams, $http, Todos, SetAlertClass, $rootScope, SendEmailToGroup, $timeout, Upload, KHO_CRM_CONFIG){
 
 		var vm = this;
 
@@ -40,7 +41,7 @@ function AddCommentController($scope, $stateParams, $http, Todos, SetAlertClass,
 		vm.attemptIdParam = $stateParams.attemptId;
 		vm.nameAndSurname;
 		vm.formData = {};
-
+		vm._dir = KHO_CRM_CONFIG._dir;
 
 		// Przypisanie funkcji do zmiennych
 		vm.createTask = createTaskFun;
