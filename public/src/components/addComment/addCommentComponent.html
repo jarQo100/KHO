@@ -2,20 +2,24 @@
     <div class="flat-panel">
         <div class="flat-panel-header">
             <h3 class="flat-panel-heading">
+            <div class="col sx-12 col-sm-6">
                 {{ 'addComment.title' | translate }}
+                </div>
+                <div class="col sx-12 col-sm-6">
                 <span ng-click="addCommentVM.showForm()" class="label label-success pull-right" title="Dodaj nowego klienta"><i class="glyphicon glyphicon-plus"></i>
                     <span class="sub-title">{{ 'addComment.addComm' | translate }}</span>
                 </span>
                 <span ng-click="addCommentVM.showFormFile()" class="label label-info pull-right" title="Dodaj nowego klienta" style="margin-right: 20px;"><i class="glyphicon glyphicon-plus"></i>
                     <span class="sub-title">{{ 'addComment.addFile' | translate }}</span>
                 </span>
+                <div class="col sx-12 col-sm-6">
             </h3>
         </div>
         <br />
         <div class="flat-panel-body">
             <div ng-show="addCommentVM.showFormFileField" class="row" style="margin-top: 30px;">
                 <p ng-show="addCommentVM.progress" class="text-center alert alert-success">{{addCommentVM.progress}}</p>
-                <div class="well" style="height: 250px;">
+                <div class="well" style="min-height: 250px;">
                     <h5 class="text-center">{{ 'addComment.addFileForm' | translate }}</h5>
                     <br />
                     <br />
