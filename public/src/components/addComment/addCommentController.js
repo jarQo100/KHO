@@ -41,7 +41,8 @@ function AddCommentController($scope, $stateParams, $http, Todos, SetAlertClass,
 		vm.attemptIdParam = $stateParams.attemptId;
 		vm.nameAndSurname;
 		vm.formData = {};
-		vm._dir = KHO_CRM_CONFIG._dir;
+		var username = $rootScope.globals.currentUser['username'];
+		vm._dir = './user_uploads/' + username;
 
 		// Przypisanie funkcji do zmiennych
 		vm.createTask = createTaskFun;
@@ -51,7 +52,7 @@ function AddCommentController($scope, $stateParams, $http, Todos, SetAlertClass,
 		vm.read = read();
 
 		getComments();
-		//read();
+		read();
 
 
 		function createTaskFun(commData){
@@ -119,7 +120,7 @@ vm.submit = function(){
                 } ,
             }).then(function (resp) { //upload function returns a promise
                 if(resp.data.error_code === 0){ //validate success
-
+                	read();
                 } else {
                     alert('Błąd dodawania pliku');
                 }
@@ -127,7 +128,11 @@ vm.submit = function(){
                 alert('Błąd dodawanie pliku:  ' + resp.status);
             }, function (evt) {
                 var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-                vm.progress = 'Plik został dołączony poprawnie! Progres: ' + progressPercentage + '% '; // capture upload progress
+                vm.progress = 'Plik został dołączony poprawnie! Progres: ' + progressPercentage + '% ';
+                vm.file = null;
+                	$timeout(function () {
+                       		vm.progress = false;
+                   	}, 2000);
             });
         };
 

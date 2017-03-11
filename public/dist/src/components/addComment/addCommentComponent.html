@@ -15,7 +15,7 @@
         <div class="flat-panel-body">
 
             <div ng-show="addCommentVM.showFormFileField" class="row" style="margin-top: 30px;">
-             <p class="text-center" ng-show="addCommentVM.progress" class="alert alert-success">{{addCommentVM.progress}}</p>
+             <p ng-show="addCommentVM.progress" class="text-center alert alert-success">{{addCommentVM.progress}}</p>
                 <div class="well" style="height: 250px;">
                     <h5 class="text-center">{{ 'addComment.addFileForm' | translate }}</h5><br /><br />
 
@@ -115,7 +115,7 @@
                             <tbody>
                                 <tr ng-repeat="file in addCommentVM.filesList">
                                     <td>{{file}}</td>
-                                    <td class="text-center"><a href="public_nodejs/uploads//klisowskikarol@gmail.com/1489237309111-1.jpg" class="label label-info"><i class="fa fa-eye"></i></a></td>
+                                    <td class="text-center"><a target="_blank" href="{{addCommentVM._dir}}/{{file}}" class="label label-info"><i class="fa fa-eye"></i></a></td>
                                 </tr>
                             </tbody>
                         </table>
