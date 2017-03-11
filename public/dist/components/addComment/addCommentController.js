@@ -44,8 +44,9 @@ function AddCommentController($scope, $stateParams, $http, Todos, SetAlertClass,
 		vm.nameAndSurname;
 		vm.formData = {};
 		var username = $rootScope.globals.currentUser['username'];
-		vm._dir = './resources/user_uploads/' + username;
 
+		var candidateEmail = {};
+		vm._dir = {};
 		// Przypisanie funkcji do zmiennych
 		vm.createTask = createTaskFun;
 		vm.getClass = getClass;
@@ -53,8 +54,6 @@ function AddCommentController($scope, $stateParams, $http, Todos, SetAlertClass,
 		vm.showFormFile = showFormFile;
 		vm.read = read();
 		vm.role = {};
-
-		var candidateEmail = {};
 
 		findCandidateEmail();
 		getComments();
@@ -133,16 +132,16 @@ function AddCommentController($scope, $stateParams, $http, Todos, SetAlertClass,
                                       });
                         }
 
-vm.submit = function(){
-            if (vm.upload_form.file.$valid && vm.file) {
-                vm.upload(vm.file);
-            }
-        }
+	vm.submit = function(){
+	            if (vm.upload_form.file.$valid && vm.file) {
+	                vm.upload(vm.file);
+	            }
+	 }
 
         vm.upload = function (file) {
         	var username = $rootScope.globals.currentUser['username'];
             Upload.upload({
-                url: '/api/sendFiles/'+username, //webAPI exposed to upload the file
+                url: '/api/sendFiles/'+vm.attemptIdParam, //webAPI exposed to upload the file
                 data:{
                 	file:file,
                 } ,
@@ -166,11 +165,13 @@ vm.submit = function(){
 
 
          function read () {
-        		var username = $rootScope.globals.currentUser['username'];
 
-            	Todos.readFiles({username:username}).success(function(data){
-			vm.filesList = data;
-		});
+			Todos.readFiles({username:vm.attemptIdParam}).success(function(data){
+				vm._dir = './resources/user_uploads/' + vm.attemptIdParam;
+				vm.filesList = data;
+			});
+
+
 
           }
 
