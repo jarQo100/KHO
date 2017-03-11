@@ -447,7 +447,7 @@ app.post('/api/sendFiles/:username', function(req,res){
 });
 
 app.post('/api/readFiles/', function(req,res){
-    console.log("gdfg" + req.body.username);
+    console.log("gdffsdfg" + req.body.username);
 
     var dir = './uploads/' + req.body.username;
 
