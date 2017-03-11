@@ -50,7 +50,7 @@ function AddCommentController($scope, $stateParams, $http, Todos, SetAlertClass,
 		vm.read = read();
 
 		getComments();
-		read();
+		//read();
 
 
 		function createTaskFun(commData){
