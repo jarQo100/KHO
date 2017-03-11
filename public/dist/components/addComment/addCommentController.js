@@ -4,20 +4,21 @@
 
 angular.module("KHO_CRM")
 	.controller('AddCommentController', AddCommentController)
-	.directive('ngFiles', ['$parse', function ($parse) {
+	.directive('fileModel', ['$parse', function ($parse) {
+        return {
+           restrict: 'A',
+           link: function(scope, element, attrs) {
+              var model = $parse(attrs.fileModel);
+              var modelSetter = model.assign;
 
-	            function fn_link(scope, element, attrs) {
-	                var onChange = $parse(attrs.ngFiles);
-	                element.on('change', function (event) {
-	                    onChange(scope, { $files: event.target.files });
-	                });
-	            };
-
-	            return {
-	                link: fn_link
-	            }
-	        }
-        ]);
+              element.bind('change', function(){
+                 scope.$apply(function(){
+                    modelSetter(scope, element[0].files[0]);
+                 });
+              });
+           }
+        };
+     }]);
 
 AddCommentController.$inject = [
 	'$scope',
@@ -28,9 +29,10 @@ AddCommentController.$inject = [
 	'$rootScope',
 	'SendEmailToGroup',
 	'$timeout',
+	'Upload'
 ];
 
-function AddCommentController($scope, $stateParams, $http, Todos, SetAlertClass, $rootScope, SendEmailToGroup, $timeout){
+function AddCommentController($scope, $stateParams, $http, Todos, SetAlertClass, $rootScope, SendEmailToGroup, $timeout, Upload){
 
 		var vm = this;
 
@@ -38,14 +40,17 @@ function AddCommentController($scope, $stateParams, $http, Todos, SetAlertClass,
 		vm.attemptIdParam = $stateParams.attemptId;
 		vm.nameAndSurname;
 		vm.formData = {};
-		vm.files = {};
+
 
 		// Przypisanie funkcji do zmiennych
 		vm.createTask = createTaskFun;
 		vm.getClass = getClass;
 		vm.showForm = showForm;
+		vm.showFormFile = showFormFile;
+		vm.read = read();
 
 		getComments();
+		read();
 
 
 		function createTaskFun(commData){
@@ -73,7 +78,6 @@ function AddCommentController($scope, $stateParams, $http, Todos, SetAlertClass,
 		function getComments(){
 			Todos.findByIdTask(vm.attemptIdParam).success(function(data) {
 				vm.formData = data;
-				console.log(vm.formData);
 			});
 		}
 
@@ -89,32 +93,59 @@ function AddCommentController($scope, $stateParams, $http, Todos, SetAlertClass,
 			}
 		}
 
-		vm.submit = function() {
-		      if (vm.form.file.$valid && vm.form.file) {
-		      	console.log(vm.form.file);
-		        	vm.upload(vm.form.file);
-		      }
-		    };
+		function showFormFile(){
+			if(vm.showFormFileField == true){
+				vm.showFormFileField = false;
+			}else{
+				vm.showFormFileField = true;
+			}
+		}
+
+vm.submit = function(){
+	console.log("fdsfsd");
+	console.log(vm.file);
+            if (vm.upload_form.file.$valid && vm.file) {
+                vm.upload(vm.file);
+            }
+        }
+
+        vm.upload = function (file) {
+        	var username = $rootScope.globals.currentUser['username'];
+            Upload.upload({
+                url: '/api/sendFiles/'+username, //webAPI exposed to upload the file
+                data:{
+                	file:file,
+                } ,
+            }).then(function (resp) { //upload function returns a promise
+                if(resp.data.error_code === 0){ //validate success
+
+                } else {
+                    alert('Błąd dodawania pliku');
+                }
+            }, function (resp) { //catch error
+                alert('Błąd dodawanie pliku:  ' + resp.status);
+            }, function (evt) {
+                var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+                vm.progress = 'Plik został dołączony poprawnie! Progres: ' + progressPercentage + '% '; // capture upload progress
+            });
+        };
 
 
-    //upload on file select or drop
-    vm.upload = function (file) {
-    	Todos.sendFiles("jarek", file);
-}
+         function read () {
+        		var username = $rootScope.globals.currentUser['username'];
 
-    // // for multiple files:
-    // $scope.uploadFiles = function (files) {
-    //   if (files && files.length) {
-    //     for (var i = 0; i < files.length; i++) {
-    //       Upload.upload({..., data: {file: files[i]}, ...})...;
-    //     }
-    //     // or send them all together for HTML5 browsers:
-    //     Upload.upload({..., data: {file: files}, ...})...;
-    //   }
-    // }
+            	Todos.readFiles({username:username}).success(function(data){
+			vm.filesList = data;
+		});
 
+          }
+
+          	vm.upload2 = function () {
+	   	angular.element(document.querySelector('#fileInput')).click();
+	};
 
 
 }
 
 })();
+

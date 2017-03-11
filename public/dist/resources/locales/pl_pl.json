@@ -115,7 +115,11 @@
 		"yes" : "TAK",
 		"no" : "NIE",
 		"sendMailToGroup" : "Czy chcesz wysłać tą wiadomość do kapituły via e-mail?",
-		"addFile" : "Dodaj pliki"
+		"addFile" : "Dodaj pliki",
+		"fileName" : "Nazwa pliku",
+		"seeFile" : "Zobacz plik",
+		"addFileForm" : "Dodaj pliki do próby",
+		"addFileBtn" : "Kliknij aby załączyć plik"
 	},
 	"meetingDate" : {
 		"title" : "Spotkania kapituły",

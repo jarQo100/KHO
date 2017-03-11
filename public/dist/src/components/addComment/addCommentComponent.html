@@ -6,8 +6,7 @@
                 <span ng-click="addCommentVM.showForm()" class="label label-success pull-right" title="Dodaj nowego klienta"><i class="glyphicon glyphicon-plus"></i>
                     <span class="sub-title">{{ 'addComment.addComm' | translate }}</span>
                 </span>
-                &nbsp;&nbsp;
-                <span ng-click="addCommentVM.showForm()" class="label label-info pull-right" title="Dodaj nowego klienta"><i class="glyphicon glyphicon-plus"></i>
+                <span ng-click="addCommentVM.showFormFile()" class="label label-info pull-right" title="Dodaj nowego klienta" style="margin-right: 20px;"><i class="glyphicon glyphicon-plus"></i>
                     <span class="sub-title">{{ 'addComment.addFile' | translate }}</span>
                 </span>
             </h3>
@@ -15,92 +14,112 @@
         <br />
         <div class="flat-panel-body">
 
+            <div ng-show="addCommentVM.showFormFileField" class="row" style="margin-top: 30px;">
+             <p class="text-center" ng-show="addCommentVM.progress" class="alert alert-success">{{addCommentVM.progress}}</p>
+                <div class="well" style="height: 250px;">
+                    <h5 class="text-center">{{ 'addComment.addFileForm' | translate }}</h5><br /><br />
 
-        <div  class="row" style="margin-top: 30px;">
+                    <form name="addCommentVM.upload_form">
+                        <div class="col-sm-4">
 
-                Upload on form submit or button click
-<form  name="addCommentVM.form">
-  Single Image with validations
-  <div class="button" ngf-select ng-model="file" name="file" ngf-pattern="'image/*'"
-    ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100"
-    ngf-resize="{width: 100, height: 100}">Select</div>
-  Multiple files
-  <div class="button" ngf-select ng-model="files" ngf-multiple="true">Select</div>
-  Drop files: <div ngf-drop ng-model="files" class="drop-box">Drop</div>
-  <button type="submit" ng-click="addCommentVM.submit()">submit</button>
-</form>
+                            <input id="fileInput" type="file"
+                                class="ng-hide"
+                                ngf-select ng-model="addCommentVM.file"
+                                name="file"
+                                ngf-max-size="20MB" />
 
-<!-- Upload right away after file selection:
-<div class="button" ngf-select="upload($file)">Upload on file select</div>
-<div class="button" ngf-select="uploadFiles($files)" multiple="multiple">Upload on file select</div>
-  Drop File:
-<div ngf-drop="uploadFiles($files)" class="drop-box"
-  ngf-drag-over-class="'dragover'" ngf-multiple="true"
-  ngf-pattern="'image/*,application/pdf'">Drop Images or PDFs files here</div>
-<div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div> -->
+                               <div class="md-raised addFileField" ng-click="addCommentVM.upload2()">
+                                  <div class="">{{ 'addComment.addFileBtn' | translate }}</div>
 
-Image thumbnail: <img ngf-thumbnail="file || '/thumb.jpg'">
-Audio preview: <audio controls ngf-src="file"></audio>
-Video preview: <video controls ngf-src="file"></video>
+                                </div>
 
-            </div>
+                            </div>
+                          <div class="col-sm-4">
+                            <img style="height:100px;" ngf-thumbnail="addCommentVM.file" />
+                            {{addCommentVM.file.name}}
+                        </div>
 
+                        <div class="col-sm-4">
+                            <button type="submit" class="addPhotoBtn btn btn-success" ng-click="addCommentVM.submit()">Wyślij plik</button>
+                        </div>
 
 
+                    </form>
 
+                </div>
+</div>
 
-
-            <div ng-show="addCommentVM.showFormComm" class="row" style="margin-top: 30px;">
-                <form novalidate class="css-form" name="addCommentVM.commData">
-                    <div class="col-xs-12 col-md-6">
-                        <div class="form-group">
-                            <label for="filter-company-name" class="col-sm-3 col-xs-12 control-label text-center">{{ 'addComment.category' | translate }} </label>
-                            <div class="col-sm-9 col-xs-12">
-                                <select name="rank" id="rank" class="form-control" ng-model="commData.category" style="margin-bottom: 20px;">
-                                    <option value="Opinia">{{ 'addComment.opinion' | translate }}</option>
-                                    <option value="Uwaga">{{ 'addComment.attention' | translate }}</option>
-                                    <option value="Raport">{{ 'addComment.report' | translate }}</option>
-                                    <option value="Sukces">{{ 'addComment.success' | translate }}</option>
-                                    <option value="Zagrożenie">{{ 'addComment.danger' | translate }}</option>
-                                    <option value="Niepowodzenie">{{ 'addComment.failed' | translate }}</option>
-                                </select>
+<div class="row">
+                <div ng-show="addCommentVM.showFormComm" class="row" style="margin-top: 30px;">
+                    <form novalidate class="css-form" name="addCommentVM.commData">
+                        <div class="col-xs-12 col-md-6">
+                            <div class="form-group">
+                                <label for="filter-company-name" class="col-sm-3 col-xs-12 control-label text-center">{{ 'addComment.category' | translate }} </label>
+                                <div class="col-sm-9 col-xs-12">
+                                    <select name="rank" id="rank" class="form-control" ng-model="commData.category" style="margin-bottom: 20px;">
+                                        <option value="Opinia">{{ 'addComment.opinion' | translate }}</option>
+                                        <option value="Uwaga">{{ 'addComment.attention' | translate }}</option>
+                                        <option value="Raport">{{ 'addComment.report' | translate }}</option>
+                                        <option value="Sukces">{{ 'addComment.success' | translate }}</option>
+                                        <option value="Zagrożenie">{{ 'addComment.danger' | translate }}</option>
+                                        <option value="Niepowodzenie">{{ 'addComment.failed' | translate }}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="filter-company-name" class="col-sm-9 col-xs-12 control-label text-center">{{ 'addComment.sendMailToGroup' | translate }} </label>
+                                <div class="col-sm-3 col-xs-12">
+                                    <select name="sendMail" id="rank" class="form-control" ng-model="commData.sendMail" style="margin-bottom: 20px;">
+                                        <option value="true">{{ 'addComment.yes' | translate }}</option>
+                                        <option value="false" selected>{{ 'addComment.no' | translate }}</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label for="filter-company-name" class="col-sm-9 col-xs-12 control-label text-center">{{ 'addComment.sendMailToGroup' | translate }} </label>
-                            <div class="col-sm-3 col-xs-12">
-                                <select name="sendMail" id="rank" class="form-control" ng-model="commData.sendMail" style="margin-bottom: 20px;">
-                                    <option value="true">{{ 'addComment.yes' | translate }}</option>
-                                    <option value="false" selected>{{ 'addComment.no' | translate }}</option>
-                                </select>
+                        <div class="col-xs-12 col-md-6">
+                            <textarea ng-model="commData.description" class="tasksDescription form-control" rows="6" placeholder="{{  'attemptCreate.descriptionPlaceholder' | translate }}"></textarea>
+                        </div>
+                        <div class="col-xs-12 col-md-12 ">
+                            <button ng-click="addCommentVM.createTask(commData)" type="submit" class="btn btn-success alignright" style="margin-top: 30px;">{{ 'addComment.submit' | translate }}</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-xs-12 col-sm-7">
+                    <h5>{{ 'addComment.addComments' | translate }}</h5>
+                    <div ng-repeat="attempt in addCommentVM.formData.attempt" ng-if="attempt._id == addCommentVM.attemptIdParam">
+                        <div ng-repeat="comm in attempt.comments | orderBy:'-date'">
+                            <div data-ng-class="addCommentVM.getClass(comm.category)" class="alert">
+                                <div class="TaskInComment">
+                                    <strong>{{ 'addComment.commCategory' | translate }}</strong> {{ comm.category }}
+                                    <i class="alignright commDate">{{ comm.date |  date:"dd MMMM yyyy" }}</i>
+                                </div>
+                                <div class="TaskInComment">
+                                    <strong>{{ 'addComment.author' | translate }}</strong> {{ comm.author }}
+                                </div>
+                                <div class="TaskInComment">
+                                    <strong>{{ 'addComment.commDescription' | translate }}</strong> {{ comm.description }}
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xs-12 col-md-6">
-                        <textarea ng-model="commData.description" class="tasksDescription form-control" rows="6" placeholder="{{  'attemptCreate.descriptionPlaceholder' | translate }}"></textarea>
-                    </div>
-                    <div class="col-xs-12 col-md-12 ">
-                        <button ng-click="addCommentVM.createTask(commData)" type="submit" class="btn btn-success alignright" style="margin-top: 30px;">{{ 'addComment.submit' | translate }}</button>
-                    </div>
-                </form>
-            </div>
-            <h5>{{ 'addComment.addComments' | translate }}</h5>
-            <div ng-repeat="attempt in addCommentVM.formData.attempt" ng-if="attempt._id == addCommentVM.attemptIdParam">
-                <div ng-repeat="comm in attempt.comments | orderBy:'-date'">
-                    <div data-ng-class="addCommentVM.getClass(comm.category)" class="alert">
-                        <div class="TaskInComment">
-                            <strong>{{ 'addComment.commCategory' | translate }}</strong> {{ comm.category }}
-                            <i class="alignright commDate">{{ comm.date |  date:"dd MMMM yyyy" }}</i>
-                        </div>
-                        <div class="TaskInComment">
-                            <strong>{{ 'addComment.author' | translate }}</strong> {{ comm.author }}
-                        </div>
-                        <div class="TaskInComment">
-                            <strong>{{ 'addComment.commDescription' | translate }}</strong> {{ comm.description }}
-                        </div>
+                </div>
+                <div class="col-xs-12 col-sm-5">
+                    <div class="table-responsive">
+                        <table class="no-border table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>{{ 'addComment.fileName' | translate }}</th>
+                                    <th class="text-center">{{ 'addComment.seeFile' | translate }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="file in addCommentVM.filesList">
+                                    <td>{{file}}</td>
+                                    <td class="text-center"><a href="#" class="label label-info"><i class="fa fa-eye"></i></a></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>

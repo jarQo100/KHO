@@ -82,21 +82,35 @@ angular.module('KHO_CRM').factory('Todos', dataTodos);
 				console.log(mailOptions);
 				return $http.put('/api/sendEmail', mailOptions);
 			},
-			sendFiles: function(username, files){
-				console.log(username);
-				console.log(files);
-				return $http({
-				        method: 'POST',
-				        url: '/api/sendFiles',
-				        data: {
-				        	username: username,
-				        	filse: files
-				        },
-				        //headers: {'Content-Type': 'multipart/form-data'}
-				});
 
-			}
+			// sendFiles: function(username, files){
+			// 	var fd = new FormData();
+			// 	    //Take the first selected file
+			// 	    fd.append("file", files);
+			// 	console.log(username);
+			// 	console.log(files);
+			// 	return $http({
+			// 	        method: 'POST',
+			// 	        withCredentials: true,
+			// 	        headers: {'Content-Type': undefined },
+			// 	        transformRequest: angular.identity,
+			// 	        url: '/api/sendFiles',
+			// 	        data: {
+			// 	        	file: files,
+			// 	        	username:username
 
+			// 	        }
+
+
+
+			// 	});
+
+			// },
+
+
+		readFiles: function(username){
+			return $http.post('/api/readFiles', username);
 		}
 
-    }
+	}
+}

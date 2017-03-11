@@ -10,6 +10,7 @@ var nodemailer = require('nodemailer');
 var path = require('path');
 var formidable = require('formidable');
 var fs = require('fs');
+var multer  = require('multer');
 
 function getTodos(res) {
     Todo.find(function (err, todos) {
@@ -412,37 +413,54 @@ app.put('/api/meeting/adduser/sendEmail', function (req, res) {
          sender.confirmPresent(req.body);
 });
 
-app.post('/api/sendFiles', function (req, res) {
-        // create an incoming form object
-        console.log(req.body.username);
-        console.log(__dirname);
-          var form = new formidable.IncomingForm();
 
-          // specify that we want to allow the user to upload multiple files in a single request
-          //form.multiples = true;
+var storage = multer.diskStorage({ //multers disk storage settings
+        destination: function (req, file, cb) {
+            var dir = './uploads/' + req.params.username + '/';
 
-          // store all uploads in the /uploads directory
-          form.uploadDir = path.join(__dirname, '/uploads_files');
-          form.encoding = 'binary';
-          // every time a file has been uploaded successfully,
-          // rename it to it's orignal name
-          form.on('file', function(field, file) {
-            fs.rename(file.path, path.join(form.uploadDir, file.name));
-          });
+            if (!fs.existsSync(dir)){
+                fs.mkdirSync(dir);
+            }
+            cb(null, dir)
+        },
+        filename: function (req, file, cb) {
+            console.log(file);
+            var datetimestamp = Date.now();
+            cb(null,  datetimestamp + '-' + file.originalname)
+        }
+    });
 
-          // log any errors that occur
-          form.on('error', function(err) {
-            console.log('An error has occured: \n' + err);
-          });
+var upload = multer({ //multer settings
+                    storage: storage
+                }).single('file');
 
-          // once all the files have been uploaded, send a response to the client
-          form.on('end', function() {
-            res.end('success');
-          });
+app.post('/api/sendFiles/:username', function(req,res){
+    console.log(req.params.username);
 
-          // parse the incoming request containing the form data
-          form.parse(req);
+        upload(req,res,function(err){
+            if(err){
+                 res.json({error_code:1,err_desc:err});
+                 return;
+            }
+             res.json({error_code:0,err_desc:null});
+        });
+
 });
+
+app.post('/api/readFiles', function(req,res){
+    console.log(req.body.username);
+    var dir = './uploads/' + req.body.username + '/';
+
+    fs.readdir(dir, (err, files) => {
+      files.forEach(file => {
+        console.log(file);
+      });
+      res.json(files);
+    })
+
+});
+
+
 
 
 
