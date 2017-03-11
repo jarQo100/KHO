@@ -15,4 +15,4 @@ npm-debug.log
 /node_modules/
 app.js
 /public/resources/user_uploads
-/public/resources/dist/user_uploads
+/public/dist/resources/user_uploads
