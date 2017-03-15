@@ -16,9 +16,12 @@ var transporter =  nodemailer.createTransport(
 );
 
 var footer = `
-<br /><br />
+<br /><br /><br /><br />
+<img src="http://grody.zhr.pl/wp-content/uploads/2016/10/19e7009334b143d78e63e73dfd5b282f-150x150.jpg" width="100px;"/>
+<br /><br /><br />
 --<br />
-Wiadomość wysłana z serwisu KHO </br>
+Wiadomość wysłana z serwisu KHO <br />
+<a href="http://czujduch.pl">www.czujduch.pl</a><br /><br />
 <strong>Czuwaj!</strong>
 `;
 
@@ -82,6 +85,37 @@ exports.confirmPresent = function(mailOptions){
 		});
 
 };
+
+
+exports.sendRememberMessageToCandidate = function(){
+
+	mailOptions= {};
+	mailOptions.to = 'jarko_krupa@o2.pl, ';
+
+		Todo.find(function (err, todos) {
+
+			for(var i = 0 ; i < todos.length; i++) {
+				if(todos[i].role == 'Petent'){
+				 	mailOptions.bcc += todos[i].email + ", ";
+				 }
+			};
+
+			mailOptions.subject = 'Poinformuj nas o swojej próbie na stopień'; // Subject line
+			mailOptions.from =  '"KHO KUŹNIA" <pdk.grody@zr.pl>', // sender address
+			mailOptions.html = 'Cześć, <br /><br />Bardzo ciekawi nas jak przebiega realizacja Twojej próby na stopień. Napisz w komentarzu w systemie status swojej próby. <br />Co udało się wykonać, co planujesz wykonać w najbliższym czasie a może masz jakieś problemy?<br />Jeżeli masz jakieś pytania, uwagi pamietaj zawsze możesz się do nas z nimi zwrócić.' ;
+			mailOptions.html += footer;
+
+			transporter.sendMail(mailOptions, function(error, info){
+			    if(error){
+			        return console.log(error);
+			    }
+			    console.log('Message sent: ' + info.response);
+			});
+
+		});
+
+};
+
 
 exports.confirmPresentReport = function(mailOptions){
 

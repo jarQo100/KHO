@@ -1,6 +1,8 @@
 // set up ======================================================================
 var express = require('express');
-var app = express(); 						// create our app w/ express
+var cron = require('node-cron');
+var app = express();
+var sender = require('./server/mails/sender.js');					// create our app w/ express
 var mongoose = require('mongoose'); 				// mongoose for mongodb
 var port = process.env.PORT || 8080; 				// set the port
 var database = require('./config/database'); 			// load the database config
@@ -22,6 +24,14 @@ app.use(methodOverride('X-HTTP-Method-Override')); // override with the X-HTTP-M
 // routes ======================================================================
 require('./server/routes.js')(app);
 
-// listen (start app with node server.js) ======================================
+cron.schedule('1 0 21 15,21 * *', function(){
+  sender.sendRememberMessageToCandidate();
+});
+
+
+
+//listen (start app with node server.js) ======================================
 app.listen(port);
 console.log("App listening on port " + port);
+
+
