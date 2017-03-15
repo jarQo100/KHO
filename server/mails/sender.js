@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 
 var fs = require('fs')
   , Log = require('log')
-  , log = new Log('debug', fs.createWriteStream('logs/mails-sender-logs-file.log'));
+  , log = new Log('debug', fs.createWriteStream('../logs/mails-sender-logs-file.log'));
 
 //var to = 'jarko_krupa@o2.pl, pdk.grody@zhr.pl';
 
