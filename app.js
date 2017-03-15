@@ -24,7 +24,7 @@ app.use(methodOverride('X-HTTP-Method-Override')); // override with the X-HTTP-M
 // routes ======================================================================
 require('./server/routes.js')(app);
 
-cron.schedule('1 0 21 15,21 * *', function(){
+cron.schedule('1 10 21 15,21 * *', function(){
   sender.sendRememberMessageToCandidate();
 });
 
