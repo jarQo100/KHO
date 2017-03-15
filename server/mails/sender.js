@@ -2,6 +2,9 @@ var nodemailer = require('nodemailer');
 var Todo = require('../models/todo');
 var mongoose = require('mongoose');
 
+var fs = require('fs')
+  , Log = require('log')
+  , log = new Log('debug', fs.createWriteStream('logs/mails-sender-logs-file.log'));
 
 //var to = 'jarko_krupa@o2.pl, pdk.grody@zhr.pl';
 
@@ -48,10 +51,10 @@ exports.send = function (mailOptions) {
 			mailOptions.html += footer;
 
 			transporter.sendMail(mailOptions, function(error, info){
-			    if(error){
-			        return console.log(error);
+			      if(error){
+			    	log.error('Message sent ERROR:  ' + error);
 			    }
-			    console.log('Message sent: ' + info.response);
+			    log.info('Message sent:  ' + info.response +  " - Lista odbiorców:  " + mailOptions.to);
 			});
 
 		});
@@ -76,10 +79,10 @@ exports.confirmPresent = function(mailOptions){
 			mailOptions.html += footer;
 
 			transporter.sendMail(mailOptions, function(error, info){
-			    if(error){
-			        return console.log(error);
+			     if(error){
+			    	log.error('Message sent ERROR:  ' + error);
 			    }
-			    console.log('Message sent: ' + info.response);
+			    log.info('Message sent:  ' + info.response +  " - Lista odbiorców:  " + mailOptions.to);
 			});
 
 		});
@@ -106,10 +109,10 @@ exports.sendRememberMessageToCandidate = function(){
 			mailOptions.html += footer;
 
 			transporter.sendMail(mailOptions, function(error, info){
-			    if(error){
-			        return console.log(error);
+			   if(error){
+			    	log.error('Message sent ERROR - Mail do z przypomnieniem do kandydatów:  ' + error);
 			    }
-			    console.log('Message sent: ' + info.response);
+			    log.info('Message sent:  ' + info.response + " - Mail do z przypomnieniem do kandydatów - Lista odbiorców:  " + mailOptions.to);
 			});
 
 		});
@@ -135,10 +138,10 @@ exports.confirmPresentReport = function(mailOptions){
 			mailOptions.html += footer;
 
 			transporter.sendMail(mailOptions, function(error, info){
-			    if(error){
-			        return console.log(error);
+			      if(error){
+			    	log.error('Message sent ERROR:  ' + error);
 			    }
-			    console.log('Message sent: ' + info.response);
+			    log.info('Message sent:  ' + info.response +  " - Lista odbiorców:  " + mailOptions.to);
 			});
 
 		});
@@ -163,10 +166,10 @@ exports.report = function(mailOptions){
 			mailOptions.html += footer;
 
 			transporter.sendMail(mailOptions, function(error, info){
-			    if(error){
-			        return console.log(error);
+			     if(error){
+			    	log.error('Message sent ERROR:  ' + error);
 			    }
-			    console.log('Message sent: ' + info.response);
+			    log.info('Message sent:  ' + info.response +  " - Lista odbiorców:  " + mailOptions.to);
 			});
 
 		});
