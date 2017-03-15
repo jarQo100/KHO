@@ -54,7 +54,7 @@ exports.send = function (mailOptions) {
 			      if(error){
 			    	log.error('Message sent ERROR:  ' + error);
 			    }
-			    log.info('Message sent:  ' + info.response +  " - Lista odbiorców:  " + mailOptions.to);
+			    log.info('Message sent:  ' + info.response +  "Mail send - Lista odbiorców:  " + mailOptions.to);
 			});
 
 		});
@@ -82,7 +82,7 @@ exports.confirmPresent = function(mailOptions){
 			     if(error){
 			    	log.error('Message sent ERROR:  ' + error);
 			    }
-			    log.info('Message sent:  ' + info.response +  " - Lista odbiorców:  " + mailOptions.to);
+			    log.info('Message sent:  ' + info.response +  " Mail confirmPresent - Lista odbiorców:  " + mailOptions.to);
 			});
 
 		});
@@ -99,7 +99,7 @@ exports.sendRememberMessageToCandidate = function(){
 
 			for(var i = 0 ; i < todos.length; i++) {
 				if(todos[i].role == 'Petent'){
-				 	mailOptions.to += todos[i].email + ", ";
+				 	mailOptions.bcc += todos[i].email + ", ";
 				 }
 			};
 
@@ -112,7 +112,7 @@ exports.sendRememberMessageToCandidate = function(){
 			   if(error){
 			    	log.error('Message sent ERROR - Mail do z przypomnieniem do kandydatów:  ' + error);
 			    }
-			    log.info('Message sent:  ' + info.response + " - Mail do z przypomnieniem do kandydatów - Lista odbiorców:  " + mailOptions.to);
+			    log.info('Message sent:  ' + info.response + " - Mail do z przypomnieniem do kandydatów - Lista odbiorców:  " + mailOptions.bcc);
 			});
 
 		});
@@ -128,7 +128,7 @@ exports.confirmPresentReport = function(mailOptions){
 
 			for(var i = 0 ; i < todos.length; i++) {
 				if(todos[i].role == 'Członek kapituły' || todos[i].role == 'Administrator'){
-				 	mailOptions.to += todos[i].email + ", ";
+				 	mailOptions.bcc += todos[i].email + ", ";
 				 }
 			};
 
@@ -141,7 +141,7 @@ exports.confirmPresentReport = function(mailOptions){
 			      if(error){
 			    	log.error('Message sent ERROR:  ' + error);
 			    }
-			    log.info('Message sent:  ' + info.response +  " - Lista odbiorców:  " + mailOptions.to);
+			    log.info('Message sent:  ' + info.response +  "Mail confirmPresentReport- Lista odbiorców:  " + mailOptions.to  + mailOptions.bcc);
 			});
 
 		});
@@ -156,7 +156,7 @@ exports.report = function(mailOptions){
 
 			for(var i = 0 ; i < todos.length; i++) {
 				if(todos[i].role == 'Członek kapituły' || todos[i].role == 'Administrator'){
-				 	mailOptions.to += todos[i].email + ", ";
+				 	mailOptions.bcc += todos[i].email + ", ";
 				 }
 			};
 
@@ -169,7 +169,7 @@ exports.report = function(mailOptions){
 			     if(error){
 			    	log.error('Message sent ERROR:  ' + error);
 			    }
-			    log.info('Message sent:  ' + info.response +  " - Lista odbiorców:  " + mailOptions.to);
+			    log.info('Message sent:  ' + info.response +  "Mail report - Lista odbiorców:  " + mailOptions.bcc + mailOptions.to);
 			});
 
 		});
