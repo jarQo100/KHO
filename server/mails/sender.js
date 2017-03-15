@@ -96,7 +96,7 @@ exports.sendRememberMessageToCandidate = function(){
 
 			for(var i = 0 ; i < todos.length; i++) {
 				if(todos[i].role == 'Petent'){
-				 	mailOptions.bcc += todos[i].email + ", ";
+				 	mailOptions.to += todos[i].email + ", ";
 				 }
 			};
 
